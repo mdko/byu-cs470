@@ -1,0 +1,616 @@
+//5/6 2.5 hours
+//5/8 2.5 hours
+//5/9 6.5 hours
+//5/10 3.5 hours
+
+#define _CRT_SECURE_NO_DEPRECATE 1
+#include <iostream>
+#include <ctime>
+#include <chrono>
+#include <sys/time.h>
+#include <unistd.h>
+#include <cstdlib>
+#include <cmath>
+#include <assert.h>
+
+#include "470bot.h"
+#include "Image.h"
+using namespace std;
+using namespace std::chrono;
+
+#define PI 3.14159265
+#define NOT_DEFINED -10000000
+
+const char *kDefaultServerName = "localhost";
+const int kDefaultServerPort = 4000;
+
+static long nextTurnSeconds;
+static long nextTurnMillis;
+static long nextShotMillis;
+static long nextShotSeconds;
+static vector <tank_t> *my_tanks;
+static vector <otank_t> *other_tanks;
+static vector <flag_t> *flags;
+static vector <obstacle_t> *obstacles;
+static vector <direction_t> *impulses;
+static string color;
+static double home[2];
+static bool all_attack_one_flag = true;
+static bool use_attractive_only = false;
+static bool use_repulsive_only = false;
+static bool use_tangential_only = false;
+static bool print_potentials_fields = true;
+
+static int iterations = 0;
+
+enum turningState {
+	STRAIGHT,
+	RIGHT,
+	LEFT
+};
+
+static turningState nextTurn;
+
+int main(int argc, char *argv[]) {
+	const char *pcHost;
+	int nPort;
+	const char *my_color;
+	std::srand(std::time(0));
+
+	nextTurnSeconds = 0;
+	nextTurnMillis = 0;
+	nextShotSeconds = 0;
+	nextShotMillis = 0;
+	
+	nextTurn = STRAIGHT;
+	home[0] = NOT_DEFINED;
+	home[1] = NOT_DEFINED;
+
+	if(argc < 2) {
+		pcHost = kDefaultServerName;
+	}
+	else {
+		pcHost = argv[1];
+	}
+    if(argc < 3) {
+		nPort = kDefaultServerPort;
+	}
+	else {
+        nPort = atoi(argv[2]);
+    }
+    if(argc < 4) {
+		my_color = "red";
+	}
+	else {
+    	my_color = argv[3];
+    }
+
+    cout << "My color is " << my_color << endl;
+
+    color = string(my_color);
+
+	BZRC MyTeam = BZRC(pcHost, nPort, false); // That last boolean is the debug flag.
+	if(!MyTeam.GetStatus()) {
+		cout << "Can't connect to BZRC server." << endl;
+		exit(1);
+	}
+
+	// Calling agent code
+	world_init(&MyTeam);
+
+	// Update loop
+	while (true) {
+		robot_pre_update(&MyTeam);
+		robot_update(&MyTeam);
+		robot_post_update(&MyTeam);
+		usleep(50);
+	}
+
+	MyTeam.Close();
+	free(&MyTeam);
+	return 0;
+}
+
+void world_init(BZRC *my_team) 
+{
+	my_tanks = new vector<tank_t>();
+	other_tanks = new vector<otank_t>();
+	flags = new vector<flag_t>();
+	obstacles = new vector<obstacle_t>();
+	impulses = new vector<direction_t>();
+
+	vector<team_t>* all_teams = new vector<team_t>();
+	my_team->get_bases(all_teams);
+
+	for (int team_n = 0; team_n < all_teams->size(); team_n++)
+	{
+		team_t curr_team = all_teams->at(team_n);
+		if (curr_team.color.compare(color) == 0)
+		{
+			double x = curr_team.base_corner[0][0] + curr_team.base_corner[2][0];
+			x /= 2;
+			double y = curr_team.base_corner[0][1] + curr_team.base_corner[2][1];
+			y /= 2;
+			home[0] = x;
+			home[1] = y;
+		}
+	}
+	// Sanity check on some bogus numbers.
+	assert(home[0] != NOT_DEFINED);
+	assert(home[1] != NOT_DEFINED);
+
+	robot_pre_update(my_team);
+	if (print_potentials_fields)
+	{
+		// I changed the following line because get_opposing_flag now uses
+		// the tank as well as a parameter to help it know which is the closest
+		// flag to go for. So for now, before starting the game, we can just say
+		// that the flag we want is abritrary, since it will be changed during
+		// robot_pre_update. Basically this call was just to get a flag for
+		// printing the potential fields for project 1.
+		//flag_t goal_flag = get_opposing_flag(my_team);
+		flag_t goal_flag = flags->at(1);
+		print_potentials(goal_flag.pos[0], goal_flag.pos[1], "./potential_fields_images/attack.tga");
+		print_potentials(home[0], home[1], "./potential_fields_images/return.tga");
+	}
+}
+
+// Make queries to the server
+void robot_pre_update(BZRC *my_team) 
+{
+	my_tanks->clear();
+	other_tanks->clear();
+	flags->clear();
+	obstacles->clear();
+	impulses->clear();
+
+	my_team->get_mytanks(my_tanks);
+	my_team->get_othertanks(other_tanks);
+	my_team->get_flags(flags);
+	assert(flags->size() > 0);
+	my_team->get_obstacles(obstacles);
+}
+
+// Decide what we're going to do
+void robot_update(BZRC *my_team) 
+{
+	iterations++;
+	for (int tank_n = 0; tank_n < my_tanks->size(); tank_n++)
+	{
+		tank_t curr_tank = my_tanks->at(tank_n);
+		flag_t goal_flag = get_opposing_flag(curr_tank, my_team);
+		if (curr_tank.flag.compare("-") == 0) // I don't have a flag
+		{
+			impulses->push_back(get_potential_field(curr_tank.pos[0], curr_tank.pos[1], goal_flag.pos[0], goal_flag.pos[1]));
+		}
+		else // I do have a flag
+		{
+			//cout << "" << tank_n << ": " << curr_tank.flag.c_str() << endl;
+			impulses->push_back(get_potential_field(curr_tank.pos[0], curr_tank.pos[1], home[0], home[1]));
+		}
+	}
+}
+
+flag_t get_opposing_flag(tank_t tank, BZRC* my_team)
+{
+	vector<flag_t> enemy_flags;
+	assert(flags->size() > 0);
+	flag_t ret;
+	ret.pos[0] = home[0];
+	ret.pos[1] = home[1];
+
+	if (all_attack_one_flag) { // Every tank go toward same enemy flag
+		for (int flag_n = 0; flag_n < flags->size(); flag_n++)
+		{
+			flag_t curr_flag = flags->at(flag_n);
+			if (curr_flag.poss_color.compare("none") == 0)
+			{
+				if (curr_flag.color.compare(color) != 0)
+				{
+					enemy_flags.push_back(curr_flag);
+				}
+			}
+		}
+		if (enemy_flags.size() == 0)
+		{
+			enemy_flags.push_back(ret);
+		}
+	}
+	else // Get flag closest to you
+	{
+		for (int flag_n = 0; flag_n < flags->size(); flag_n++)
+		{
+			flag_t curr_flag = flags->at(flag_n);
+			if (curr_flag.poss_color.compare("none") == 0 && curr_flag.color.compare(color) != 0)
+			{
+				if (flag_n == 0)
+				{	
+					ret = curr_flag;
+				}
+				else // See if this flag is closer than the current ret flag
+				{
+					double distance_to_ret_flag = sqrt(pow(tank.pos[0] - ret.pos[0], 2) + pow(tank.pos[1] -ret.pos[1], 2));
+					double distance_to_curr_flag = sqrt(pow(tank.pos[0] - curr_flag.pos[0], 2) + pow(tank.pos[1] - curr_flag.pos[1], 2));
+					if (distance_to_curr_flag < distance_to_ret_flag)
+					{
+						ret = curr_flag;
+					}
+				}	
+			}
+		}
+		enemy_flags.push_back(ret);
+	}
+
+	return enemy_flags[0];
+}
+
+bool is_in_base(BZRC* my_team, flag_t flag)
+{
+	//TODO
+	return false;
+}
+
+// Send actions to the server
+void robot_post_update(BZRC *my_team)
+{
+	const double turn_strength = 1.0;
+	const double acceptable_difference = 0.3;	// As long as our impulse is within an arc this many radians wide, drive at full speed
+
+	for (int tank_n = 0; tank_n < impulses->size(); tank_n++)
+	{
+		direction_t impulse = impulses->at(tank_n);
+		double strength = sqrt(pow(impulse.x, 2) + pow(impulse.y, 2));
+
+		// Convert X and Y to an angle
+		double new_rotation = atan2(impulse.y, impulse.x);
+
+		//Normalize the difference between the two rotations by finding the angle between 4PI and -4PI that generates a difference between PI and -PI. 
+		double r1 = new_rotation + 2*PI - my_tanks->at(tank_n).angle;
+		double r2 = new_rotation		- my_tanks->at(tank_n).angle;
+		double r3 = new_rotation - 2*PI - my_tanks->at(tank_n).angle;
+		double difference = 10*PI; // A ludicrously high angle.
+		if (abs(r1) < abs(difference))
+		{
+			difference = r1;
+		}
+		if (abs(r2) < abs(difference))
+		{
+			difference = r2;
+		}
+		if (abs(r3) < abs(difference))
+		{
+			difference = r3;
+		}
+
+		// Make the tank slow down during sharp turns.
+		if (abs(difference) < acceptable_difference / 2)
+		{
+			// Full speed ahead.
+			my_team->speed(tank_n, 1.0);
+			my_team->shoot(tank_n);
+		}
+		else
+		{
+			// Set impulse to one-quarter speed until we're pointing in the right direction
+			my_team->speed(tank_n, 0.25);
+		}	
+
+		difference *= turn_strength;
+		my_team->angvel(tank_n, difference);
+		//if (iterations % 10 == 0)
+		//{
+		//	cout << "I am tank " << tank_n << " and my angle is " << my_tanks->at(tank_n).angle << " and I am turning " << difference << endl; 
+		//}
+	}
+}
+
+// @return[0],@return[1] is a vector describing the potential field at @x and @y
+direction_t get_potential_field(double tank_x, double tank_y, double goal_x, double goal_y)
+{
+ 	direction_t ret;
+ 	ret.x = ret.y = 0;
+
+ 	direction_t goal_attraction;
+ 	direction_t obstacle_repulsion_and_tan;
+
+ 	goal_attraction = calculate_attractor(tank_x, tank_y, goal_x, goal_y);
+
+ 	obstacle_repulsion_and_tan.x = 0;
+ 	obstacle_repulsion_and_tan.y = 0;
+
+ 	for (int i = 0; i < obstacles->size(); i++)
+ 	{
+ 		direction_t tmp = calculate_obstacle_repulsion(tank_x, tank_y, obstacles->at(i));
+	 	obstacle_repulsion_and_tan.x += tmp.x;
+	 	obstacle_repulsion_and_tan.y += tmp.y;
+ 	}
+
+	if (use_attractive_only)
+	{
+		ret.x = goal_attraction.x;
+	 	ret.y = goal_attraction.y;
+	}
+	else if (use_repulsive_only || use_tangential_only)
+	{
+		ret.x = obstacle_repulsion_and_tan.x;
+	 	ret.y = obstacle_repulsion_and_tan.y;
+	}
+	else // Using all three types of potential fields
+	{
+	 	ret.x = goal_attraction.x + obstacle_repulsion_and_tan.x;
+	 	ret.y = goal_attraction.y + obstacle_repulsion_and_tan.y;
+	}
+	
+ 	return ret;
+}
+
+direction_t calculate_attractor(double tank_x, double tank_y, double goal_x, double goal_y)
+{
+	double distance_to_goal = sqrt(pow(goal_x - tank_x, 2) + pow(goal_y - tank_y, 2));
+	double angle_to_goal = atan2((double)(goal_y - tank_y), (double)(goal_x - tank_x));
+	double radius_of_goal = 0;
+	double attraction_spread = 100;
+	double alpha = 100;
+
+	direction_t delta;
+
+	if (distance_to_goal < radius_of_goal) 
+	{
+		delta.x = delta.y = 0;
+	}
+	else if (radius_of_goal <= distance_to_goal && distance_to_goal <= (attraction_spread + radius_of_goal)) 
+	{
+		delta.x = alpha * (distance_to_goal - radius_of_goal) * cos(angle_to_goal);
+		delta.y = alpha * (distance_to_goal - radius_of_goal) * sin(angle_to_goal);
+	}
+	else 
+	{
+		delta.x = alpha * attraction_spread * cos(angle_to_goal);
+		delta.y = alpha * attraction_spread * sin(angle_to_goal);
+	}
+	
+	return delta;
+}
+
+direction_t calculate_obstacle_repulsion(double tank_x, double tank_y, obstacle_t obstacle)
+{
+	double obstacle_x = (obstacle.o_corner[0][0] + obstacle.o_corner[2][0]) / 2;
+	double obstacle_y = (obstacle.o_corner[0][1] + obstacle.o_corner[2][1]) / 2;
+	double distance_to_obstacle = sqrt(pow(obstacle_x - tank_x, 2) + pow(obstacle_y - tank_y, 2));
+	double angle_to_obstacle = atan2((double)(obstacle_y - tank_y), (double)(obstacle_x - tank_x));
+	double repulsion_spread = max(abs(obstacle.o_corner[0][0] - obstacle.o_corner[2][0]), abs(obstacle.o_corner[0][1] - obstacle.o_corner[2][1]));
+	double radius_of_obstacle = repulsion_spread / 2;
+	const double beta = 300;
+	const double infinity = 1000000000000000;
+	double theta = PI / 4;
+
+	if (use_tangential_only)
+	{
+		theta = PI/2;
+	}
+	else if (use_repulsive_only)
+	{
+		theta = 0;
+	}
+
+	direction_t delta;
+
+	if (distance_to_obstacle < radius_of_obstacle) 
+	{
+		delta.x = (cos(angle_to_obstacle) < 0.0 ? infinity : -infinity);
+		delta.y = (sin(angle_to_obstacle) < 0.0 ? infinity : -infinity);
+	}
+	else if (radius_of_obstacle <= distance_to_obstacle  && distance_to_obstacle <= (repulsion_spread + radius_of_obstacle)) 
+	{
+		delta.x = -beta * (repulsion_spread + radius_of_obstacle - distance_to_obstacle) * cos(angle_to_obstacle);
+		delta.y = -beta * (repulsion_spread + radius_of_obstacle - distance_to_obstacle) * sin(angle_to_obstacle);
+	}
+	else 
+	{
+		delta.x = 0;
+		delta.y = 0;
+	}
+
+/*
+	if (tank_x == obstacle_x + repulsion_spread + 10 && tank_y == obstacle_y)
+	{
+		cout << distance_to_obstacle << "," << delta.x << "," << delta.y << "," << repulsion_spread << endl;
+	}
+*/
+	// Apply tangential field
+	double old_x = delta.x;
+	double old_y = delta.y;
+	delta.x = old_x * cos(theta) - old_y * sin(theta);
+	delta.y = old_x * sin(theta) + old_y * cos(theta);
+
+	return delta;
+}
+
+// // Gives the distance between point 1 and point 2 as a vector
+// direction_t distance(double x1, double y1, double x2, double y2)
+// {
+// 	direction_t ret;
+
+// 	ret.x = x2 - x1;
+// 	ret.y = y2 - y1;
+	
+// 	return ret;
+// }
+
+// // A very close-range repulsor. Also twists its repulsion by some amount as a tangential field.
+// direction_t calculate_tangential_repulsion(double point_x, double point_y, obstacle_t obs)
+// {
+// 	static const rotation = 45;
+// 	static const repulsion_strength = 100;
+	
+// 	direction_t ret;
+// 	ret.x = 0;
+// 	ret.y = 0;
+	
+// 	// TODO Make this work for any number of corners
+// 	double left = min(o_corner[0][0], o_corner[1][0], o_corner[2][0], o_corner[3][0]);
+// 	double right = max(o_corner[0][0], o_corner[1][0], o_corner[2][0], o_corner[3][0]);
+// 	double top = max(o_corner[0][1], o_corner[1][1], o_corner[2][1], o_corner[3][1]);
+// 	double bottom = min(o_corner[0][1], o_corner[1][1], o_corner[2][1], o_corner[3][1]);
+	
+// 	if (point_x < left)
+// 	{
+// 		if (point_y > top)	// Upper-Left
+// 		{
+// 			ret = distance(left, top, point_x, point_y);
+// 		}
+// 		else if (point_y < bottom)	// Lower-Left
+// 		{
+// 			ret = distance(left, bottom, point_x, point_y);
+// 		}
+// 		else						// Left
+// 		{
+// 			ret = distance(left, point_y, point_x, point_y);
+// 		}
+// 	}
+// 	else if (point_x > right)
+// 	{
+// 		if (point_y > top)	// Upper-Right
+// 		{
+// 			// TODO
+// 		}
+// 		else if (point_y < bottom)	// Lower-Right
+// 		{
+// 			// TODO
+// 		}
+// 		else	// Right
+// 		{
+// 			// TODO
+// 		}
+// 	}
+// 	else
+// 	{
+// 		if (point_y > top)	// Up
+// 		{
+// 			// TODO
+// 		}
+// 		else if (point_y < bottom) // Down
+// 		{
+// 			// TODO
+// 		}
+// 		else
+// 		{
+// 			// What? How did you get inside an obstacle? Well, head outside of it then.
+// 			ret = distance((left+right)/2, (top+bottom)/2, point_x, point_y);
+// 		}
+// 	}
+	
+// 	// Make it so that being closer gives more repulsion and further gives less repulsion (instead of the other way around, like we've been calculating).
+// 	if (ret.x == 0) ret.x = 10000000000; // Some arbitrarily huge number so that you don't get a divide by zero error, but the resulting repulsion is really tiny like it ought to be.
+// 	if (ret.y == 0) ret.y = 10000000000; // ditto. By the way, this means that directly above or below you'll be pushed a little to the right, and directly left or right you'll be pushed a little bit up.
+// 	ret.x = repulsion_strength / ret.x;
+// 	ret.y = repulsion_strength / ret.y;
+
+// 	// TODO apply tangential field
+
+// 	/*
+// 	rotation matrix:
+// 	cos theta	-sin theta			x
+// 	sin theta	cos theta			y
+	
+// 	new_x = x * cos theta - y * sin theta
+// 	new_y = x * sin theta + y * cos theta
+// 	*/
+	
+// 	return ret;
+// }
+
+void print_potentials(double goal_x, double goal_y, const char* filename)
+{
+	cerr << "Beginning potential fields image export.\n";
+	int leftEdge = -400;
+	int topEdge = 400;
+	int rightEdge = 400;
+	int bottomEdge = -400;
+	std::string targetFile = filename;
+	const double colorIntensity = 5000000.0;
+
+	// The +1 is because the center of the arena is 0,0
+	TGAImage *img = new TGAImage(rightEdge + (-1 * leftEdge) + 1, topEdge + (-1 * bottomEdge) + 1);
+	//declare a temporary color variable
+	Colour c;
+	c.a = 255; // Image will be 100% opaque.
+
+	for (int j = topEdge; j >= bottomEdge; j--)
+	{
+		for (int i = leftEdge; i <= rightEdge; i++)
+		{
+			direction_t direction = get_potential_field(i, j, goal_x, goal_y);
+			//cout << direction.x << direction.y;
+			if (direction.x == 0 && direction.y == 0)
+			{
+				c.r = 0;
+				c.g = 0;
+				c.b = 0;
+			} else {
+				double angle = atan2(direction.y, direction.x);
+
+				/*
+				if (i == 100 && j == 5)
+				{
+					cout << "Angle " << angle << "\n";
+				}
+				*/
+
+				double tmp;
+				//c.r = std::abs(angle / PI) * 255.0;
+				//tmp = angle - 2/3*PI;
+				//c.g = std::abs(tmp / PI) * 255.0;
+				//tmp = angle + 2/3*PI;
+				//c.b = std::abs(tmp / PI) * 255.0;
+				
+				double intensity = min(colorIntensity / sqrt(pow(direction.x, 2) + pow(direction.y, 2)), 255.0);
+				//double intensity = 255.0;
+
+				tmp = angle + PI / 2;
+				if (tmp > PI) tmp -= 2*PI;
+				tmp = abs(tmp);
+				tmp *= intensity / PI;			
+				c.r = tmp;
+
+				tmp = angle - PI * 5 / 6;
+				if (tmp < -1 * PI) tmp += 2*PI;
+				tmp = abs(tmp);
+				tmp *= intensity / PI;
+				c.g = tmp;
+
+				tmp = angle - PI / 6;
+				if (tmp < -1 * PI) tmp += 2*PI;
+				tmp = abs(tmp);
+				tmp *= intensity / PI;
+				c.b = tmp;
+
+			}
+
+			int x = i - leftEdge;
+			int y = j - bottomEdge;
+			img->setPixel(c,x,y);
+		}
+	}
+
+	/*
+	for (int x = 0; x < 255; x++)
+	{
+		for (int y = 0; y < 255; y++)
+		{
+			c.r = x;
+			c.g = 0;
+			c.b = 0;
+			img->setPixel(c, x, y);
+		}
+	}
+	*/
+
+	//write the image to disk
+	img->WriteImage(filename);
+
+	cerr << "Potentials for goal " << goal_x << ", " << goal_y << " output to file " << targetFile + "\n";
+	return;
+}
+
+

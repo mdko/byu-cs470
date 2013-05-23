@@ -1,0 +1,1 @@
+g++ -std=c++11 -o ./bzagents_cpp/dummy_agent ./cpp_code/dummy_agent.cpp -I ./cpp_code -I ./

@@ -1,0 +1,91 @@
+// TODO place in the top of the CPP doc
+static direction_t search_order[8];
+
+// TODO place in init
+// "Please consider these states in the following order: left (x-1,y), right (x+1,y), up (x,y+1), down (x,y-1), diagonal up-left, up-right, down-left, down-right."
+// These coordinates are relative to the grid's storage in memory. Right increments X. Up decrements Y.
+// Left
+search_order[0].x = -1;
+search_order[0].y = 0;
+// Right
+search_order[1].x = 1;
+search_order[1].y = 0;
+// Up
+search_order[2].x = 0;
+search_order[2].y = ;
+// Down
+search_order[3].x = 0;
+search_order[3].y = ;
+// Up-Left
+search_order[4].x = search_order[0].x;
+search_order[4].y = search_order[2].x;
+// Up-Right
+search_order[5].x = search_order[1].x;
+search_order[5].y = search_order[2].x;
+// Down-Left
+search_order[6].x = search_order[0].x;
+search_order[6].y = search_order[3].x;
+// Down-Right
+search_order[7].x = search_order[1].x;
+search_order[7].y = search_order[3].x;
+#define NUMBER_OF_DIRECTIONS 8
+
+// TODO Assign these during init. I would presume that left_bounds and top_bounds are both 0.
+// TODO maybe put them under grid_t???
+static double left_bounds;
+static double right_bounds;
+static double top_bounds;
+static double bottom_bounds;
+
+// TODO place in the body of the CPP doc
+// TODO you can make obstacles global static to save on memory and copy time
+public stack<coordinate_t> recursive_depth_first_search(double target_x, double target_y, double current_x, double current_y, grid_t obstacles, vector<vector<bool> > * visited_locations, stack<coordinate_t> path_so_far)
+{
+	coordinate_t current_location;
+	current_location.x = current_x;
+	current_location.y = current_y;
+
+	// Check if we're out of bounds first, so that we can tell whether we're at a valid location in memory.
+	if (current_x < left_bounds || current_x > right_bounds
+		|| current_y < top_bounds || current_y > bottom_bounds)
+	{
+		return NULL;
+	}
+	
+	// Check if we're in a location we've already been at. Mark it if we are.
+	if (visited_locations->at(current_x).at(current_y))
+	{
+		return NULL;
+	}
+	else
+	{
+		visited_locations->at(current_x).at(current_y) = true;
+	}
+
+	// Now we're going to try to find a correct path from the current state.
+	path_so_far.push(current_location);
+	
+	// Check if we've reached our target.
+	if (target_x == current_x && target_y == current_y)
+	{
+		return path_so_far;
+	}
+	
+	// Try adjacent spaces.
+	for (int i = 0; i < NUMBER_OF_DIRECTIONS; i++)
+	{
+		direction_t offset = search_order[i];
+		stack<coordinate_t> ret = recursive_depth_first_search(target_x, target_y, current_x + offset.x, current_y + offset.y, obstacles, visited_locations, path_so_far);
+		if (ret != NULL)
+		{
+			return ret;
+		}
+		else
+		{
+			; // Try the next one.
+		}
+	}
+	
+	// Report that none of our children reached the goal.
+	return NULL;
+}

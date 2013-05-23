@@ -1,0 +1,1 @@
+g++ -g -std=c++11 -o ./bzagents_cpp/potential_field_agent ./cpp_code/pf_agent.cpp ./cpp_code/Image.cpp -I ./cpp_code/ -I ./

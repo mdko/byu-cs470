@@ -1,0 +1,2971 @@
+Beginning grid export...
+Enemy flag at: 380.000000, 200.000000
+My tank is at 15.000000, 195.000000.
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Beginning wavefront image export...
+Path image output to bfs.tga
+Backtracing 380.000000, 201.000000.
+Current size is 1
+Backtracing 380.000000, 202.000000.
+Current size is 2
+Backtracing 380.000000, 203.000000.
+Current size is 3
+Backtracing 380.000000, 204.000000.
+Current size is 4
+Backtracing 380.000000, 205.000000.
+Current size is 5
+Backtracing 380.000000, 206.000000.
+Current size is 6
+Backtracing 380.000000, 207.000000.
+Current size is 7
+Backtracing 380.000000, 208.000000.
+Current size is 8
+Backtracing 380.000000, 209.000000.
+Current size is 9
+Backtracing 380.000000, 210.000000.
+Current size is 10
+Backtracing 380.000000, 211.000000.
+Current size is 11
+Backtracing 380.000000, 212.000000.
+Current size is 12
+Backtracing 380.000000, 213.000000.
+Current size is 13
+Backtracing 380.000000, 214.000000.
+Current size is 14
+Backtracing 380.000000, 215.000000.
+Current size is 15
+Backtracing 380.000000, 216.000000.
+Current size is 16
+Backtracing 380.000000, 217.000000.
+Current size is 17
+Backtracing 380.000000, 218.000000.
+Current size is 18
+Backtracing 380.000000, 219.000000.
+Current size is 19
+Backtracing 380.000000, 220.000000.
+Current size is 20
+Backtracing 380.000000, 221.000000.
+Current size is 21
+Backtracing 380.000000, 222.000000.
+Current size is 22
+Backtracing 380.000000, 223.000000.
+Current size is 23
+Backtracing 380.000000, 224.000000.
+Current size is 24
+Backtracing 380.000000, 225.000000.
+Current size is 25
+Backtracing 380.000000, 226.000000.
+Current size is 26
+Backtracing 380.000000, 227.000000.
+Current size is 27
+Backtracing 380.000000, 228.000000.
+Current size is 28
+Backtracing 380.000000, 229.000000.
+Current size is 29
+Backtracing 380.000000, 230.000000.
+Current size is 30
+Backtracing 380.000000, 231.000000.
+Current size is 31
+Backtracing 380.000000, 232.000000.
+Current size is 32
+Backtracing 380.000000, 233.000000.
+Current size is 33
+Backtracing 380.000000, 234.000000.
+Current size is 34
+Backtracing 380.000000, 235.000000.
+Current size is 35
+Backtracing 380.000000, 236.000000.
+Current size is 36
+Backtracing 380.000000, 237.000000.
+Current size is 37
+Backtracing 380.000000, 238.000000.
+Current size is 38
+Backtracing 380.000000, 239.000000.
+Current size is 39
+Backtracing 380.000000, 240.000000.
+Current size is 40
+Backtracing 380.000000, 241.000000.
+Current size is 41
+Backtracing 380.000000, 242.000000.
+Current size is 42
+Backtracing 380.000000, 243.000000.
+Current size is 43
+Backtracing 380.000000, 244.000000.
+Current size is 44
+Backtracing 380.000000, 245.000000.
+Current size is 45
+Backtracing 380.000000, 246.000000.
+Current size is 46
+Backtracing 380.000000, 247.000000.
+Current size is 47
+Backtracing 380.000000, 248.000000.
+Current size is 48
+Backtracing 380.000000, 249.000000.
+Current size is 49
+Backtracing 380.000000, 250.000000.
+Current size is 50
+Backtracing 380.000000, 251.000000.
+Current size is 51
+Backtracing 380.000000, 252.000000.
+Current size is 52
+Backtracing 380.000000, 253.000000.
+Current size is 53
+Backtracing 380.000000, 254.000000.
+Current size is 54
+Backtracing 380.000000, 255.000000.
+Current size is 55
+Backtracing 380.000000, 256.000000.
+Current size is 56
+Backtracing 380.000000, 257.000000.
+Current size is 57
+Backtracing 380.000000, 258.000000.
+Current size is 58
+Backtracing 380.000000, 259.000000.
+Current size is 59
+Backtracing 380.000000, 260.000000.
+Current size is 60
+Backtracing 380.000000, 261.000000.
+Current size is 61
+Backtracing 380.000000, 262.000000.
+Current size is 62
+Backtracing 380.000000, 263.000000.
+Current size is 63
+Backtracing 380.000000, 264.000000.
+Current size is 64
+Backtracing 380.000000, 265.000000.
+Current size is 65
+Backtracing 380.000000, 266.000000.
+Current size is 66
+Backtracing 380.000000, 267.000000.
+Current size is 67
+Backtracing 380.000000, 268.000000.
+Current size is 68
+Backtracing 380.000000, 269.000000.
+Current size is 69
+Backtracing 380.000000, 270.000000.
+Current size is 70
+Backtracing 380.000000, 271.000000.
+Current size is 71
+Backtracing 380.000000, 272.000000.
+Current size is 72
+Backtracing 380.000000, 273.000000.
+Current size is 73
+Backtracing 380.000000, 274.000000.
+Current size is 74
+Backtracing 380.000000, 275.000000.
+Current size is 75
+Backtracing 380.000000, 276.000000.
+Current size is 76
+Backtracing 380.000000, 277.000000.
+Current size is 77
+Backtracing 380.000000, 278.000000.
+Current size is 78
+Backtracing 380.000000, 279.000000.
+Current size is 79
+Backtracing 380.000000, 280.000000.
+Current size is 80
+Backtracing 380.000000, 281.000000.
+Current size is 81
+Backtracing 380.000000, 282.000000.
+Current size is 82
+Backtracing 380.000000, 283.000000.
+Current size is 83
+Backtracing 380.000000, 284.000000.
+Current size is 84
+Backtracing 380.000000, 285.000000.
+Current size is 85
+Backtracing 380.000000, 286.000000.
+Current size is 86
+Backtracing 380.000000, 287.000000.
+Current size is 87
+Backtracing 380.000000, 288.000000.
+Current size is 88
+Backtracing 380.000000, 289.000000.
+Current size is 89
+Backtracing 380.000000, 290.000000.
+Current size is 90
+Backtracing 380.000000, 291.000000.
+Current size is 91
+Backtracing 380.000000, 292.000000.
+Current size is 92
+Backtracing 380.000000, 293.000000.
+Current size is 93
+Backtracing 380.000000, 294.000000.
+Current size is 94
+Backtracing 380.000000, 295.000000.
+Current size is 95
+Backtracing 380.000000, 296.000000.
+Current size is 96
+Backtracing 380.000000, 297.000000.
+Current size is 97
+Backtracing 380.000000, 298.000000.
+Current size is 98
+Backtracing 380.000000, 299.000000.
+Current size is 99
+Backtracing 380.000000, 300.000000.
+Current size is 100
+Backtracing 380.000000, 301.000000.
+Current size is 101
+Backtracing 380.000000, 302.000000.
+Current size is 102
+Backtracing 380.000000, 303.000000.
+Current size is 103
+Backtracing 380.000000, 304.000000.
+Current size is 104
+Backtracing 380.000000, 305.000000.
+Current size is 105
+Backtracing 380.000000, 306.000000.
+Current size is 106
+Backtracing 380.000000, 307.000000.
+Current size is 107
+Backtracing 380.000000, 308.000000.
+Current size is 108
+Backtracing 380.000000, 309.000000.
+Current size is 109
+Backtracing 380.000000, 310.000000.
+Current size is 110
+Backtracing 380.000000, 311.000000.
+Current size is 111
+Backtracing 380.000000, 312.000000.
+Current size is 112
+Backtracing 380.000000, 313.000000.
+Current size is 113
+Backtracing 380.000000, 314.000000.
+Current size is 114
+Backtracing 380.000000, 315.000000.
+Current size is 115
+Backtracing 380.000000, 316.000000.
+Current size is 116
+Backtracing 380.000000, 317.000000.
+Current size is 117
+Backtracing 380.000000, 318.000000.
+Current size is 118
+Backtracing 380.000000, 319.000000.
+Current size is 119
+Backtracing 380.000000, 320.000000.
+Current size is 120
+Backtracing 380.000000, 321.000000.
+Current size is 121
+Backtracing 380.000000, 322.000000.
+Current size is 122
+Backtracing 380.000000, 323.000000.
+Current size is 123
+Backtracing 380.000000, 324.000000.
+Current size is 124
+Backtracing 380.000000, 325.000000.
+Current size is 125
+Backtracing 380.000000, 326.000000.
+Current size is 126
+Backtracing 380.000000, 327.000000.
+Current size is 127
+Backtracing 380.000000, 328.000000.
+Current size is 128
+Backtracing 380.000000, 329.000000.
+Current size is 129
+Backtracing 380.000000, 330.000000.
+Current size is 130
+Backtracing 380.000000, 331.000000.
+Current size is 131
+Backtracing 380.000000, 332.000000.
+Current size is 132
+Backtracing 380.000000, 333.000000.
+Current size is 133
+Backtracing 380.000000, 334.000000.
+Current size is 134
+Backtracing 380.000000, 335.000000.
+Current size is 135
+Backtracing 380.000000, 336.000000.
+Current size is 136
+Backtracing 380.000000, 337.000000.
+Current size is 137
+Backtracing 380.000000, 338.000000.
+Current size is 138
+Backtracing 380.000000, 339.000000.
+Current size is 139
+Backtracing 380.000000, 340.000000.
+Current size is 140
+Backtracing 380.000000, 341.000000.
+Current size is 141
+Backtracing 380.000000, 342.000000.
+Current size is 142
+Backtracing 380.000000, 343.000000.
+Current size is 143
+Backtracing 380.000000, 344.000000.
+Current size is 144
+Backtracing 380.000000, 345.000000.
+Current size is 145
+Backtracing 380.000000, 346.000000.
+Current size is 146
+Backtracing 380.000000, 347.000000.
+Current size is 147
+Backtracing 380.000000, 348.000000.
+Current size is 148
+Backtracing 380.000000, 349.000000.
+Current size is 149
+Backtracing 380.000000, 350.000000.
+Current size is 150
+Backtracing 380.000000, 351.000000.
+Current size is 151
+Backtracing 380.000000, 352.000000.
+Current size is 152
+Backtracing 380.000000, 353.000000.
+Current size is 153
+Backtracing 380.000000, 354.000000.
+Current size is 154
+Backtracing 380.000000, 355.000000.
+Current size is 155
+Backtracing 380.000000, 356.000000.
+Current size is 156
+Backtracing 380.000000, 357.000000.
+Current size is 157
+Backtracing 380.000000, 358.000000.
+Current size is 158
+Backtracing 380.000000, 359.000000.
+Current size is 159
+Backtracing 380.000000, 360.000000.
+Current size is 160
+Backtracing 380.000000, 361.000000.
+Current size is 161
+Backtracing 380.000000, 362.000000.
+Current size is 162
+Backtracing 380.000000, 363.000000.
+Current size is 163
+Backtracing 380.000000, 364.000000.
+Current size is 164
+Backtracing 380.000000, 365.000000.
+Current size is 165
+Backtracing 380.000000, 366.000000.
+Current size is 166
+Backtracing 380.000000, 367.000000.
+Current size is 167
+Backtracing 380.000000, 368.000000.
+Current size is 168
+Backtracing 380.000000, 369.000000.
+Current size is 169
+Backtracing 379.000000, 369.000000.
+Current size is 170
+Backtracing 378.000000, 369.000000.
+Current size is 171
+Backtracing 377.000000, 369.000000.
+Current size is 172
+Backtracing 376.000000, 369.000000.
+Current size is 173
+Backtracing 375.000000, 369.000000.
+Current size is 174
+Backtracing 374.000000, 369.000000.
+Current size is 175
+Backtracing 373.000000, 369.000000.
+Current size is 176
+Backtracing 372.000000, 369.000000.
+Current size is 177
+Backtracing 371.000000, 369.000000.
+Current size is 178
+Backtracing 370.000000, 369.000000.
+Current size is 179
+Backtracing 369.000000, 369.000000.
+Current size is 180
+Backtracing 368.000000, 369.000000.
+Current size is 181
+Backtracing 367.000000, 369.000000.
+Current size is 182
+Backtracing 366.000000, 369.000000.
+Current size is 183
+Backtracing 365.000000, 369.000000.
+Current size is 184
+Backtracing 364.000000, 369.000000.
+Current size is 185
+Backtracing 363.000000, 369.000000.
+Current size is 186
+Backtracing 362.000000, 369.000000.
+Current size is 187
+Backtracing 361.000000, 369.000000.
+Current size is 188
+Backtracing 360.000000, 369.000000.
+Current size is 189
+Backtracing 359.000000, 369.000000.
+Current size is 190
+Backtracing 358.000000, 369.000000.
+Current size is 191
+Backtracing 357.000000, 369.000000.
+Current size is 192
+Backtracing 356.000000, 369.000000.
+Current size is 193
+Backtracing 355.000000, 369.000000.
+Current size is 194
+Backtracing 354.000000, 369.000000.
+Current size is 195
+Backtracing 353.000000, 369.000000.
+Current size is 196
+Backtracing 352.000000, 369.000000.
+Current size is 197
+Backtracing 351.000000, 369.000000.
+Current size is 198
+Backtracing 350.000000, 369.000000.
+Current size is 199
+Backtracing 349.000000, 369.000000.
+Current size is 200
+Backtracing 348.000000, 369.000000.
+Current size is 201
+Backtracing 347.000000, 369.000000.
+Current size is 202
+Backtracing 346.000000, 369.000000.
+Current size is 203
+Backtracing 345.000000, 369.000000.
+Current size is 204
+Backtracing 344.000000, 369.000000.
+Current size is 205
+Backtracing 343.000000, 369.000000.
+Current size is 206
+Backtracing 342.000000, 369.000000.
+Current size is 207
+Backtracing 341.000000, 369.000000.
+Current size is 208
+Backtracing 340.000000, 369.000000.
+Current size is 209
+Backtracing 339.000000, 369.000000.
+Current size is 210
+Backtracing 338.000000, 369.000000.
+Current size is 211
+Backtracing 337.000000, 369.000000.
+Current size is 212
+Backtracing 336.000000, 369.000000.
+Current size is 213
+Backtracing 335.000000, 369.000000.
+Current size is 214
+Backtracing 334.000000, 369.000000.
+Current size is 215
+Backtracing 333.000000, 369.000000.
+Current size is 216
+Backtracing 332.000000, 369.000000.
+Current size is 217
+Backtracing 331.000000, 369.000000.
+Current size is 218
+Backtracing 330.000000, 369.000000.
+Current size is 219
+Backtracing 329.000000, 369.000000.
+Current size is 220
+Backtracing 328.000000, 369.000000.
+Current size is 221
+Backtracing 327.000000, 369.000000.
+Current size is 222
+Backtracing 326.000000, 369.000000.
+Current size is 223
+Backtracing 325.000000, 369.000000.
+Current size is 224
+Backtracing 324.000000, 369.000000.
+Current size is 225
+Backtracing 323.000000, 369.000000.
+Current size is 226
+Backtracing 322.000000, 369.000000.
+Current size is 227
+Backtracing 321.000000, 369.000000.
+Current size is 228
+Backtracing 320.000000, 369.000000.
+Current size is 229
+Backtracing 319.000000, 369.000000.
+Current size is 230
+Backtracing 318.000000, 369.000000.
+Current size is 231
+Backtracing 317.000000, 369.000000.
+Current size is 232
+Backtracing 316.000000, 369.000000.
+Current size is 233
+Backtracing 315.000000, 369.000000.
+Current size is 234
+Backtracing 314.000000, 369.000000.
+Current size is 235
+Backtracing 313.000000, 369.000000.
+Current size is 236
+Backtracing 312.000000, 369.000000.
+Current size is 237
+Backtracing 311.000000, 369.000000.
+Current size is 238
+Backtracing 310.000000, 369.000000.
+Current size is 239
+Backtracing 309.000000, 369.000000.
+Current size is 240
+Backtracing 308.000000, 369.000000.
+Current size is 241
+Backtracing 307.000000, 369.000000.
+Current size is 242
+Backtracing 306.000000, 369.000000.
+Current size is 243
+Backtracing 305.000000, 369.000000.
+Current size is 244
+Backtracing 304.000000, 369.000000.
+Current size is 245
+Backtracing 303.000000, 369.000000.
+Current size is 246
+Backtracing 302.000000, 369.000000.
+Current size is 247
+Backtracing 301.000000, 369.000000.
+Current size is 248
+Backtracing 300.000000, 369.000000.
+Current size is 249
+Backtracing 299.000000, 369.000000.
+Current size is 250
+Backtracing 298.000000, 369.000000.
+Current size is 251
+Backtracing 297.000000, 369.000000.
+Current size is 252
+Backtracing 296.000000, 369.000000.
+Current size is 253
+Backtracing 295.000000, 369.000000.
+Current size is 254
+Backtracing 294.000000, 369.000000.
+Current size is 255
+Backtracing 293.000000, 369.000000.
+Current size is 256
+Backtracing 292.000000, 369.000000.
+Current size is 257
+Backtracing 291.000000, 369.000000.
+Current size is 258
+Backtracing 290.000000, 369.000000.
+Current size is 259
+Backtracing 289.000000, 369.000000.
+Current size is 260
+Backtracing 288.000000, 369.000000.
+Current size is 261
+Backtracing 287.000000, 369.000000.
+Current size is 262
+Backtracing 286.000000, 369.000000.
+Current size is 263
+Backtracing 285.000000, 369.000000.
+Current size is 264
+Backtracing 284.000000, 369.000000.
+Current size is 265
+Backtracing 283.000000, 369.000000.
+Current size is 266
+Backtracing 282.000000, 369.000000.
+Current size is 267
+Backtracing 281.000000, 369.000000.
+Current size is 268
+Backtracing 280.000000, 369.000000.
+Current size is 269
+Backtracing 279.000000, 369.000000.
+Current size is 270
+Backtracing 278.000000, 369.000000.
+Current size is 271
+Backtracing 277.000000, 369.000000.
+Current size is 272
+Backtracing 276.000000, 369.000000.
+Current size is 273
+Backtracing 275.000000, 369.000000.
+Current size is 274
+Backtracing 274.000000, 369.000000.
+Current size is 275
+Backtracing 273.000000, 369.000000.
+Current size is 276
+Backtracing 272.000000, 369.000000.
+Current size is 277
+Backtracing 271.000000, 369.000000.
+Current size is 278
+Backtracing 270.000000, 369.000000.
+Current size is 279
+Backtracing 269.000000, 369.000000.
+Current size is 280
+Backtracing 268.000000, 369.000000.
+Current size is 281
+Backtracing 267.000000, 369.000000.
+Current size is 282
+Backtracing 266.000000, 369.000000.
+Current size is 283
+Backtracing 265.000000, 369.000000.
+Current size is 284
+Backtracing 264.000000, 369.000000.
+Current size is 285
+Backtracing 263.000000, 369.000000.
+Current size is 286
+Backtracing 262.000000, 369.000000.
+Current size is 287
+Backtracing 261.000000, 369.000000.
+Current size is 288
+Backtracing 260.000000, 369.000000.
+Current size is 289
+Backtracing 259.000000, 369.000000.
+Current size is 290
+Backtracing 258.000000, 369.000000.
+Current size is 291
+Backtracing 257.000000, 369.000000.
+Current size is 292
+Backtracing 256.000000, 369.000000.
+Current size is 293
+Backtracing 255.000000, 369.000000.
+Current size is 294
+Backtracing 254.000000, 369.000000.
+Current size is 295
+Backtracing 253.000000, 369.000000.
+Current size is 296
+Backtracing 252.000000, 369.000000.
+Current size is 297
+Backtracing 251.000000, 369.000000.
+Current size is 298
+Backtracing 250.000000, 369.000000.
+Current size is 299
+Backtracing 249.000000, 369.000000.
+Current size is 300
+Backtracing 248.000000, 369.000000.
+Current size is 301
+Backtracing 247.000000, 369.000000.
+Current size is 302
+Backtracing 246.000000, 369.000000.
+Current size is 303
+Backtracing 245.000000, 369.000000.
+Current size is 304
+Backtracing 244.000000, 369.000000.
+Current size is 305
+Backtracing 243.000000, 369.000000.
+Current size is 306
+Backtracing 242.000000, 369.000000.
+Current size is 307
+Backtracing 241.000000, 369.000000.
+Current size is 308
+Backtracing 240.000000, 369.000000.
+Current size is 309
+Backtracing 239.000000, 369.000000.
+Current size is 310
+Backtracing 238.000000, 369.000000.
+Current size is 311
+Backtracing 237.000000, 369.000000.
+Current size is 312
+Backtracing 236.000000, 369.000000.
+Current size is 313
+Backtracing 235.000000, 369.000000.
+Current size is 314
+Backtracing 234.000000, 369.000000.
+Current size is 315
+Backtracing 233.000000, 369.000000.
+Current size is 316
+Backtracing 232.000000, 369.000000.
+Current size is 317
+Backtracing 231.000000, 369.000000.
+Current size is 318
+Backtracing 230.000000, 369.000000.
+Current size is 319
+Backtracing 229.000000, 369.000000.
+Current size is 320
+Backtracing 228.000000, 369.000000.
+Current size is 321
+Backtracing 227.000000, 369.000000.
+Current size is 322
+Backtracing 226.000000, 369.000000.
+Current size is 323
+Backtracing 225.000000, 369.000000.
+Current size is 324
+Backtracing 224.000000, 369.000000.
+Current size is 325
+Backtracing 223.000000, 369.000000.
+Current size is 326
+Backtracing 222.000000, 369.000000.
+Current size is 327
+Backtracing 221.000000, 369.000000.
+Current size is 328
+Backtracing 220.000000, 369.000000.
+Current size is 329
+Backtracing 219.000000, 369.000000.
+Current size is 330
+Backtracing 218.000000, 369.000000.
+Current size is 331
+Backtracing 217.000000, 369.000000.
+Current size is 332
+Backtracing 216.000000, 369.000000.
+Current size is 333
+Backtracing 215.000000, 369.000000.
+Current size is 334
+Backtracing 214.000000, 369.000000.
+Current size is 335
+Backtracing 213.000000, 369.000000.
+Current size is 336
+Backtracing 212.000000, 369.000000.
+Current size is 337
+Backtracing 211.000000, 369.000000.
+Current size is 338
+Backtracing 210.000000, 369.000000.
+Current size is 339
+Backtracing 209.000000, 369.000000.
+Current size is 340
+Backtracing 208.000000, 369.000000.
+Current size is 341
+Backtracing 207.000000, 369.000000.
+Current size is 342
+Backtracing 206.000000, 369.000000.
+Current size is 343
+Backtracing 205.000000, 369.000000.
+Current size is 344
+Backtracing 204.000000, 369.000000.
+Current size is 345
+Backtracing 203.000000, 369.000000.
+Current size is 346
+Backtracing 202.000000, 369.000000.
+Current size is 347
+Backtracing 201.000000, 369.000000.
+Current size is 348
+Backtracing 200.000000, 369.000000.
+Current size is 349
+Backtracing 199.000000, 369.000000.
+Current size is 350
+Backtracing 198.000000, 369.000000.
+Current size is 351
+Backtracing 197.000000, 369.000000.
+Current size is 352
+Backtracing 196.000000, 369.000000.
+Current size is 353
+Backtracing 195.000000, 369.000000.
+Current size is 354
+Backtracing 194.000000, 369.000000.
+Current size is 355
+Backtracing 193.000000, 369.000000.
+Current size is 356
+Backtracing 192.000000, 369.000000.
+Current size is 357
+Backtracing 191.000000, 369.000000.
+Current size is 358
+Backtracing 190.000000, 369.000000.
+Current size is 359
+Backtracing 189.000000, 370.000000.
+Current size is 360
+Backtracing 188.000000, 370.000000.
+Current size is 361
+Backtracing 187.000000, 370.000000.
+Current size is 362
+Backtracing 186.000000, 370.000000.
+Current size is 363
+Backtracing 185.000000, 370.000000.
+Current size is 364
+Backtracing 184.000000, 370.000000.
+Current size is 365
+Backtracing 183.000000, 370.000000.
+Current size is 366
+Backtracing 182.000000, 370.000000.
+Current size is 367
+Backtracing 181.000000, 370.000000.
+Current size is 368
+Backtracing 180.000000, 370.000000.
+Current size is 369
+Backtracing 179.000000, 370.000000.
+Current size is 370
+Backtracing 178.000000, 370.000000.
+Current size is 371
+Backtracing 177.000000, 370.000000.
+Current size is 372
+Backtracing 176.000000, 370.000000.
+Current size is 373
+Backtracing 175.000000, 370.000000.
+Current size is 374
+Backtracing 174.000000, 370.000000.
+Current size is 375
+Backtracing 173.000000, 370.000000.
+Current size is 376
+Backtracing 172.000000, 370.000000.
+Current size is 377
+Backtracing 171.000000, 370.000000.
+Current size is 378
+Backtracing 170.000000, 370.000000.
+Current size is 379
+Backtracing 169.000000, 370.000000.
+Current size is 380
+Backtracing 168.000000, 370.000000.
+Current size is 381
+Backtracing 167.000000, 370.000000.
+Current size is 382
+Backtracing 166.000000, 370.000000.
+Current size is 383
+Backtracing 165.000000, 370.000000.
+Current size is 384
+Backtracing 164.000000, 370.000000.
+Current size is 385
+Backtracing 163.000000, 370.000000.
+Current size is 386
+Backtracing 162.000000, 370.000000.
+Current size is 387
+Backtracing 161.000000, 370.000000.
+Current size is 388
+Backtracing 160.000000, 370.000000.
+Current size is 389
+Backtracing 159.000000, 370.000000.
+Current size is 390
+Backtracing 158.000000, 370.000000.
+Current size is 391
+Backtracing 157.000000, 370.000000.
+Current size is 392
+Backtracing 156.000000, 370.000000.
+Current size is 393
+Backtracing 155.000000, 370.000000.
+Current size is 394
+Backtracing 154.000000, 370.000000.
+Current size is 395
+Backtracing 153.000000, 370.000000.
+Current size is 396
+Backtracing 152.000000, 370.000000.
+Current size is 397
+Backtracing 151.000000, 370.000000.
+Current size is 398
+Backtracing 150.000000, 370.000000.
+Current size is 399
+Backtracing 149.000000, 370.000000.
+Current size is 400
+Backtracing 148.000000, 370.000000.
+Current size is 401
+Backtracing 147.000000, 370.000000.
+Current size is 402
+Backtracing 146.000000, 370.000000.
+Current size is 403
+Backtracing 145.000000, 370.000000.
+Current size is 404
+Backtracing 144.000000, 370.000000.
+Current size is 405
+Backtracing 143.000000, 370.000000.
+Current size is 406
+Backtracing 142.000000, 370.000000.
+Current size is 407
+Backtracing 141.000000, 370.000000.
+Current size is 408
+Backtracing 140.000000, 370.000000.
+Current size is 409
+Backtracing 139.000000, 370.000000.
+Current size is 410
+Backtracing 138.000000, 370.000000.
+Current size is 411
+Backtracing 137.000000, 370.000000.
+Current size is 412
+Backtracing 136.000000, 370.000000.
+Current size is 413
+Backtracing 135.000000, 370.000000.
+Current size is 414
+Backtracing 134.000000, 370.000000.
+Current size is 415
+Backtracing 133.000000, 370.000000.
+Current size is 416
+Backtracing 132.000000, 370.000000.
+Current size is 417
+Backtracing 131.000000, 370.000000.
+Current size is 418
+Backtracing 130.000000, 370.000000.
+Current size is 419
+Backtracing 129.000000, 370.000000.
+Current size is 420
+Backtracing 128.000000, 370.000000.
+Current size is 421
+Backtracing 127.000000, 370.000000.
+Current size is 422
+Backtracing 126.000000, 370.000000.
+Current size is 423
+Backtracing 125.000000, 370.000000.
+Current size is 424
+Backtracing 124.000000, 370.000000.
+Current size is 425
+Backtracing 123.000000, 370.000000.
+Current size is 426
+Backtracing 122.000000, 370.000000.
+Current size is 427
+Backtracing 121.000000, 370.000000.
+Current size is 428
+Backtracing 120.000000, 370.000000.
+Current size is 429
+Backtracing 119.000000, 370.000000.
+Current size is 430
+Backtracing 118.000000, 370.000000.
+Current size is 431
+Backtracing 117.000000, 370.000000.
+Current size is 432
+Backtracing 116.000000, 370.000000.
+Current size is 433
+Backtracing 115.000000, 370.000000.
+Current size is 434
+Backtracing 114.000000, 370.000000.
+Current size is 435
+Backtracing 113.000000, 370.000000.
+Current size is 436
+Backtracing 112.000000, 370.000000.
+Current size is 437
+Backtracing 111.000000, 370.000000.
+Current size is 438
+Backtracing 110.000000, 370.000000.
+Current size is 439
+Backtracing 109.000000, 370.000000.
+Current size is 440
+Backtracing 108.000000, 370.000000.
+Current size is 441
+Backtracing 107.000000, 370.000000.
+Current size is 442
+Backtracing 106.000000, 370.000000.
+Current size is 443
+Backtracing 105.000000, 370.000000.
+Current size is 444
+Backtracing 104.000000, 370.000000.
+Current size is 445
+Backtracing 103.000000, 370.000000.
+Current size is 446
+Backtracing 102.000000, 370.000000.
+Current size is 447
+Backtracing 101.000000, 370.000000.
+Current size is 448
+Backtracing 100.000000, 370.000000.
+Current size is 449
+Backtracing 99.000000, 370.000000.
+Current size is 450
+Backtracing 98.000000, 370.000000.
+Current size is 451
+Backtracing 97.000000, 370.000000.
+Current size is 452
+Backtracing 96.000000, 370.000000.
+Current size is 453
+Backtracing 95.000000, 370.000000.
+Current size is 454
+Backtracing 94.000000, 370.000000.
+Current size is 455
+Backtracing 93.000000, 370.000000.
+Current size is 456
+Backtracing 92.000000, 370.000000.
+Current size is 457
+Backtracing 91.000000, 370.000000.
+Current size is 458
+Backtracing 90.000000, 370.000000.
+Current size is 459
+Backtracing 89.000000, 369.000000.
+Current size is 460
+Backtracing 89.000000, 368.000000.
+Current size is 461
+Backtracing 89.000000, 367.000000.
+Current size is 462
+Backtracing 89.000000, 366.000000.
+Current size is 463
+Backtracing 89.000000, 365.000000.
+Current size is 464
+Backtracing 89.000000, 364.000000.
+Current size is 465
+Backtracing 89.000000, 363.000000.
+Current size is 466
+Backtracing 89.000000, 362.000000.
+Current size is 467
+Backtracing 89.000000, 361.000000.
+Current size is 468
+Backtracing 89.000000, 360.000000.
+Current size is 469
+Backtracing 89.000000, 359.000000.
+Current size is 470
+Backtracing 89.000000, 358.000000.
+Current size is 471
+Backtracing 89.000000, 357.000000.
+Current size is 472
+Backtracing 89.000000, 356.000000.
+Current size is 473
+Backtracing 89.000000, 355.000000.
+Current size is 474
+Backtracing 89.000000, 354.000000.
+Current size is 475
+Backtracing 89.000000, 353.000000.
+Current size is 476
+Backtracing 89.000000, 352.000000.
+Current size is 477
+Backtracing 89.000000, 351.000000.
+Current size is 478
+Backtracing 89.000000, 350.000000.
+Current size is 479
+Backtracing 89.000000, 349.000000.
+Current size is 480
+Backtracing 89.000000, 348.000000.
+Current size is 481
+Backtracing 89.000000, 347.000000.
+Current size is 482
+Backtracing 89.000000, 346.000000.
+Current size is 483
+Backtracing 89.000000, 345.000000.
+Current size is 484
+Backtracing 89.000000, 344.000000.
+Current size is 485
+Backtracing 89.000000, 343.000000.
+Current size is 486
+Backtracing 89.000000, 342.000000.
+Current size is 487
+Backtracing 89.000000, 341.000000.
+Current size is 488
+Backtracing 89.000000, 340.000000.
+Current size is 489
+Backtracing 89.000000, 339.000000.
+Current size is 490
+Backtracing 89.000000, 338.000000.
+Current size is 491
+Backtracing 89.000000, 337.000000.
+Current size is 492
+Backtracing 89.000000, 336.000000.
+Current size is 493
+Backtracing 89.000000, 335.000000.
+Current size is 494
+Backtracing 89.000000, 334.000000.
+Current size is 495
+Backtracing 89.000000, 333.000000.
+Current size is 496
+Backtracing 89.000000, 332.000000.
+Current size is 497
+Backtracing 89.000000, 331.000000.
+Current size is 498
+Backtracing 89.000000, 330.000000.
+Current size is 499
+Backtracing 90.000000, 329.000000.
+Current size is 500
+Backtracing 90.000000, 328.000000.
+Current size is 501
+Backtracing 90.000000, 327.000000.
+Current size is 502
+Backtracing 90.000000, 326.000000.
+Current size is 503
+Backtracing 90.000000, 325.000000.
+Current size is 504
+Backtracing 90.000000, 324.000000.
+Current size is 505
+Backtracing 90.000000, 323.000000.
+Current size is 506
+Backtracing 90.000000, 322.000000.
+Current size is 507
+Backtracing 90.000000, 321.000000.
+Current size is 508
+Backtracing 90.000000, 320.000000.
+Current size is 509
+Backtracing 90.000000, 319.000000.
+Current size is 510
+Backtracing 90.000000, 318.000000.
+Current size is 511
+Backtracing 90.000000, 317.000000.
+Current size is 512
+Backtracing 90.000000, 316.000000.
+Current size is 513
+Backtracing 90.000000, 315.000000.
+Current size is 514
+Backtracing 90.000000, 314.000000.
+Current size is 515
+Backtracing 90.000000, 313.000000.
+Current size is 516
+Backtracing 90.000000, 312.000000.
+Current size is 517
+Backtracing 90.000000, 311.000000.
+Current size is 518
+Backtracing 90.000000, 310.000000.
+Current size is 519
+Backtracing 90.000000, 309.000000.
+Current size is 520
+Backtracing 90.000000, 308.000000.
+Current size is 521
+Backtracing 90.000000, 307.000000.
+Current size is 522
+Backtracing 90.000000, 306.000000.
+Current size is 523
+Backtracing 90.000000, 305.000000.
+Current size is 524
+Backtracing 90.000000, 304.000000.
+Current size is 525
+Backtracing 90.000000, 303.000000.
+Current size is 526
+Backtracing 90.000000, 302.000000.
+Current size is 527
+Backtracing 90.000000, 301.000000.
+Current size is 528
+Backtracing 90.000000, 300.000000.
+Current size is 529
+Backtracing 90.000000, 299.000000.
+Current size is 530
+Backtracing 90.000000, 298.000000.
+Current size is 531
+Backtracing 90.000000, 297.000000.
+Current size is 532
+Backtracing 90.000000, 296.000000.
+Current size is 533
+Backtracing 90.000000, 295.000000.
+Current size is 534
+Backtracing 90.000000, 294.000000.
+Current size is 535
+Backtracing 90.000000, 293.000000.
+Current size is 536
+Backtracing 90.000000, 292.000000.
+Current size is 537
+Backtracing 90.000000, 291.000000.
+Current size is 538
+Backtracing 90.000000, 290.000000.
+Current size is 539
+Backtracing 90.000000, 289.000000.
+Current size is 540
+Backtracing 90.000000, 288.000000.
+Current size is 541
+Backtracing 90.000000, 287.000000.
+Current size is 542
+Backtracing 90.000000, 286.000000.
+Current size is 543
+Backtracing 90.000000, 285.000000.
+Current size is 544
+Backtracing 90.000000, 284.000000.
+Current size is 545
+Backtracing 90.000000, 283.000000.
+Current size is 546
+Backtracing 90.000000, 282.000000.
+Current size is 547
+Backtracing 90.000000, 281.000000.
+Current size is 548
+Backtracing 90.000000, 280.000000.
+Current size is 549
+Backtracing 90.000000, 279.000000.
+Current size is 550
+Backtracing 90.000000, 278.000000.
+Current size is 551
+Backtracing 90.000000, 277.000000.
+Current size is 552
+Backtracing 90.000000, 276.000000.
+Current size is 553
+Backtracing 90.000000, 275.000000.
+Current size is 554
+Backtracing 90.000000, 274.000000.
+Current size is 555
+Backtracing 90.000000, 273.000000.
+Current size is 556
+Backtracing 90.000000, 272.000000.
+Current size is 557
+Backtracing 90.000000, 271.000000.
+Current size is 558
+Backtracing 90.000000, 270.000000.
+Current size is 559
+Backtracing 90.000000, 269.000000.
+Current size is 560
+Backtracing 90.000000, 268.000000.
+Current size is 561
+Backtracing 90.000000, 267.000000.
+Current size is 562
+Backtracing 90.000000, 266.000000.
+Current size is 563
+Backtracing 90.000000, 265.000000.
+Current size is 564
+Backtracing 90.000000, 264.000000.
+Current size is 565
+Backtracing 90.000000, 263.000000.
+Current size is 566
+Backtracing 90.000000, 262.000000.
+Current size is 567
+Backtracing 90.000000, 261.000000.
+Current size is 568
+Backtracing 90.000000, 260.000000.
+Current size is 569
+Backtracing 90.000000, 259.000000.
+Current size is 570
+Backtracing 90.000000, 258.000000.
+Current size is 571
+Backtracing 90.000000, 257.000000.
+Current size is 572
+Backtracing 90.000000, 256.000000.
+Current size is 573
+Backtracing 90.000000, 255.000000.
+Current size is 574
+Backtracing 90.000000, 254.000000.
+Current size is 575
+Backtracing 90.000000, 253.000000.
+Current size is 576
+Backtracing 90.000000, 252.000000.
+Current size is 577
+Backtracing 90.000000, 251.000000.
+Current size is 578
+Backtracing 90.000000, 250.000000.
+Current size is 579
+Backtracing 90.000000, 249.000000.
+Current size is 580
+Backtracing 90.000000, 248.000000.
+Current size is 581
+Backtracing 90.000000, 247.000000.
+Current size is 582
+Backtracing 90.000000, 246.000000.
+Current size is 583
+Backtracing 90.000000, 245.000000.
+Current size is 584
+Backtracing 90.000000, 244.000000.
+Current size is 585
+Backtracing 90.000000, 243.000000.
+Current size is 586
+Backtracing 90.000000, 242.000000.
+Current size is 587
+Backtracing 90.000000, 241.000000.
+Current size is 588
+Backtracing 90.000000, 240.000000.
+Current size is 589
+Backtracing 90.000000, 239.000000.
+Current size is 590
+Backtracing 90.000000, 238.000000.
+Current size is 591
+Backtracing 90.000000, 237.000000.
+Current size is 592
+Backtracing 90.000000, 236.000000.
+Current size is 593
+Backtracing 90.000000, 235.000000.
+Current size is 594
+Backtracing 90.000000, 234.000000.
+Current size is 595
+Backtracing 90.000000, 233.000000.
+Current size is 596
+Backtracing 90.000000, 232.000000.
+Current size is 597
+Backtracing 90.000000, 231.000000.
+Current size is 598
+Backtracing 90.000000, 230.000000.
+Current size is 599
+Backtracing 91.000000, 230.000000.
+Current size is 600
+Backtracing 92.000000, 230.000000.
+Current size is 601
+Backtracing 93.000000, 230.000000.
+Current size is 602
+Backtracing 94.000000, 230.000000.
+Current size is 603
+Backtracing 95.000000, 230.000000.
+Current size is 604
+Backtracing 96.000000, 230.000000.
+Current size is 605
+Backtracing 97.000000, 230.000000.
+Current size is 606
+Backtracing 98.000000, 230.000000.
+Current size is 607
+Backtracing 99.000000, 230.000000.
+Current size is 608
+Backtracing 100.000000, 230.000000.
+Current size is 609
+Backtracing 101.000000, 230.000000.
+Current size is 610
+Backtracing 102.000000, 230.000000.
+Current size is 611
+Backtracing 103.000000, 230.000000.
+Current size is 612
+Backtracing 104.000000, 230.000000.
+Current size is 613
+Backtracing 105.000000, 230.000000.
+Current size is 614
+Backtracing 106.000000, 230.000000.
+Current size is 615
+Backtracing 107.000000, 230.000000.
+Current size is 616
+Backtracing 108.000000, 230.000000.
+Current size is 617
+Backtracing 109.000000, 230.000000.
+Current size is 618
+Backtracing 110.000000, 230.000000.
+Current size is 619
+Backtracing 111.000000, 230.000000.
+Current size is 620
+Backtracing 112.000000, 230.000000.
+Current size is 621
+Backtracing 113.000000, 230.000000.
+Current size is 622
+Backtracing 114.000000, 230.000000.
+Current size is 623
+Backtracing 115.000000, 230.000000.
+Current size is 624
+Backtracing 116.000000, 230.000000.
+Current size is 625
+Backtracing 117.000000, 230.000000.
+Current size is 626
+Backtracing 118.000000, 230.000000.
+Current size is 627
+Backtracing 119.000000, 230.000000.
+Current size is 628
+Backtracing 120.000000, 230.000000.
+Current size is 629
+Backtracing 121.000000, 230.000000.
+Current size is 630
+Backtracing 122.000000, 230.000000.
+Current size is 631
+Backtracing 123.000000, 230.000000.
+Current size is 632
+Backtracing 124.000000, 230.000000.
+Current size is 633
+Backtracing 125.000000, 230.000000.
+Current size is 634
+Backtracing 126.000000, 230.000000.
+Current size is 635
+Backtracing 127.000000, 230.000000.
+Current size is 636
+Backtracing 128.000000, 230.000000.
+Current size is 637
+Backtracing 129.000000, 230.000000.
+Current size is 638
+Backtracing 130.000000, 230.000000.
+Current size is 639
+Backtracing 131.000000, 230.000000.
+Current size is 640
+Backtracing 132.000000, 230.000000.
+Current size is 641
+Backtracing 133.000000, 230.000000.
+Current size is 642
+Backtracing 134.000000, 230.000000.
+Current size is 643
+Backtracing 135.000000, 230.000000.
+Current size is 644
+Backtracing 136.000000, 230.000000.
+Current size is 645
+Backtracing 137.000000, 230.000000.
+Current size is 646
+Backtracing 138.000000, 230.000000.
+Current size is 647
+Backtracing 139.000000, 230.000000.
+Current size is 648
+Backtracing 140.000000, 230.000000.
+Current size is 649
+Backtracing 141.000000, 230.000000.
+Current size is 650
+Backtracing 142.000000, 230.000000.
+Current size is 651
+Backtracing 143.000000, 230.000000.
+Current size is 652
+Backtracing 144.000000, 230.000000.
+Current size is 653
+Backtracing 145.000000, 230.000000.
+Current size is 654
+Backtracing 146.000000, 230.000000.
+Current size is 655
+Backtracing 147.000000, 230.000000.
+Current size is 656
+Backtracing 148.000000, 230.000000.
+Current size is 657
+Backtracing 149.000000, 230.000000.
+Current size is 658
+Backtracing 150.000000, 229.000000.
+Current size is 659
+Backtracing 150.000000, 228.000000.
+Current size is 660
+Backtracing 150.000000, 227.000000.
+Current size is 661
+Backtracing 150.000000, 226.000000.
+Current size is 662
+Backtracing 150.000000, 225.000000.
+Current size is 663
+Backtracing 150.000000, 224.000000.
+Current size is 664
+Backtracing 150.000000, 223.000000.
+Current size is 665
+Backtracing 150.000000, 222.000000.
+Current size is 666
+Backtracing 150.000000, 221.000000.
+Current size is 667
+Backtracing 150.000000, 220.000000.
+Current size is 668
+Backtracing 150.000000, 219.000000.
+Current size is 669
+Backtracing 150.000000, 218.000000.
+Current size is 670
+Backtracing 150.000000, 217.000000.
+Current size is 671
+Backtracing 150.000000, 216.000000.
+Current size is 672
+Backtracing 150.000000, 215.000000.
+Current size is 673
+Backtracing 150.000000, 214.000000.
+Current size is 674
+Backtracing 150.000000, 213.000000.
+Current size is 675
+Backtracing 150.000000, 212.000000.
+Current size is 676
+Backtracing 150.000000, 211.000000.
+Current size is 677
+Backtracing 150.000000, 210.000000.
+Current size is 678
+Backtracing 150.000000, 209.000000.
+Current size is 679
+Backtracing 150.000000, 208.000000.
+Current size is 680
+Backtracing 150.000000, 207.000000.
+Current size is 681
+Backtracing 150.000000, 206.000000.
+Current size is 682
+Backtracing 150.000000, 205.000000.
+Current size is 683
+Backtracing 150.000000, 204.000000.
+Current size is 684
+Backtracing 150.000000, 203.000000.
+Current size is 685
+Backtracing 150.000000, 202.000000.
+Current size is 686
+Backtracing 150.000000, 201.000000.
+Current size is 687
+Backtracing 150.000000, 200.000000.
+Current size is 688
+Backtracing 150.000000, 199.000000.
+Current size is 689
+Backtracing 150.000000, 198.000000.
+Current size is 690
+Backtracing 150.000000, 197.000000.
+Current size is 691
+Backtracing 150.000000, 196.000000.
+Current size is 692
+Backtracing 150.000000, 195.000000.
+Current size is 693
+Backtracing 150.000000, 194.000000.
+Current size is 694
+Backtracing 150.000000, 193.000000.
+Current size is 695
+Backtracing 150.000000, 192.000000.
+Current size is 696
+Backtracing 150.000000, 191.000000.
+Current size is 697
+Backtracing 150.000000, 190.000000.
+Current size is 698
+Backtracing 150.000000, 189.000000.
+Current size is 699
+Backtracing 150.000000, 188.000000.
+Current size is 700
+Backtracing 150.000000, 187.000000.
+Current size is 701
+Backtracing 150.000000, 186.000000.
+Current size is 702
+Backtracing 150.000000, 185.000000.
+Current size is 703
+Backtracing 150.000000, 184.000000.
+Current size is 704
+Backtracing 150.000000, 183.000000.
+Current size is 705
+Backtracing 150.000000, 182.000000.
+Current size is 706
+Backtracing 150.000000, 181.000000.
+Current size is 707
+Backtracing 150.000000, 180.000000.
+Current size is 708
+Backtracing 150.000000, 179.000000.
+Current size is 709
+Backtracing 150.000000, 178.000000.
+Current size is 710
+Backtracing 150.000000, 177.000000.
+Current size is 711
+Backtracing 150.000000, 176.000000.
+Current size is 712
+Backtracing 150.000000, 175.000000.
+Current size is 713
+Backtracing 150.000000, 174.000000.
+Current size is 714
+Backtracing 150.000000, 173.000000.
+Current size is 715
+Backtracing 150.000000, 172.000000.
+Current size is 716
+Backtracing 150.000000, 171.000000.
+Current size is 717
+Backtracing 150.000000, 170.000000.
+Current size is 718
+Backtracing 151.000000, 170.000000.
+Current size is 719
+Backtracing 152.000000, 170.000000.
+Current size is 720
+Backtracing 153.000000, 170.000000.
+Current size is 721
+Backtracing 154.000000, 170.000000.
+Current size is 722
+Backtracing 155.000000, 170.000000.
+Current size is 723
+Backtracing 156.000000, 170.000000.
+Current size is 724
+Backtracing 157.000000, 170.000000.
+Current size is 725
+Backtracing 158.000000, 170.000000.
+Current size is 726
+Backtracing 159.000000, 170.000000.
+Current size is 727
+Backtracing 160.000000, 170.000000.
+Current size is 728
+Backtracing 161.000000, 170.000000.
+Current size is 729
+Backtracing 162.000000, 170.000000.
+Current size is 730
+Backtracing 163.000000, 170.000000.
+Current size is 731
+Backtracing 164.000000, 170.000000.
+Current size is 732
+Backtracing 165.000000, 170.000000.
+Current size is 733
+Backtracing 166.000000, 170.000000.
+Current size is 734
+Backtracing 167.000000, 170.000000.
+Current size is 735
+Backtracing 168.000000, 170.000000.
+Current size is 736
+Backtracing 169.000000, 170.000000.
+Current size is 737
+Backtracing 170.000000, 169.000000.
+Current size is 738
+Backtracing 170.000000, 168.000000.
+Current size is 739
+Backtracing 170.000000, 167.000000.
+Current size is 740
+Backtracing 170.000000, 166.000000.
+Current size is 741
+Backtracing 170.000000, 165.000000.
+Current size is 742
+Backtracing 170.000000, 164.000000.
+Current size is 743
+Backtracing 170.000000, 163.000000.
+Current size is 744
+Backtracing 170.000000, 162.000000.
+Current size is 745
+Backtracing 170.000000, 161.000000.
+Current size is 746
+Backtracing 170.000000, 160.000000.
+Current size is 747
+Backtracing 170.000000, 159.000000.
+Current size is 748
+Backtracing 170.000000, 158.000000.
+Current size is 749
+Backtracing 170.000000, 157.000000.
+Current size is 750
+Backtracing 170.000000, 156.000000.
+Current size is 751
+Backtracing 170.000000, 155.000000.
+Current size is 752
+Backtracing 170.000000, 154.000000.
+Current size is 753
+Backtracing 170.000000, 153.000000.
+Current size is 754
+Backtracing 170.000000, 152.000000.
+Current size is 755
+Backtracing 170.000000, 151.000000.
+Current size is 756
+Backtracing 170.000000, 150.000000.
+Current size is 757
+Backtracing 170.000000, 149.000000.
+Current size is 758
+Backtracing 170.000000, 148.000000.
+Current size is 759
+Backtracing 170.000000, 147.000000.
+Current size is 760
+Backtracing 170.000000, 146.000000.
+Current size is 761
+Backtracing 170.000000, 145.000000.
+Current size is 762
+Backtracing 170.000000, 144.000000.
+Current size is 763
+Backtracing 170.000000, 143.000000.
+Current size is 764
+Backtracing 170.000000, 142.000000.
+Current size is 765
+Backtracing 170.000000, 141.000000.
+Current size is 766
+Backtracing 170.000000, 140.000000.
+Current size is 767
+Backtracing 170.000000, 139.000000.
+Current size is 768
+Backtracing 170.000000, 138.000000.
+Current size is 769
+Backtracing 170.000000, 137.000000.
+Current size is 770
+Backtracing 170.000000, 136.000000.
+Current size is 771
+Backtracing 170.000000, 135.000000.
+Current size is 772
+Backtracing 170.000000, 134.000000.
+Current size is 773
+Backtracing 170.000000, 133.000000.
+Current size is 774
+Backtracing 170.000000, 132.000000.
+Current size is 775
+Backtracing 170.000000, 131.000000.
+Current size is 776
+Backtracing 170.000000, 130.000000.
+Current size is 777
+Backtracing 169.000000, 129.000000.
+Current size is 778
+Backtracing 169.000000, 128.000000.
+Current size is 779
+Backtracing 169.000000, 127.000000.
+Current size is 780
+Backtracing 169.000000, 126.000000.
+Current size is 781
+Backtracing 169.000000, 125.000000.
+Current size is 782
+Backtracing 169.000000, 124.000000.
+Current size is 783
+Backtracing 169.000000, 123.000000.
+Current size is 784
+Backtracing 169.000000, 122.000000.
+Current size is 785
+Backtracing 169.000000, 121.000000.
+Current size is 786
+Backtracing 169.000000, 120.000000.
+Current size is 787
+Backtracing 169.000000, 119.000000.
+Current size is 788
+Backtracing 169.000000, 118.000000.
+Current size is 789
+Backtracing 169.000000, 117.000000.
+Current size is 790
+Backtracing 169.000000, 116.000000.
+Current size is 791
+Backtracing 169.000000, 115.000000.
+Current size is 792
+Backtracing 169.000000, 114.000000.
+Current size is 793
+Backtracing 169.000000, 113.000000.
+Current size is 794
+Backtracing 169.000000, 112.000000.
+Current size is 795
+Backtracing 169.000000, 111.000000.
+Current size is 796
+Backtracing 169.000000, 110.000000.
+Current size is 797
+Backtracing 169.000000, 109.000000.
+Current size is 798
+Backtracing 169.000000, 108.000000.
+Current size is 799
+Backtracing 169.000000, 107.000000.
+Current size is 800
+Backtracing 169.000000, 106.000000.
+Current size is 801
+Backtracing 169.000000, 105.000000.
+Current size is 802
+Backtracing 169.000000, 104.000000.
+Current size is 803
+Backtracing 169.000000, 103.000000.
+Current size is 804
+Backtracing 169.000000, 102.000000.
+Current size is 805
+Backtracing 169.000000, 101.000000.
+Current size is 806
+Backtracing 169.000000, 100.000000.
+Current size is 807
+Backtracing 169.000000, 99.000000.
+Current size is 808
+Backtracing 169.000000, 98.000000.
+Current size is 809
+Backtracing 169.000000, 97.000000.
+Current size is 810
+Backtracing 169.000000, 96.000000.
+Current size is 811
+Backtracing 169.000000, 95.000000.
+Current size is 812
+Backtracing 169.000000, 94.000000.
+Current size is 813
+Backtracing 169.000000, 93.000000.
+Current size is 814
+Backtracing 169.000000, 92.000000.
+Current size is 815
+Backtracing 169.000000, 91.000000.
+Current size is 816
+Backtracing 169.000000, 90.000000.
+Current size is 817
+Backtracing 170.000000, 89.000000.
+Current size is 818
+Backtracing 170.000000, 88.000000.
+Current size is 819
+Backtracing 170.000000, 87.000000.
+Current size is 820
+Backtracing 170.000000, 86.000000.
+Current size is 821
+Backtracing 170.000000, 85.000000.
+Current size is 822
+Backtracing 170.000000, 84.000000.
+Current size is 823
+Backtracing 170.000000, 83.000000.
+Current size is 824
+Backtracing 170.000000, 82.000000.
+Current size is 825
+Backtracing 170.000000, 81.000000.
+Current size is 826
+Backtracing 170.000000, 80.000000.
+Current size is 827
+Backtracing 170.000000, 79.000000.
+Current size is 828
+Backtracing 170.000000, 78.000000.
+Current size is 829
+Backtracing 170.000000, 77.000000.
+Current size is 830
+Backtracing 170.000000, 76.000000.
+Current size is 831
+Backtracing 170.000000, 75.000000.
+Current size is 832
+Backtracing 170.000000, 74.000000.
+Current size is 833
+Backtracing 170.000000, 73.000000.
+Current size is 834
+Backtracing 170.000000, 72.000000.
+Current size is 835
+Backtracing 170.000000, 71.000000.
+Current size is 836
+Backtracing 170.000000, 70.000000.
+Current size is 837
+Backtracing 170.000000, 69.000000.
+Current size is 838
+Backtracing 170.000000, 68.000000.
+Current size is 839
+Backtracing 170.000000, 67.000000.
+Current size is 840
+Backtracing 170.000000, 66.000000.
+Current size is 841
+Backtracing 170.000000, 65.000000.
+Current size is 842
+Backtracing 170.000000, 64.000000.
+Current size is 843
+Backtracing 170.000000, 63.000000.
+Current size is 844
+Backtracing 170.000000, 62.000000.
+Current size is 845
+Backtracing 170.000000, 61.000000.
+Current size is 846
+Backtracing 170.000000, 60.000000.
+Current size is 847
+Backtracing 170.000000, 59.000000.
+Current size is 848
+Backtracing 170.000000, 58.000000.
+Current size is 849
+Backtracing 170.000000, 57.000000.
+Current size is 850
+Backtracing 170.000000, 56.000000.
+Current size is 851
+Backtracing 170.000000, 55.000000.
+Current size is 852
+Backtracing 170.000000, 54.000000.
+Current size is 853
+Backtracing 170.000000, 53.000000.
+Current size is 854
+Backtracing 170.000000, 52.000000.
+Current size is 855
+Backtracing 170.000000, 51.000000.
+Current size is 856
+Backtracing 170.000000, 50.000000.
+Current size is 857
+Backtracing 170.000000, 49.000000.
+Current size is 858
+Backtracing 170.000000, 48.000000.
+Current size is 859
+Backtracing 170.000000, 47.000000.
+Current size is 860
+Backtracing 170.000000, 46.000000.
+Current size is 861
+Backtracing 170.000000, 45.000000.
+Current size is 862
+Backtracing 170.000000, 44.000000.
+Current size is 863
+Backtracing 170.000000, 43.000000.
+Current size is 864
+Backtracing 170.000000, 42.000000.
+Current size is 865
+Backtracing 170.000000, 41.000000.
+Current size is 866
+Backtracing 170.000000, 40.000000.
+Current size is 867
+Backtracing 170.000000, 39.000000.
+Current size is 868
+Backtracing 170.000000, 38.000000.
+Current size is 869
+Backtracing 170.000000, 37.000000.
+Current size is 870
+Backtracing 170.000000, 36.000000.
+Current size is 871
+Backtracing 170.000000, 35.000000.
+Current size is 872
+Backtracing 170.000000, 34.000000.
+Current size is 873
+Backtracing 170.000000, 33.000000.
+Current size is 874
+Backtracing 170.000000, 32.000000.
+Current size is 875
+Backtracing 170.000000, 31.000000.
+Current size is 876
+Backtracing 170.000000, 30.000000.
+Current size is 877
+Backtracing 170.000000, 29.000000.
+Current size is 878
+Backtracing 169.000000, 29.000000.
+Current size is 879
+Backtracing 168.000000, 29.000000.
+Current size is 880
+Backtracing 167.000000, 29.000000.
+Current size is 881
+Backtracing 166.000000, 29.000000.
+Current size is 882
+Backtracing 165.000000, 29.000000.
+Current size is 883
+Backtracing 164.000000, 29.000000.
+Current size is 884
+Backtracing 163.000000, 29.000000.
+Current size is 885
+Backtracing 162.000000, 29.000000.
+Current size is 886
+Backtracing 161.000000, 29.000000.
+Current size is 887
+Backtracing 160.000000, 29.000000.
+Current size is 888
+Backtracing 159.000000, 29.000000.
+Current size is 889
+Backtracing 158.000000, 29.000000.
+Current size is 890
+Backtracing 157.000000, 29.000000.
+Current size is 891
+Backtracing 156.000000, 29.000000.
+Current size is 892
+Backtracing 155.000000, 29.000000.
+Current size is 893
+Backtracing 154.000000, 29.000000.
+Current size is 894
+Backtracing 153.000000, 29.000000.
+Current size is 895
+Backtracing 152.000000, 29.000000.
+Current size is 896
+Backtracing 151.000000, 29.000000.
+Current size is 897
+Backtracing 150.000000, 29.000000.
+Current size is 898
+Backtracing 149.000000, 29.000000.
+Current size is 899
+Backtracing 148.000000, 29.000000.
+Current size is 900
+Backtracing 147.000000, 29.000000.
+Current size is 901
+Backtracing 146.000000, 29.000000.
+Current size is 902
+Backtracing 145.000000, 29.000000.
+Current size is 903
+Backtracing 144.000000, 29.000000.
+Current size is 904
+Backtracing 143.000000, 29.000000.
+Current size is 905
+Backtracing 142.000000, 29.000000.
+Current size is 906
+Backtracing 141.000000, 29.000000.
+Current size is 907
+Backtracing 140.000000, 29.000000.
+Current size is 908
+Backtracing 139.000000, 29.000000.
+Current size is 909
+Backtracing 138.000000, 29.000000.
+Current size is 910
+Backtracing 137.000000, 29.000000.
+Current size is 911
+Backtracing 136.000000, 29.000000.
+Current size is 912
+Backtracing 135.000000, 29.000000.
+Current size is 913
+Backtracing 134.000000, 29.000000.
+Current size is 914
+Backtracing 133.000000, 29.000000.
+Current size is 915
+Backtracing 132.000000, 29.000000.
+Current size is 916
+Backtracing 131.000000, 29.000000.
+Current size is 917
+Backtracing 130.000000, 29.000000.
+Current size is 918
+Backtracing 129.000000, 29.000000.
+Current size is 919
+Backtracing 128.000000, 29.000000.
+Current size is 920
+Backtracing 127.000000, 29.000000.
+Current size is 921
+Backtracing 126.000000, 29.000000.
+Current size is 922
+Backtracing 125.000000, 29.000000.
+Current size is 923
+Backtracing 124.000000, 29.000000.
+Current size is 924
+Backtracing 123.000000, 29.000000.
+Current size is 925
+Backtracing 122.000000, 29.000000.
+Current size is 926
+Backtracing 121.000000, 29.000000.
+Current size is 927
+Backtracing 120.000000, 29.000000.
+Current size is 928
+Backtracing 119.000000, 29.000000.
+Current size is 929
+Backtracing 118.000000, 29.000000.
+Current size is 930
+Backtracing 117.000000, 29.000000.
+Current size is 931
+Backtracing 116.000000, 29.000000.
+Current size is 932
+Backtracing 115.000000, 29.000000.
+Current size is 933
+Backtracing 114.000000, 29.000000.
+Current size is 934
+Backtracing 113.000000, 29.000000.
+Current size is 935
+Backtracing 112.000000, 29.000000.
+Current size is 936
+Backtracing 111.000000, 29.000000.
+Current size is 937
+Backtracing 110.000000, 29.000000.
+Current size is 938
+Backtracing 109.000000, 29.000000.
+Current size is 939
+Backtracing 108.000000, 29.000000.
+Current size is 940
+Backtracing 107.000000, 29.000000.
+Current size is 941
+Backtracing 106.000000, 29.000000.
+Current size is 942
+Backtracing 105.000000, 29.000000.
+Current size is 943
+Backtracing 104.000000, 29.000000.
+Current size is 944
+Backtracing 103.000000, 29.000000.
+Current size is 945
+Backtracing 102.000000, 29.000000.
+Current size is 946
+Backtracing 101.000000, 29.000000.
+Current size is 947
+Backtracing 100.000000, 29.000000.
+Current size is 948
+Backtracing 99.000000, 29.000000.
+Current size is 949
+Backtracing 98.000000, 29.000000.
+Current size is 950
+Backtracing 97.000000, 29.000000.
+Current size is 951
+Backtracing 96.000000, 29.000000.
+Current size is 952
+Backtracing 95.000000, 29.000000.
+Current size is 953
+Backtracing 94.000000, 29.000000.
+Current size is 954
+Backtracing 93.000000, 29.000000.
+Current size is 955
+Backtracing 92.000000, 29.000000.
+Current size is 956
+Backtracing 91.000000, 29.000000.
+Current size is 957
+Backtracing 90.000000, 29.000000.
+Current size is 958
+Backtracing 89.000000, 29.000000.
+Current size is 959
+Backtracing 88.000000, 29.000000.
+Current size is 960
+Backtracing 87.000000, 29.000000.
+Current size is 961
+Backtracing 86.000000, 29.000000.
+Current size is 962
+Backtracing 85.000000, 29.000000.
+Current size is 963
+Backtracing 84.000000, 29.000000.
+Current size is 964
+Backtracing 83.000000, 29.000000.
+Current size is 965
+Backtracing 82.000000, 29.000000.
+Current size is 966
+Backtracing 81.000000, 29.000000.
+Current size is 967
+Backtracing 80.000000, 29.000000.
+Current size is 968
+Backtracing 79.000000, 29.000000.
+Current size is 969
+Backtracing 78.000000, 29.000000.
+Current size is 970
+Backtracing 77.000000, 29.000000.
+Current size is 971
+Backtracing 76.000000, 29.000000.
+Current size is 972
+Backtracing 75.000000, 29.000000.
+Current size is 973
+Backtracing 74.000000, 29.000000.
+Current size is 974
+Backtracing 73.000000, 29.000000.
+Current size is 975
+Backtracing 72.000000, 29.000000.
+Current size is 976
+Backtracing 71.000000, 29.000000.
+Current size is 977
+Backtracing 70.000000, 29.000000.
+Current size is 978
+Backtracing 69.000000, 29.000000.
+Current size is 979
+Backtracing 68.000000, 29.000000.
+Current size is 980
+Backtracing 67.000000, 29.000000.
+Current size is 981
+Backtracing 66.000000, 29.000000.
+Current size is 982
+Backtracing 65.000000, 29.000000.
+Current size is 983
+Backtracing 64.000000, 29.000000.
+Current size is 984
+Backtracing 63.000000, 29.000000.
+Current size is 985
+Backtracing 62.000000, 29.000000.
+Current size is 986
+Backtracing 61.000000, 29.000000.
+Current size is 987
+Backtracing 60.000000, 29.000000.
+Current size is 988
+Backtracing 59.000000, 29.000000.
+Current size is 989
+Backtracing 58.000000, 29.000000.
+Current size is 990
+Backtracing 57.000000, 29.000000.
+Current size is 991
+Backtracing 56.000000, 29.000000.
+Current size is 992
+Backtracing 55.000000, 29.000000.
+Current size is 993
+Backtracing 54.000000, 29.000000.
+Current size is 994
+Backtracing 53.000000, 29.000000.
+Current size is 995
+Backtracing 52.000000, 29.000000.
+Current size is 996
+Backtracing 51.000000, 29.000000.
+Current size is 997
+Backtracing 50.000000, 29.000000.
+Current size is 998
+Backtracing 49.000000, 29.000000.
+Current size is 999
+Backtracing 48.000000, 29.000000.
+Current size is 1000
+Backtracing 47.000000, 29.000000.
+Current size is 1001
+Backtracing 46.000000, 29.000000.
+Current size is 1002
+Backtracing 45.000000, 29.000000.
+Current size is 1003
+Backtracing 44.000000, 29.000000.
+Current size is 1004
+Backtracing 43.000000, 29.000000.
+Current size is 1005
+Backtracing 42.000000, 29.000000.
+Current size is 1006
+Backtracing 41.000000, 29.000000.
+Current size is 1007
+Backtracing 40.000000, 29.000000.
+Current size is 1008
+Backtracing 39.000000, 29.000000.
+Current size is 1009
+Backtracing 38.000000, 29.000000.
+Current size is 1010
+Backtracing 37.000000, 29.000000.
+Current size is 1011
+Backtracing 36.000000, 29.000000.
+Current size is 1012
+Backtracing 35.000000, 29.000000.
+Current size is 1013
+Backtracing 34.000000, 29.000000.
+Current size is 1014
+Backtracing 33.000000, 29.000000.
+Current size is 1015
+Backtracing 32.000000, 29.000000.
+Current size is 1016
+Backtracing 31.000000, 29.000000.
+Current size is 1017
+Backtracing 30.000000, 29.000000.
+Current size is 1018
+Backtracing 29.000000, 30.000000.
+Current size is 1019
+Backtracing 29.000000, 31.000000.
+Current size is 1020
+Backtracing 29.000000, 32.000000.
+Current size is 1021
+Backtracing 29.000000, 33.000000.
+Current size is 1022
+Backtracing 29.000000, 34.000000.
+Current size is 1023
+Backtracing 29.000000, 35.000000.
+Current size is 1024
+Backtracing 29.000000, 36.000000.
+Current size is 1025
+Backtracing 29.000000, 37.000000.
+Current size is 1026
+Backtracing 29.000000, 38.000000.
+Current size is 1027
+Backtracing 29.000000, 39.000000.
+Current size is 1028
+Backtracing 29.000000, 40.000000.
+Current size is 1029
+Backtracing 29.000000, 41.000000.
+Current size is 1030
+Backtracing 29.000000, 42.000000.
+Current size is 1031
+Backtracing 29.000000, 43.000000.
+Current size is 1032
+Backtracing 29.000000, 44.000000.
+Current size is 1033
+Backtracing 29.000000, 45.000000.
+Current size is 1034
+Backtracing 29.000000, 46.000000.
+Current size is 1035
+Backtracing 29.000000, 47.000000.
+Current size is 1036
+Backtracing 29.000000, 48.000000.
+Current size is 1037
+Backtracing 29.000000, 49.000000.
+Current size is 1038
+Backtracing 29.000000, 50.000000.
+Current size is 1039
+Backtracing 29.000000, 51.000000.
+Current size is 1040
+Backtracing 29.000000, 52.000000.
+Current size is 1041
+Backtracing 29.000000, 53.000000.
+Current size is 1042
+Backtracing 29.000000, 54.000000.
+Current size is 1043
+Backtracing 29.000000, 55.000000.
+Current size is 1044
+Backtracing 29.000000, 56.000000.
+Current size is 1045
+Backtracing 29.000000, 57.000000.
+Current size is 1046
+Backtracing 29.000000, 58.000000.
+Current size is 1047
+Backtracing 29.000000, 59.000000.
+Current size is 1048
+Backtracing 29.000000, 60.000000.
+Current size is 1049
+Backtracing 29.000000, 61.000000.
+Current size is 1050
+Backtracing 29.000000, 62.000000.
+Current size is 1051
+Backtracing 29.000000, 63.000000.
+Current size is 1052
+Backtracing 29.000000, 64.000000.
+Current size is 1053
+Backtracing 29.000000, 65.000000.
+Current size is 1054
+Backtracing 29.000000, 66.000000.
+Current size is 1055
+Backtracing 29.000000, 67.000000.
+Current size is 1056
+Backtracing 29.000000, 68.000000.
+Current size is 1057
+Backtracing 29.000000, 69.000000.
+Current size is 1058
+Backtracing 29.000000, 70.000000.
+Current size is 1059
+Backtracing 29.000000, 71.000000.
+Current size is 1060
+Backtracing 29.000000, 72.000000.
+Current size is 1061
+Backtracing 29.000000, 73.000000.
+Current size is 1062
+Backtracing 29.000000, 74.000000.
+Current size is 1063
+Backtracing 29.000000, 75.000000.
+Current size is 1064
+Backtracing 29.000000, 76.000000.
+Current size is 1065
+Backtracing 29.000000, 77.000000.
+Current size is 1066
+Backtracing 29.000000, 78.000000.
+Current size is 1067
+Backtracing 29.000000, 79.000000.
+Current size is 1068
+Backtracing 29.000000, 80.000000.
+Current size is 1069
+Backtracing 29.000000, 81.000000.
+Current size is 1070
+Backtracing 29.000000, 82.000000.
+Current size is 1071
+Backtracing 29.000000, 83.000000.
+Current size is 1072
+Backtracing 29.000000, 84.000000.
+Current size is 1073
+Backtracing 29.000000, 85.000000.
+Current size is 1074
+Backtracing 29.000000, 86.000000.
+Current size is 1075
+Backtracing 29.000000, 87.000000.
+Current size is 1076
+Backtracing 29.000000, 88.000000.
+Current size is 1077
+Backtracing 29.000000, 89.000000.
+Current size is 1078
+Backtracing 29.000000, 90.000000.
+Current size is 1079
+Backtracing 29.000000, 91.000000.
+Current size is 1080
+Backtracing 29.000000, 92.000000.
+Current size is 1081
+Backtracing 29.000000, 93.000000.
+Current size is 1082
+Backtracing 29.000000, 94.000000.
+Current size is 1083
+Backtracing 29.000000, 95.000000.
+Current size is 1084
+Backtracing 29.000000, 96.000000.
+Current size is 1085
+Backtracing 29.000000, 97.000000.
+Current size is 1086
+Backtracing 29.000000, 98.000000.
+Current size is 1087
+Backtracing 29.000000, 99.000000.
+Current size is 1088
+Backtracing 29.000000, 100.000000.
+Current size is 1089
+Backtracing 29.000000, 101.000000.
+Current size is 1090
+Backtracing 29.000000, 102.000000.
+Current size is 1091
+Backtracing 29.000000, 103.000000.
+Current size is 1092
+Backtracing 29.000000, 104.000000.
+Current size is 1093
+Backtracing 29.000000, 105.000000.
+Current size is 1094
+Backtracing 29.000000, 106.000000.
+Current size is 1095
+Backtracing 29.000000, 107.000000.
+Current size is 1096
+Backtracing 29.000000, 108.000000.
+Current size is 1097
+Backtracing 29.000000, 109.000000.
+Current size is 1098
+Backtracing 29.000000, 110.000000.
+Current size is 1099
+Backtracing 29.000000, 111.000000.
+Current size is 1100
+Backtracing 29.000000, 112.000000.
+Current size is 1101
+Backtracing 29.000000, 113.000000.
+Current size is 1102
+Backtracing 29.000000, 114.000000.
+Current size is 1103
+Backtracing 29.000000, 115.000000.
+Current size is 1104
+Backtracing 29.000000, 116.000000.
+Current size is 1105
+Backtracing 29.000000, 117.000000.
+Current size is 1106
+Backtracing 29.000000, 118.000000.
+Current size is 1107
+Backtracing 29.000000, 119.000000.
+Current size is 1108
+Backtracing 29.000000, 120.000000.
+Current size is 1109
+Backtracing 29.000000, 121.000000.
+Current size is 1110
+Backtracing 29.000000, 122.000000.
+Current size is 1111
+Backtracing 29.000000, 123.000000.
+Current size is 1112
+Backtracing 29.000000, 124.000000.
+Current size is 1113
+Backtracing 29.000000, 125.000000.
+Current size is 1114
+Backtracing 29.000000, 126.000000.
+Current size is 1115
+Backtracing 29.000000, 127.000000.
+Current size is 1116
+Backtracing 29.000000, 128.000000.
+Current size is 1117
+Backtracing 29.000000, 129.000000.
+Current size is 1118
+Backtracing 29.000000, 130.000000.
+Current size is 1119
+Backtracing 29.000000, 131.000000.
+Current size is 1120
+Backtracing 29.000000, 132.000000.
+Current size is 1121
+Backtracing 29.000000, 133.000000.
+Current size is 1122
+Backtracing 29.000000, 134.000000.
+Current size is 1123
+Backtracing 29.000000, 135.000000.
+Current size is 1124
+Backtracing 29.000000, 136.000000.
+Current size is 1125
+Backtracing 29.000000, 137.000000.
+Current size is 1126
+Backtracing 29.000000, 138.000000.
+Current size is 1127
+Backtracing 29.000000, 139.000000.
+Current size is 1128
+Backtracing 29.000000, 140.000000.
+Current size is 1129
+Backtracing 29.000000, 141.000000.
+Current size is 1130
+Backtracing 29.000000, 142.000000.
+Current size is 1131
+Backtracing 29.000000, 143.000000.
+Current size is 1132
+Backtracing 29.000000, 144.000000.
+Current size is 1133
+Backtracing 29.000000, 145.000000.
+Current size is 1134
+Backtracing 29.000000, 146.000000.
+Current size is 1135
+Backtracing 29.000000, 147.000000.
+Current size is 1136
+Backtracing 29.000000, 148.000000.
+Current size is 1137
+Backtracing 29.000000, 149.000000.
+Current size is 1138
+Backtracing 29.000000, 150.000000.
+Current size is 1139
+Backtracing 29.000000, 151.000000.
+Current size is 1140
+Backtracing 29.000000, 152.000000.
+Current size is 1141
+Backtracing 29.000000, 153.000000.
+Current size is 1142
+Backtracing 29.000000, 154.000000.
+Current size is 1143
+Backtracing 29.000000, 155.000000.
+Current size is 1144
+Backtracing 29.000000, 156.000000.
+Current size is 1145
+Backtracing 29.000000, 157.000000.
+Current size is 1146
+Backtracing 29.000000, 158.000000.
+Current size is 1147
+Backtracing 29.000000, 159.000000.
+Current size is 1148
+Backtracing 29.000000, 160.000000.
+Current size is 1149
+Backtracing 29.000000, 161.000000.
+Current size is 1150
+Backtracing 29.000000, 162.000000.
+Current size is 1151
+Backtracing 29.000000, 163.000000.
+Current size is 1152
+Backtracing 29.000000, 164.000000.
+Current size is 1153
+Backtracing 29.000000, 165.000000.
+Current size is 1154
+Backtracing 29.000000, 166.000000.
+Current size is 1155
+Backtracing 29.000000, 167.000000.
+Current size is 1156
+Backtracing 29.000000, 168.000000.
+Current size is 1157
+Backtracing 29.000000, 169.000000.
+Current size is 1158
+Backtracing 30.000000, 169.000000.
+Current size is 1159
+Backtracing 31.000000, 169.000000.
+Current size is 1160
+Backtracing 32.000000, 169.000000.
+Current size is 1161
+Backtracing 33.000000, 169.000000.
+Current size is 1162
+Backtracing 34.000000, 169.000000.
+Current size is 1163
+Backtracing 35.000000, 169.000000.
+Current size is 1164
+Backtracing 36.000000, 169.000000.
+Current size is 1165
+Backtracing 37.000000, 169.000000.
+Current size is 1166
+Backtracing 38.000000, 169.000000.
+Current size is 1167
+Backtracing 39.000000, 169.000000.
+Current size is 1168
+Backtracing 40.000000, 169.000000.
+Current size is 1169
+Backtracing 41.000000, 169.000000.
+Current size is 1170
+Backtracing 42.000000, 169.000000.
+Current size is 1171
+Backtracing 43.000000, 169.000000.
+Current size is 1172
+Backtracing 44.000000, 169.000000.
+Current size is 1173
+Backtracing 45.000000, 169.000000.
+Current size is 1174
+Backtracing 46.000000, 169.000000.
+Current size is 1175
+Backtracing 47.000000, 169.000000.
+Current size is 1176
+Backtracing 48.000000, 169.000000.
+Current size is 1177
+Backtracing 49.000000, 169.000000.
+Current size is 1178
+Backtracing 50.000000, 169.000000.
+Current size is 1179
+Backtracing 51.000000, 169.000000.
+Current size is 1180
+Backtracing 52.000000, 169.000000.
+Current size is 1181
+Backtracing 53.000000, 169.000000.
+Current size is 1182
+Backtracing 54.000000, 169.000000.
+Current size is 1183
+Backtracing 55.000000, 169.000000.
+Current size is 1184
+Backtracing 56.000000, 169.000000.
+Current size is 1185
+Backtracing 57.000000, 169.000000.
+Current size is 1186
+Backtracing 58.000000, 169.000000.
+Current size is 1187
+Backtracing 59.000000, 169.000000.
+Current size is 1188
+Backtracing 60.000000, 169.000000.
+Current size is 1189
+Backtracing 61.000000, 169.000000.
+Current size is 1190
+Backtracing 62.000000, 169.000000.
+Current size is 1191
+Backtracing 63.000000, 169.000000.
+Current size is 1192
+Backtracing 64.000000, 169.000000.
+Current size is 1193
+Backtracing 65.000000, 169.000000.
+Current size is 1194
+Backtracing 66.000000, 169.000000.
+Current size is 1195
+Backtracing 67.000000, 169.000000.
+Current size is 1196
+Backtracing 68.000000, 169.000000.
+Current size is 1197
+Backtracing 69.000000, 169.000000.
+Current size is 1198
+Backtracing 70.000000, 169.000000.
+Current size is 1199
+Backtracing 71.000000, 169.000000.
+Current size is 1200
+Backtracing 72.000000, 169.000000.
+Current size is 1201
+Backtracing 73.000000, 169.000000.
+Current size is 1202
+Backtracing 74.000000, 169.000000.
+Current size is 1203
+Backtracing 75.000000, 169.000000.
+Current size is 1204
+Backtracing 76.000000, 169.000000.
+Current size is 1205
+Backtracing 77.000000, 169.000000.
+Current size is 1206
+Backtracing 78.000000, 169.000000.
+Current size is 1207
+Backtracing 79.000000, 169.000000.
+Current size is 1208
+Backtracing 80.000000, 169.000000.
+Current size is 1209
+Backtracing 81.000000, 169.000000.
+Current size is 1210
+Backtracing 82.000000, 169.000000.
+Current size is 1211
+Backtracing 83.000000, 169.000000.
+Current size is 1212
+Backtracing 84.000000, 169.000000.
+Current size is 1213
+Backtracing 85.000000, 169.000000.
+Current size is 1214
+Backtracing 86.000000, 169.000000.
+Current size is 1215
+Backtracing 87.000000, 169.000000.
+Current size is 1216
+Backtracing 88.000000, 169.000000.
+Current size is 1217
+Backtracing 89.000000, 169.000000.
+Current size is 1218
+Backtracing 90.000000, 170.000000.
+Current size is 1219
+Backtracing 90.000000, 171.000000.
+Current size is 1220
+Backtracing 90.000000, 172.000000.
+Current size is 1221
+Backtracing 90.000000, 173.000000.
+Current size is 1222
+Backtracing 90.000000, 174.000000.
+Current size is 1223
+Backtracing 90.000000, 175.000000.
+Current size is 1224
+Backtracing 90.000000, 176.000000.
+Current size is 1225
+Backtracing 90.000000, 177.000000.
+Current size is 1226
+Backtracing 90.000000, 178.000000.
+Current size is 1227
+Backtracing 90.000000, 179.000000.
+Current size is 1228
+Backtracing 90.000000, 180.000000.
+Current size is 1229
+Backtracing 90.000000, 181.000000.
+Current size is 1230
+Backtracing 90.000000, 182.000000.
+Current size is 1231
+Backtracing 90.000000, 183.000000.
+Current size is 1232
+Backtracing 90.000000, 184.000000.
+Current size is 1233
+Backtracing 90.000000, 185.000000.
+Current size is 1234
+Backtracing 90.000000, 186.000000.
+Current size is 1235
+Backtracing 90.000000, 187.000000.
+Current size is 1236
+Backtracing 90.000000, 188.000000.
+Current size is 1237
+Backtracing 90.000000, 189.000000.
+Current size is 1238
+Backtracing 90.000000, 190.000000.
+Current size is 1239
+Backtracing 90.000000, 191.000000.
+Current size is 1240
+Backtracing 90.000000, 192.000000.
+Current size is 1241
+Backtracing 90.000000, 193.000000.
+Current size is 1242
+Backtracing 90.000000, 194.000000.
+Current size is 1243
+Backtracing 90.000000, 195.000000.
+Current size is 1244
+Backtracing 89.000000, 195.000000.
+Current size is 1245
+Backtracing 88.000000, 195.000000.
+Current size is 1246
+Backtracing 87.000000, 195.000000.
+Current size is 1247
+Backtracing 86.000000, 195.000000.
+Current size is 1248
+Backtracing 85.000000, 195.000000.
+Current size is 1249
+Backtracing 84.000000, 195.000000.
+Current size is 1250
+Backtracing 83.000000, 195.000000.
+Current size is 1251
+Backtracing 82.000000, 195.000000.
+Current size is 1252
+Backtracing 81.000000, 195.000000.
+Current size is 1253
+Backtracing 80.000000, 195.000000.
+Current size is 1254
+Backtracing 79.000000, 195.000000.
+Current size is 1255
+Backtracing 78.000000, 195.000000.
+Current size is 1256
+Backtracing 77.000000, 195.000000.
+Current size is 1257
+Backtracing 76.000000, 195.000000.
+Current size is 1258
+Backtracing 75.000000, 195.000000.
+Current size is 1259
+Backtracing 74.000000, 195.000000.
+Current size is 1260
+Backtracing 73.000000, 195.000000.
+Current size is 1261
+Backtracing 72.000000, 195.000000.
+Current size is 1262
+Backtracing 71.000000, 195.000000.
+Current size is 1263
+Backtracing 70.000000, 195.000000.
+Current size is 1264
+Backtracing 69.000000, 195.000000.
+Current size is 1265
+Backtracing 68.000000, 195.000000.
+Current size is 1266
+Backtracing 67.000000, 195.000000.
+Current size is 1267
+Backtracing 66.000000, 195.000000.
+Current size is 1268
+Backtracing 65.000000, 195.000000.
+Current size is 1269
+Backtracing 64.000000, 195.000000.
+Current size is 1270
+Backtracing 63.000000, 195.000000.
+Current size is 1271
+Backtracing 62.000000, 195.000000.
+Current size is 1272
+Backtracing 61.000000, 195.000000.
+Current size is 1273
+Backtracing 60.000000, 195.000000.
+Current size is 1274
+Backtracing 59.000000, 195.000000.
+Current size is 1275
+Backtracing 58.000000, 195.000000.
+Current size is 1276
+Backtracing 57.000000, 195.000000.
+Current size is 1277
+Backtracing 56.000000, 195.000000.
+Current size is 1278
+Backtracing 55.000000, 195.000000.
+Current size is 1279
+Backtracing 54.000000, 195.000000.
+Current size is 1280
+Backtracing 53.000000, 195.000000.
+Current size is 1281
+Backtracing 52.000000, 195.000000.
+Current size is 1282
+Backtracing 51.000000, 195.000000.
+Current size is 1283
+Backtracing 50.000000, 195.000000.
+Current size is 1284
+Backtracing 49.000000, 195.000000.
+Current size is 1285
+Backtracing 48.000000, 195.000000.
+Current size is 1286
+Backtracing 47.000000, 195.000000.
+Current size is 1287
+Backtracing 46.000000, 195.000000.
+Current size is 1288
+Backtracing 45.000000, 195.000000.
+Current size is 1289
+Backtracing 44.000000, 195.000000.
+Current size is 1290
+Backtracing 43.000000, 195.000000.
+Current size is 1291
+Backtracing 42.000000, 195.000000.
+Current size is 1292
+Backtracing 41.000000, 195.000000.
+Current size is 1293
+Backtracing 40.000000, 195.000000.
+Current size is 1294
+Backtracing 39.000000, 195.000000.
+Current size is 1295
+Backtracing 38.000000, 195.000000.
+Current size is 1296
+Backtracing 37.000000, 195.000000.
+Current size is 1297
+Backtracing 36.000000, 195.000000.
+Current size is 1298
+Backtracing 35.000000, 195.000000.
+Current size is 1299
+Backtracing 34.000000, 195.000000.
+Current size is 1300
+Backtracing 33.000000, 195.000000.
+Current size is 1301
+Backtracing 32.000000, 195.000000.
+Current size is 1302
+Backtracing 31.000000, 195.000000.
+Current size is 1303
+Backtracing 30.000000, 195.000000.
+Current size is 1304
+Backtracing 29.000000, 195.000000.
+Current size is 1305
+Backtracing 28.000000, 195.000000.
+Current size is 1306
+Backtracing 27.000000, 195.000000.
+Current size is 1307
+Backtracing 26.000000, 195.000000.
+Current size is 1308
+Backtracing 25.000000, 195.000000.
+Current size is 1309
+Backtracing 24.000000, 195.000000.
+Current size is 1310
+Backtracing 23.000000, 195.000000.
+Current size is 1311
+Backtracing 22.000000, 195.000000.
+Current size is 1312
+Backtracing 21.000000, 195.000000.
+Current size is 1313
+Backtracing 20.000000, 195.000000.
+Current size is 1314
+Backtracing 19.000000, 195.000000.
+Current size is 1315
+Backtracing 18.000000, 195.000000.
+Current size is 1316
+Backtracing 17.000000, 195.000000.
+Current size is 1317
+Backtracing 16.000000, 195.000000.
+Current size is 1318
+Backtracing 15.000000, 195.000000.
+Current size is 1319
+Path found! Printing...Beginning path image export...
+Path image output to bfs.tga

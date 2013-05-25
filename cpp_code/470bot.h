@@ -133,17 +133,6 @@ typedef struct tank_brain_t {
 	direction_t heading;
 } tank_brain_t;
 
-typedef struct foo 
-{ 
-    foo()
-    : my_bool(false), my_int(0)
-    {
-        // Do nothing
-    }
-    bool my_bool; 
-    int my_int; 
-} foo; 
-
 class SplitString {
 	vector <string> MyVector;
 	string MyString;
@@ -822,7 +811,7 @@ public:
 		v=ReadArr();
 		int location_of_x = v.at(1).find("x");
 		world_grid.width = atoi(v.at(1).substr(0, location_of_x).c_str());
-		world_grid.height = atoi(v.at(1).substr(location_of_x + 1, (v.at(1).length() - 1 - location_of_x)).c_str()); // TODO
+		world_grid.height = atoi(v.at(1).substr(location_of_x + 1, (v.at(1).length() - 1 - location_of_x)).c_str());
 		v.clear();
 
 		if (DEBUG_S) {

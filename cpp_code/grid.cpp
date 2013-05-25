@@ -57,8 +57,8 @@ const int max_failures = 10;
 
 string searchType = "";
 
-bool penalized_mode;
-bool avoid_tanks;
+bool penalized_mode = true;
+bool avoid_tanks = true;
 
 int main(int argc, char *argv[]) {
 	define_constants();
@@ -85,125 +85,6 @@ int main(int argc, char *argv[]) {
 	{
 		debug = true;
 	}
-		
-//~ 
-	//~ // You can add two numbers (1 is true, 0 is false) after the type to specify penalties.
-	//~ // If you specify them, you MUST specify both.
-	//~ // First one is walls. Second one is tanks.
-	//~ if (searchType == "astar" || searchType == "ucost")
-	//~ {
-		//~ if (argc < 5)
-		//~ {
-			//~ penalized_mode = true;
-			//~ avoid_tanks = true;
-		//~ }
-		//~ else
-		//~ {
-			//~ penalized_mode = atoi(argv[4]);
-			//~ avoid_tanks = atoi(argv[5]);
-		//~ }
-	//~ }
-	//~ else
-	//~ {
-		//~ penalized_mode = false;
-		//~ avoid_tanks = false;
-	//~ }
-//~ 
-	//~ BZRC MyTeam = BZRC(pcHost, nPort, false);
-	//~ if(!MyTeam.GetStatus()) {
-		//~ cout << "Can't connect to BZRC server." << endl;
-		//~ exit(1);
-	//~ }
-//~ 
-	//~ // Calling agent code
-	//~ world_init(&MyTeam);
-//~ 
-	//~ if (searchType == "dfs")
-	//~ {
-		//~ // Do depth-first search.
-//~ 
-		//~ int iterations = 10000;
-//~ 
-		//~ /*
-		//~ if (argc >= 5)
-		//~ {
-			//~ iterations = atoi(argv[4]);
-			//~ printf("Searching to a depth of %d iterations.\n", iterations);			
-		//~ }
-		//~ */
-//~ 
-		//~ stack<coordinate_t> * path = new stack<coordinate_t>;
-		//~ //path->push(red_tank_coor);
-//~ 
-		//~ fill_visited_grid(world_grid.width, world_grid.height);
-	//~ 
-		//~ //vector<vector<bool> *> * empty_bool_grid = get_empty_bool_grid(world_grid.width, world_grid.height);
-	//~ 
-		//~ stack<coordinate_t> * ret = recursive_depth_first_search(
-			//~ // double target_x, double target_y,
-			//~ green_flag_coor.x, green_flag_coor.y,
-			//~ // double current_x, double current_y,
-			//~ red_tank_coor.x, red_tank_coor.y,
-			//~ // vector<vector<bool> > * visited_locations,
-			//~ //empty_bool_grid,
-			//~ NULL,
-			//~ // stack<coordinate_t> * path_so_far
-			//~ path, iterations
-		//~ );
-//~ 
-//~ 
-		//~ if (ret == NULL)
-		//~ {
-			//~ printf("Sorry!\nCould not find path to flag.\n");
-			//~ return 0;
-		//~ }
-//~ 
-		//~ final_cost = path->size();
-		//~ printf("Path found! Printing...");
-		//~ display_path("dfs.tga", path);
-//~ 
-		//~ //while (ret->size() > 0)
-		//~ //{
-		//~ //	coordinate_t current = ret->top();
-		//~ //	ret->pop();
-		//~ //	printf("Path coordinate: %f, %f\n", current.x, current.y);
-		//~ //}
-//~ 
-	//~ } // end if (searchType == "dfs")
-	//~ else if (searchType == "bfs")
-	//~ {
-		//~ fill_directional_grid(world_grid.width, world_grid.height);
-		//~ stack<coordinate_t> * path = breadth_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y);
-		//~ printf("Path found! Printing...");
-		//~ final_cost = path->size();
-		//~ display_path("bfs.tga", path);
-	//~ } // end if (searchtype == "bfs")
-	//~ else if (searchType == "iddfs")
-	//~ {
-		//~ stack<coordinate_t> * path = iterative_deepening_depth_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y);
-		//~ final_cost = path->size();
-		//~ display_path("iddfs.tga", path);
-	//~ }
-	//~ else if (searchType == "ucost")
-	//~ {
-		//~ fill_directional_grid(world_grid.width, world_grid.height);
-		//~ stack<coordinate_t> * path = best_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y, false);
-		//~ display_path("ucost.tga", path);
-	//~ }
-	//~ else if (searchType == "astar")
-	//~ {
-		//~ fill_directional_grid(world_grid.width, world_grid.height);
-		//~ stack<coordinate_t> * path = best_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y, true);
-		//~ display_path("astar.tga", path);
-	//~ }
-	//~ else
-	//~ {
-		//~ printf("Error, searchType %s is invalid.\n", searchType.c_str());
-	//~ }
-	//~ MyTeam.Close();
-	//~ 
-	//~ printf("Nodes Popped: %d\n", nodes_popped);
-	//~ printf("Final Path Cost: %d\n", final_cost);
 
 	BZRC MyTeam = BZRC(pcHost, nPort, false);
 	if(!MyTeam.GetStatus()) {
@@ -213,6 +94,10 @@ int main(int argc, char *argv[]) {
 
 	// Calling agent code
 	world_init(&MyTeam);
+	
+	fill_directional_grid(world_grid.width, world_grid.height);	
+	//printf("WorldGrid Size is %d, %d.\n", world_grid.width, world_grid.height);
+	
 	int number_of_tanks = my_tanks->size();
 
 	// Initialize the tank brains/goals
@@ -249,15 +134,18 @@ int main(int argc, char *argv[]) {
 			current_goal = tank_brains->at(tank_n).current_goal;
 
 			coordinate_t current_position;
-			current_position.x = my_tanks->at(tank_n).pos[0];
-			current_position.y = my_tanks->at(tank_n).pos[1];
+			current_position.x = my_tanks->at(tank_n).pos[0] + (world_grid.width / 2);
+			current_position.y = my_tanks->at(tank_n).pos[1] + (world_grid.height / 2);
 
 			gettimeofday(&now, NULL);
 			long current_time_s = now.tv_sec;
 
-			if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s)
+			if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s || tank_brains->at(tank_n).last_updated_s == 0)
 			{
 				// The tank's path is expired, we're going to find it a new path to its goal using a-star.
+				printf("Tank %d's path is expired. Now calculating from %f, %f to %f, %f.\n", tank_n, current_goal.x, current_goal.y, current_position.x, current_position.y);
+				fill_directional_grid(world_grid.width, world_grid.height);
+				//printf("WorldGrid: %d,%d\n", world_grid.width, world_grid.height);
 				stack<coordinate_t> * my_current_path = best_first_search(current_goal.x, current_goal.y, current_position.x, current_position.y, true);
 				set_tank_heading(tank_n, my_current_path, &MyTeam);
 				if (my_current_path != NULL)
@@ -268,6 +156,10 @@ int main(int argc, char *argv[]) {
 				{
 					tank_brains->at(tank_n).current_goal = NULL_COORDINATE;
 				}
+
+				gettimeofday(&now, NULL);
+				current_time_s = now.tv_sec;
+				tank_brains->at(tank_n).last_updated_s = current_time_s;
 			}
 			else
 			{
@@ -323,6 +215,7 @@ void world_init(BZRC *my_team) {
 	red_tank_coor.y = my_tanks->at(0).pos[1];
 
 	my_team->get_occgrid(world_grid);
+	printf("Just got WorldGrid, its size is %f, %f.\n", world_grid.width, world_grid.height);
 	enemy_tanks_coors = new vector<coordinate_t>();
 	store_enemy_tanks_coors(my_team);
 	populate_tank_grid();
@@ -413,6 +306,7 @@ void store_enemy_tanks_coors(BZRC* my_team) {
 }
 
 void fill_visited_grid(int width, int height) {
+	visited_grid.obstacles.clear();
 	visited_grid.width = width;
 	visited_grid.height = height;
 	visited_grid.obstacles.resize(visited_grid.height);
@@ -427,6 +321,7 @@ void fill_visited_grid(int width, int height) {
 }
 
 void fill_directional_grid(int width, int height) {
+	directional_grid.contents.clear();
 	directional_grid.width = width;
 	directional_grid.height = height;
 	directional_grid.contents.resize(directional_grid.height);
@@ -669,6 +564,10 @@ stack<coordinate_t> * breadth_first_search(int target_x, int target_y, int start
 {
 	assert(left_bounds == 0);
 	assert(bottom_bounds == 0);
+	assert(target_x >= 0);
+	assert(target_y >= 0);
+	assert(start_x >= 0);
+	assert(start_y >= 0);
 
 	queue<coordinate_t> next_locations;
 
@@ -1061,6 +960,10 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 {
 	assert(left_bounds == 0);
 	assert(bottom_bounds == 0);
+	assert(target_x >= 0);
+	assert(target_y >= 0);
+	assert(start_x >= 0);
+	assert(start_y >= 0);
 
 	const double SQRT_TWO = 1.414213562;
 
@@ -1083,7 +986,7 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 	next_locations.push(current_location);
 	
 	bool found_path;
-	//int cycles_per_frame;
+	int cycles_per_frame = 1000;
 	//if (use_heuristic)
 	//{
 	//	cycles_per_frame = 201;
@@ -1102,7 +1005,7 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 		next_locations.pop();
 		nodes_popped++;
 		
-		//printf("Cost here is %f.\n", current_location.cost);
+		//printf("Cost here at %f, %f is %f.\n", current_location.x, current_location.y, current_location.cost);
 
 		// Check if we're out of bounds first.
 		if (current_x < left_bounds || current_x >= right_bounds
@@ -1113,6 +1016,7 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 		}
 		
 		// Check if we're in a wall
+		//printf("WorldGrid Obstacles: %d, %d\n", world_grid.obstacles.size(), world_grid.obstacles.at(current_x).size());
 		if (world_grid.obstacles.at(current_x).at(current_y))
 		{
 			//printf("Inside a wall, backing out.\n");
@@ -1345,9 +1249,10 @@ void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 	const int lookahead_distance = 10;
 	
 	direction_t ret;
-	
-	if (path == NULL)
+
+	if (path == NULL || path->empty())
 	{
+		printf("Received a bogus path for tank %d.\n", tank_n);
 		tank_brains->at(tank_n).heading = ret;
 		tank_brains->at(tank_n).current_goal = NULL_COORDINATE;
 		return;
@@ -1355,8 +1260,12 @@ void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 	
 	coordinate_t source = path->top();
 	path->pop();
-	for (int i = 0; i < lookahead_distance && !path->empty(); i++)
+	for (int i = 0; i < lookahead_distance; i++)
 	{
+		if (path->empty())
+		{
+			break;
+		}
 		coordinate_t current_point = path->top();
 		path->pop();
 		
@@ -1364,14 +1273,18 @@ void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 		double diff_y = current_point.y - source.y;
 		
 		// Emphasize
-		diff_x *= lookahead_distance - i + 2.0;
-		diff_y *= lookahead_distance - i + 2.0;
+		diff_x *= (lookahead_distance - i + 2.0);
+		diff_y *= (lookahead_distance - i + 2.0);
 		
 		ret.x += diff_x;
 		ret.y += diff_y;
+		
 	}
 	
-	tank_brains->at(tank_n).heading = ret;	
+	tank_brains->at(tank_n).heading = ret;
+	
+	display_path("getter.tga", path);
+	
 	return;
 }
 
@@ -1384,6 +1297,8 @@ void keep_tank_on_course(int tank_n, BZRC* my_team)
 
 	double speed;
 	double turning;
+
+	//printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
 
 	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
 	if (impulse.x == 0 && impulse.y == 0)

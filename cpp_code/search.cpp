@@ -1,8 +1,4 @@
-// 5/14 3 hours each
-// 5/15 Mike: 1 hour
-// 5/16 4 hours each
-// 5/16 Thomas: 2 hours
-// 5/17 8 hours 45 minutes each
+// 24 May - 3:30 hours each
 
 #include <iostream>
 #include "470bot.h"

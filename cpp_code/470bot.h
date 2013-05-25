@@ -127,6 +127,23 @@ typedef struct prioritizable_node_t {
 	};
 } prioritizable_node_t;
 
+typedef struct tank_brain_t {
+	long last_updated_s; // _s is for seconds 
+	coordinate_t current_goal;
+	direction_t heading;
+} tank_brain_t;
+
+typedef struct foo 
+{ 
+    foo()
+    : my_bool(false), my_int(0)
+    {
+        // Do nothing
+    }
+    bool my_bool; 
+    int my_int; 
+} foo; 
+
 class SplitString {
 	vector <string> MyVector;
 	string MyString;
@@ -962,3 +979,6 @@ double generate_heuristic(int target_x, int target_y, int start_x, int start_y);
 void display_pqueue_wavefront(const char* filename, priority_queue<prioritizable_node_t> locations);
 
 bool has_adjacent_occupied(int x, int y);
+
+void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team);
+void keep_tank_on_course(int tank_n, BZRC* my_team);

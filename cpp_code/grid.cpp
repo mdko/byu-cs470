@@ -15,13 +15,19 @@
 
 using namespace std;
 
+static bool debug = false;
+
 const char *kDefaultServerName = "localhost";
 const int kDefaultServerPort = 4000;
 const int tank_field_size = 4;
 const int tank_field_strength = 2;
 
+#define PI 3.141
+
 #define NUMBER_OF_DIRECTIONS 8
 static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
+
+#define MAX_UPDATE_DELAY 2 // Update tank headings every 1-2 seconds. (Realistically it will probably go longer than this.)
 
 static grid_t world_grid;
 static coordinate_t NULL_COORDINATE;
@@ -39,10 +45,15 @@ static weight_grid_t tank_weights;
 static vector <tank_t> *my_tanks;
 static coordinate_t red_tank_coor;
 
+static vector<tank_brain_t> *tank_brains;
+
 static int recursive_counter = 0;
 
 static int nodes_popped = 0;
 static int final_cost = 0;
+
+static int number_of_search_failures = 0;
+const int max_failures = 10;
 
 string searchType = "";
 
@@ -68,36 +79,131 @@ int main(int argc, char *argv[]) {
 		nPort = atoi(argv[2]);
 	}
 	if(argc < 4) {
-		printf("Error! Specify what type of search to perform.\n");
-		exit(0);
+		debug = false;
 	}
-	else
+	else if (atoi(argv[3]) != 0)
 	{
-		searchType = argv[3];
+		debug = true;
 	}
 		
-
-	// You can add two numbers (1 is true, 0 is false) after the type to specify penalties.
-	// If you specify them, you MUST specify both.
-	// First one is walls. Second one is tanks.
-	if (searchType == "astar" || searchType == "ucost")
-	{
-		if (argc < 5)
-		{
-			penalized_mode = true;
-			avoid_tanks = true;
-		}
-		else
-		{
-			penalized_mode = atoi(argv[4]);
-			avoid_tanks = atoi(argv[5]);
-		}
-	}
-	else
-	{
-		penalized_mode = false;
-		avoid_tanks = false;
-	}
+//~ 
+	//~ // You can add two numbers (1 is true, 0 is false) after the type to specify penalties.
+	//~ // If you specify them, you MUST specify both.
+	//~ // First one is walls. Second one is tanks.
+	//~ if (searchType == "astar" || searchType == "ucost")
+	//~ {
+		//~ if (argc < 5)
+		//~ {
+			//~ penalized_mode = true;
+			//~ avoid_tanks = true;
+		//~ }
+		//~ else
+		//~ {
+			//~ penalized_mode = atoi(argv[4]);
+			//~ avoid_tanks = atoi(argv[5]);
+		//~ }
+	//~ }
+	//~ else
+	//~ {
+		//~ penalized_mode = false;
+		//~ avoid_tanks = false;
+	//~ }
+//~ 
+	//~ BZRC MyTeam = BZRC(pcHost, nPort, false);
+	//~ if(!MyTeam.GetStatus()) {
+		//~ cout << "Can't connect to BZRC server." << endl;
+		//~ exit(1);
+	//~ }
+//~ 
+	//~ // Calling agent code
+	//~ world_init(&MyTeam);
+//~ 
+	//~ if (searchType == "dfs")
+	//~ {
+		//~ // Do depth-first search.
+//~ 
+		//~ int iterations = 10000;
+//~ 
+		//~ /*
+		//~ if (argc >= 5)
+		//~ {
+			//~ iterations = atoi(argv[4]);
+			//~ printf("Searching to a depth of %d iterations.\n", iterations);			
+		//~ }
+		//~ */
+//~ 
+		//~ stack<coordinate_t> * path = new stack<coordinate_t>;
+		//~ //path->push(red_tank_coor);
+//~ 
+		//~ fill_visited_grid(world_grid.width, world_grid.height);
+	//~ 
+		//~ //vector<vector<bool> *> * empty_bool_grid = get_empty_bool_grid(world_grid.width, world_grid.height);
+	//~ 
+		//~ stack<coordinate_t> * ret = recursive_depth_first_search(
+			//~ // double target_x, double target_y,
+			//~ green_flag_coor.x, green_flag_coor.y,
+			//~ // double current_x, double current_y,
+			//~ red_tank_coor.x, red_tank_coor.y,
+			//~ // vector<vector<bool> > * visited_locations,
+			//~ //empty_bool_grid,
+			//~ NULL,
+			//~ // stack<coordinate_t> * path_so_far
+			//~ path, iterations
+		//~ );
+//~ 
+//~ 
+		//~ if (ret == NULL)
+		//~ {
+			//~ printf("Sorry!\nCould not find path to flag.\n");
+			//~ return 0;
+		//~ }
+//~ 
+		//~ final_cost = path->size();
+		//~ printf("Path found! Printing...");
+		//~ display_path("dfs.tga", path);
+//~ 
+		//~ //while (ret->size() > 0)
+		//~ //{
+		//~ //	coordinate_t current = ret->top();
+		//~ //	ret->pop();
+		//~ //	printf("Path coordinate: %f, %f\n", current.x, current.y);
+		//~ //}
+//~ 
+	//~ } // end if (searchType == "dfs")
+	//~ else if (searchType == "bfs")
+	//~ {
+		//~ fill_directional_grid(world_grid.width, world_grid.height);
+		//~ stack<coordinate_t> * path = breadth_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y);
+		//~ printf("Path found! Printing...");
+		//~ final_cost = path->size();
+		//~ display_path("bfs.tga", path);
+	//~ } // end if (searchtype == "bfs")
+	//~ else if (searchType == "iddfs")
+	//~ {
+		//~ stack<coordinate_t> * path = iterative_deepening_depth_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y);
+		//~ final_cost = path->size();
+		//~ display_path("iddfs.tga", path);
+	//~ }
+	//~ else if (searchType == "ucost")
+	//~ {
+		//~ fill_directional_grid(world_grid.width, world_grid.height);
+		//~ stack<coordinate_t> * path = best_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y, false);
+		//~ display_path("ucost.tga", path);
+	//~ }
+	//~ else if (searchType == "astar")
+	//~ {
+		//~ fill_directional_grid(world_grid.width, world_grid.height);
+		//~ stack<coordinate_t> * path = best_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y, true);
+		//~ display_path("astar.tga", path);
+	//~ }
+	//~ else
+	//~ {
+		//~ printf("Error, searchType %s is invalid.\n", searchType.c_str());
+	//~ }
+	//~ MyTeam.Close();
+	//~ 
+	//~ printf("Nodes Popped: %d\n", nodes_popped);
+	//~ printf("Final Path Cost: %d\n", final_cost);
 
 	BZRC MyTeam = BZRC(pcHost, nPort, false);
 	if(!MyTeam.GetStatus()) {
@@ -107,94 +213,73 @@ int main(int argc, char *argv[]) {
 
 	// Calling agent code
 	world_init(&MyTeam);
+	int number_of_tanks = my_tanks->size();
 
-	if (searchType == "dfs")
+	// Initialize the tank brains/goals
+	tank_brains = new vector<tank_brain_t>();
+	for (int tank_n = 0; tank_n < number_of_tanks; tank_n++)
 	{
-		// Do depth-first search.
+		tank_brain_t tb;
+		tb.last_updated_s = 0;
+		tb.current_goal = NULL_COORDINATE;
+		tank_brains->push_back(tb);
+	}
+	
+	// TODO Delete this when we update the code to look for unexplored areas. 
+	coordinate_t dummy_goal = green_flag_coor;
+	
 
-		int iterations = 10000;
-
-		/*
-		if (argc >= 5)
+	struct timeval now;
+	gettimeofday(&now, NULL);
+	
+	while (number_of_search_failures < max_failures) // TODO Have an end state for when the map is explored
+	{
+		for (int tank_n = 0; tank_n < number_of_tanks; tank_n++)
 		{
-			iterations = atoi(argv[4]);
-			printf("Searching to a depth of %d iterations.\n", iterations);			
+			my_tanks->clear();
+			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
+
+			if (tank_brains->at(tank_n).current_goal.x == NULL_COORDINATE.x && tank_brains->at(tank_n).current_goal.y == NULL_COORDINATE.y)
+			{
+				// TODO If the tank has seen its goal, find a new goal using breadth-first search and set it's brain's goal to the path that returns.
+				tank_brains->at(tank_n).current_goal = dummy_goal;
+			}
+
+			coordinate_t current_goal;
+			current_goal = tank_brains->at(tank_n).current_goal;
+
+			coordinate_t current_position;
+			current_position.x = my_tanks->at(tank_n).pos[0];
+			current_position.y = my_tanks->at(tank_n).pos[1];
+
+			gettimeofday(&now, NULL);
+			long current_time_s = now.tv_sec;
+
+			if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s)
+			{
+				// The tank's path is expired, we're going to find it a new path to its goal using a-star.
+				stack<coordinate_t> * my_current_path = best_first_search(current_goal.x, current_goal.y, current_position.x, current_position.y, true);
+				set_tank_heading(tank_n, my_current_path, &MyTeam);
+				if (my_current_path != NULL)
+				{
+					delete my_current_path;
+				}
+				else
+				{
+					tank_brains->at(tank_n).current_goal = NULL_COORDINATE;
+				}
+			}
+			else
+			{
+				// Let the tank keep trying to track, it's fine right now.
+			}
+			
+			my_tanks->clear();
+			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
+			// TODO Command the tank to turn and accelerate based on the path it has.
+			keep_tank_on_course(tank_n, &MyTeam);
 		}
-		*/
-
-		stack<coordinate_t> * path = new stack<coordinate_t>;
-		//path->push(red_tank_coor);
-
-		fill_visited_grid(world_grid.width, world_grid.height);
-	
-		//vector<vector<bool> *> * empty_bool_grid = get_empty_bool_grid(world_grid.width, world_grid.height);
-	
-		stack<coordinate_t> * ret = recursive_depth_first_search(
-			// double target_x, double target_y,
-			green_flag_coor.x, green_flag_coor.y,
-			// double current_x, double current_y,
-			red_tank_coor.x, red_tank_coor.y,
-			// vector<vector<bool> > * visited_locations,
-			//empty_bool_grid,
-			NULL,
-			// stack<coordinate_t> * path_so_far
-			path, iterations
-		);
-
-
-		if (ret == NULL)
-		{
-			printf("Sorry!\nCould not find path to flag.\n");
-			return 0;
-		}
-
-		final_cost = path->size();
-		printf("Path found! Printing...");
-		display_path("dfs.tga", path);
-
-		//while (ret->size() > 0)
-		//{
-		//	coordinate_t current = ret->top();
-		//	ret->pop();
-		//	printf("Path coordinate: %f, %f\n", current.x, current.y);
-		//}
-
-	} // end if (searchType == "dfs")
-	else if (searchType == "bfs")
-	{
-		fill_directional_grid(world_grid.width, world_grid.height);
-		stack<coordinate_t> * path = breadth_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y);
-		printf("Path found! Printing...");
-		final_cost = path->size();
-		display_path("bfs.tga", path);
-	} // end if (searchtype == "bfs")
-	else if (searchType == "iddfs")
-	{
-		stack<coordinate_t> * path = iterative_deepening_depth_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y);
-		final_cost = path->size();
-		display_path("iddfs.tga", path);
 	}
-	else if (searchType == "ucost")
-	{
-		fill_directional_grid(world_grid.width, world_grid.height);
-		stack<coordinate_t> * path = best_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y, false);
-		display_path("ucost.tga", path);
-	}
-	else if (searchType == "astar")
-	{
-		fill_directional_grid(world_grid.width, world_grid.height);
-		stack<coordinate_t> * path = best_first_search(green_flag_coor.x, green_flag_coor.y, red_tank_coor.x, red_tank_coor.y, true);
-		display_path("astar.tga", path);
-	}
-	else
-	{
-		printf("Error, searchType %s is invalid.\n", searchType.c_str());
-	}
-	MyTeam.Close();
-	
-	printf("Nodes Popped: %d\n", nodes_popped);
-	printf("Final Path Cost: %d\n", final_cost);
-
 }
 
 void define_constants()
@@ -998,7 +1083,7 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 	next_locations.push(current_location);
 	
 	bool found_path;
-	int cycles_per_frame;
+	//int cycles_per_frame;
 	//if (use_heuristic)
 	//{
 	//	cycles_per_frame = 201;
@@ -1118,20 +1203,20 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 			next_locations.push(next_location);
 		}
 		
-		if (iterations % cycles_per_frame == 1)
-		{
-			string filename = "";
-			if (use_heuristic)
-			{
-				filename = "astar.tga";
-			}
-			else
-			{
-				filename = "ucost.tga";
-			}
-			display_pqueue_wavefront(filename.c_str(), next_locations);
-		}
-		iterations++;
+		//~ if (iterations % cycles_per_frame == 1)
+		//~ {
+			//~ string filename = "";
+			//~ if (use_heuristic)
+			//~ {
+				//~ filename = "astar.tga";
+			//~ }
+			//~ else
+			//~ {
+				//~ filename = "ucost.tga";
+			//~ }
+			//~ display_pqueue_wavefront(filename.c_str(), next_locations);
+		//~ }
+		//~ iterations++;
 		
 	} // end while (next_locations.size() > 0)
 
@@ -1253,4 +1338,106 @@ bool has_adjacent_occupied(int x, int y)
 		}
 	}
 	return false;
+}
+
+void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
+{
+	const int lookahead_distance = 10;
+	
+	direction_t ret;
+	
+	if (path == NULL)
+	{
+		tank_brains->at(tank_n).heading = ret;
+		tank_brains->at(tank_n).current_goal = NULL_COORDINATE;
+		return;
+	}
+	
+	coordinate_t source = path->top();
+	path->pop();
+	for (int i = 0; i < lookahead_distance && !path->empty(); i++)
+	{
+		coordinate_t current_point = path->top();
+		path->pop();
+		
+		double diff_x = current_point.x - source.x;
+		double diff_y = current_point.y - source.y;
+		
+		// Emphasize
+		diff_x *= lookahead_distance - i + 2.0;
+		diff_y *= lookahead_distance - i + 2.0;
+		
+		ret.x += diff_x;
+		ret.y += diff_y;
+	}
+	
+	tank_brains->at(tank_n).heading = ret;	
+	return;
+}
+
+void keep_tank_on_course(int tank_n, BZRC* my_team)
+{
+	const double turn_strength = 1.0;
+	const double acceptable_difference = 0.2;	// As long as our impulse is within an arc this many radians wide, drive at full speed
+
+	direction_t impulse = tank_brains->at(tank_n).heading;
+
+	double speed;
+	double turning;
+
+	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
+	if (impulse.x == 0 && impulse.y == 0)
+	{
+		speed = 0;
+		turning = 0;
+	}
+	else
+	{
+		double strength = sqrt(pow(impulse.x, 2) + pow(impulse.y, 2));
+
+		// Convert X and Y to an angle
+		double new_rotation = atan2(impulse.y, impulse.x);
+
+		//Normalize the difference between the two rotations by finding the angle between 4PI and -4PI that generates a difference between PI and -PI. 
+		double r1 = new_rotation + 2*PI - my_tanks->at(tank_n).angle;
+		double r2 = new_rotation		- my_tanks->at(tank_n).angle;
+		double r3 = new_rotation - 2*PI - my_tanks->at(tank_n).angle;
+		double difference = 10*PI; // A ludicrously high angle.
+		if (fabs(r1) < fabs(difference))
+		{
+			difference = r1;
+		}
+		if (fabs(r2) < fabs(difference))
+		{
+			difference = r2;
+		}
+		if (fabs(r3) < fabs(difference))
+		{
+			difference = r3;
+		}
+
+		// Make the tank slow down during sharp turns.
+		if (fabs(difference) < acceptable_difference / 2)
+		{
+			// Full speed ahead.
+			speed = 1.0;
+			my_team->shoot(tank_n);
+		}
+		else
+		{
+			// Set impulse to one-quarter speed until we're pointing in the right direction
+			speed = 0.25;
+		}	
+
+		difference *= turn_strength;
+		turning = difference;
+		//if (iterations % 10 == 0)
+		//{
+		//	cout << "I am tank " << tank_n << " and my angle is " << my_tanks->at(tank_n).angle << " and I am turning " << difference << endl; 
+		//}
+	}
+
+	my_team->speed(tank_n, speed);
+	my_team->angvel(tank_n, turning);
+	return;
 }

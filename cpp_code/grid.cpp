@@ -62,6 +62,7 @@ bool avoid_tanks = true;
 
 int main(int argc, char *argv[]) {
 	define_constants();
+	std::srand(std::time(0));
 	
 	const char *pcHost;
 	int nPort;
@@ -124,6 +125,11 @@ int main(int argc, char *argv[]) {
 			my_tanks->clear();
 			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
 
+			if (my_tanks->at(tank_n).status == "dead")
+			{
+				continue;
+			}
+
 			if (tank_brains->at(tank_n).current_goal.x == NULL_COORDINATE.x && tank_brains->at(tank_n).current_goal.y == NULL_COORDINATE.y)
 			{
 				// TODO If the tank has seen its goal, find a new goal using breadth-first search and set it's brain's goal to the path that returns.
@@ -135,15 +141,15 @@ int main(int argc, char *argv[]) {
 
 			coordinate_t current_position;
 			current_position.x = my_tanks->at(tank_n).pos[0] + (world_grid.width / 2);
-			current_position.y = my_tanks->at(tank_n).pos[1] + (world_grid.height / 2);
-
+			current_position.y = world_grid.height - (my_tanks->at(tank_n).pos[1] + (world_grid.height / 2));
+			
 			gettimeofday(&now, NULL);
 			long current_time_s = now.tv_sec;
 
 			if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s || tank_brains->at(tank_n).last_updated_s == 0)
 			{
 				// The tank's path is expired, we're going to find it a new path to its goal using a-star.
-				printf("Tank %d's path is expired. Now calculating from %f, %f to %f, %f.\n", tank_n, current_goal.x, current_goal.y, current_position.x, current_position.y);
+				//printf("Tank %d's path is expired. Now calculating from %f, %f to %f, %f.\n", tank_n, current_goal.x, current_goal.y, current_position.x, current_position.y);
 				fill_directional_grid(world_grid.width, world_grid.height);
 				//printf("WorldGrid: %d,%d\n", world_grid.width, world_grid.height);
 				stack<coordinate_t> * my_current_path = best_first_search(current_goal.x, current_goal.y, current_position.x, current_position.y, true);
@@ -504,7 +510,7 @@ void display_path(const char* filename, stack<coordinate_t> * path)
 {
 	assert(path != NULL);
 
-	printf("Beginning path image export...\n");
+	//printf("Beginning path image export...\n");
 	std::string targetFile = filename;
 	
 	int path_weighting = path->size();
@@ -547,7 +553,7 @@ void display_path(const char* filename, stack<coordinate_t> * path)
 	//write the image to disk
 	img->WriteImage(filename);
 
-	printf("Path image output to %s\n", filename);
+	//printf("Path image output to %s\n", filename);
 	return;
 }
 
@@ -1246,7 +1252,7 @@ bool has_adjacent_occupied(int x, int y)
 
 void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 {
-	const int lookahead_distance = 10;
+	const int lookahead_distance = 1;
 	
 	direction_t ret;
 
@@ -1273,8 +1279,8 @@ void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 		double diff_y = current_point.y - source.y;
 		
 		// Emphasize
-		diff_x *= (lookahead_distance - i + 2.0);
-		diff_y *= (lookahead_distance - i + 2.0);
+		//diff_x *= (lookahead_distance - i + 2.0);
+		//diff_y *= (lookahead_distance - i + 2.0);
 		
 		ret.x += diff_x;
 		ret.y += diff_y;
@@ -1283,7 +1289,10 @@ void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 	
 	tank_brains->at(tank_n).heading = ret;
 	
-	display_path("getter.tga", path);
+	string s = "tank_#_path.tga";
+	s.at(5) = 48 + tank_n; // Convert the tank number into a character, 0 is ascii 48
+	
+	display_path(s.c_str(), path);
 	
 	return;
 }
@@ -1294,11 +1303,14 @@ void keep_tank_on_course(int tank_n, BZRC* my_team)
 	const double acceptable_difference = 0.2;	// As long as our impulse is within an arc this many radians wide, drive at full speed
 
 	direction_t impulse = tank_brains->at(tank_n).heading;
+	impulse.y *= -1; // stupid inverstion crap
+
+	double randomness = ((rand() % 11) - 5) / 5.0 * acceptable_difference; // -5 to 5, scaled to somewhere withing the acceptable_difference cone
 
 	double speed;
 	double turning;
 
-	//printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
+	printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
 
 	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
 	if (impulse.x == 0 && impulse.y == 0)
@@ -1330,6 +1342,8 @@ void keep_tank_on_course(int tank_n, BZRC* my_team)
 		{
 			difference = r3;
 		}
+
+		difference += randomness;
 
 		// Make the tank slow down during sharp turns.
 		if (fabs(difference) < acceptable_difference / 2)

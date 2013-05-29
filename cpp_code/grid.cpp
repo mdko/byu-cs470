@@ -29,6 +29,8 @@ static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
 
 #define MAX_UPDATE_DELAY 2 // Update tank headings every 1-2 seconds. (Realistically it will probably go longer than this.)
 
+#define UNEXPLORED_VALUE -1
+
 static grid_t world_grid;
 static coordinate_t NULL_COORDINATE;
 static double left_bounds;
@@ -37,6 +39,8 @@ static double top_bounds;
 static double bottom_bounds;
 static coordinate_t green_flag_coor;
 static vector<coordinate_t> *enemy_tanks_coors;
+
+static int world_size;
 
 static grid_t visited_grid;
 static direction_grid_t directional_grid;
@@ -80,9 +84,14 @@ int main(int argc, char *argv[]) {
 		nPort = atoi(argv[2]);
 	}
 	if(argc < 4) {
+		world_size = 400;
+	} else {
+		world_size = atoi(argv[3]);
+	}
+	if(argc < 5) {
 		debug = false;
 	}
-	else if (atoi(argv[3]) != 0)
+	else if (atoi(argv[4]) != 0)
 	{
 		debug = true;
 	}
@@ -92,6 +101,8 @@ int main(int argc, char *argv[]) {
 		cout << "Can't connect to BZRC server." << endl;
 		exit(1);
 	}
+
+	//printf("Hello, world!\n");
 
 	// Calling agent code
 	world_init(&MyTeam);
@@ -124,6 +135,8 @@ int main(int argc, char *argv[]) {
 		{
 			my_tanks->clear();
 			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
+
+			update_tank_vision(&MyTeam);
 
 			if (my_tanks->at(tank_n).status == "dead")
 			{
@@ -220,16 +233,21 @@ void world_init(BZRC *my_team) {
 	red_tank_coor.x = my_tanks->at(0).pos[0];
 	red_tank_coor.y = my_tanks->at(0).pos[1];
 
-	my_team->get_occgrid(world_grid);
-	printf("Just got WorldGrid, its size is %f, %f.\n", world_grid.width, world_grid.height);
-	enemy_tanks_coors = new vector<coordinate_t>();
-	store_enemy_tanks_coors(my_team);
-	populate_tank_grid();
+	//my_team->get_occgrid(world_grid);
+	printf("Now building the world_grid, using size %d.\n", world_size);
+	populate_world_grid(world_size);
+	printf("Just got WorldGrid, its size is %d, %d.\n", world_grid.width, world_grid.height);
+	
+	//enemy_tanks_coors = new vector<coordinate_t>();
+	//store_enemy_tanks_coors(my_team);
+	//populate_tank_grid();
 
 	store_green_flag(my_team);
 	//store_red_tank(my_team);
-	
+
+	printf("Printing the world grid.");
 	print_grid("obstacles.tga");
+	//exit(0);
 	//my_team->print_grid(world_grid);
 
 	left_bounds = 0;
@@ -485,15 +503,18 @@ void print_grid(const char* filename) {
 		for (int x_n = 0; x_n < world_grid.width; x_n++) {
 			int curr_pixel = world_grid.obstacles.at(x_n).at(world_grid.height - y_n -1);
 			
-			if (curr_pixel) { // is an obstacle
+			if (curr_pixel == 1) { // is an obstacle
 				c.r = 128;
 				c.g = 128;
 				c.b = 128;
-			}
-			else { // is empty
+			} else if (curr_pixel == 0) { // is empty
 				c.r = 0;
 				c.g = 0;
 				c.b = 0;
+			} else if (curr_pixel == UNEXPLORED_VALUE) {
+				c.r = 0;
+				c.g = 0;
+				c.b = 255;
 			}
 			img->setPixel(c,x_n,y_n);
 		}
@@ -524,15 +545,18 @@ void display_path(const char* filename, stack<coordinate_t> * path)
 		for (int x_n = 0; x_n < world_grid.width; x_n++) {
 			int curr_pixel = world_grid.obstacles.at(x_n).at(world_grid.height - y_n -1);
 			
-			if (curr_pixel) { // is an obstacle
+			if (curr_pixel == 1) { // is an obstacle
 				c.r = 128;
 				c.g = 128;
 				c.b = 128;
-			}
-			else { // is empty
+			} else if (curr_pixel == 0) { // is empty
 				c.r = 0;
 				c.g = 0;
 				c.b = 0;
+			} else if (curr_pixel == UNEXPLORED_VALUE) {
+				c.r = 0;
+				c.g = 0;
+				c.b = 255;
 			}
 			img->setPixel(c,x_n,y_n);
 		}
@@ -932,15 +956,18 @@ void print_tank_weights(const char* filename)
 		for (int x_n = 0; x_n < world_grid.width; x_n++) {
 			int curr_pixel = world_grid.obstacles.at(x_n).at(world_grid.height - y_n -1);
 			
-			if (curr_pixel) { // is an obstacle
+			if (curr_pixel == 1) { // is an obstacle
 				c.r = 128;
 				c.g = 128;
 				c.b = 128;
-			}
-			else { // is empty
+			} else if (curr_pixel == 0) { // is empty
 				c.r = 0;
 				c.g = 0;
 				c.b = 0;
+			} else if (curr_pixel == UNEXPLORED_VALUE) {
+				c.r = 0;
+				c.g = 0;
+				c.b = 255;
 			}
 			
 			// Draw tank fields in red
@@ -1023,7 +1050,7 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 		
 		// Check if we're in a wall
 		//printf("WorldGrid Obstacles: %d, %d\n", world_grid.obstacles.size(), world_grid.obstacles.at(current_x).size());
-		if (world_grid.obstacles.at(current_x).at(current_y))
+		if (world_grid.obstacles.at(current_x).at(current_y) == 1)
 		{
 			//printf("Inside a wall, backing out.\n");
 			continue;
@@ -1062,6 +1089,8 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 			next_location.prev_x = current_x;
 			next_location.prev_y = current_y;
 			next_location.cost = current_location.cost;
+
+			//printf("Adding new location %f, %f to the stack.\n", next_location.x, next_location.y);
 	
 			double multiplier = 1.0;
 	
@@ -1096,10 +1125,10 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 				next_location.cost += (multiplier * SQRT_TWO);
 			}
 
-			if (avoid_tanks)
-			{
-				next_location.cost += tank_weights.weights.at(current_location.x).at(current_location.y);
-			}
+			//~ if (avoid_tanks)
+			//~ {
+				//~ next_location.cost += tank_weights.weights.at(current_location.x).at(current_location.y);
+			//~ }
 			
 			if (use_heuristic)
 			{
@@ -1300,7 +1329,7 @@ void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team)
 void keep_tank_on_course(int tank_n, BZRC* my_team)
 {
 	const double turn_strength = 1.0;
-	const double acceptable_difference = 0.2;	// As long as our impulse is within an arc this many radians wide, drive at full speed
+	const double acceptable_difference = 1.0;	// As long as our impulse is within an arc this many radians wide, drive at full speed
 
 	direction_t impulse = tank_brains->at(tank_n).heading;
 	impulse.y *= -1; // stupid inverstion crap
@@ -1310,7 +1339,7 @@ void keep_tank_on_course(int tank_n, BZRC* my_team)
 	double speed;
 	double turning;
 
-	printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
+	//printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
 
 	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
 	if (impulse.x == 0 && impulse.y == 0)
@@ -1350,7 +1379,7 @@ void keep_tank_on_course(int tank_n, BZRC* my_team)
 		{
 			// Full speed ahead.
 			speed = 1.0;
-			my_team->shoot(tank_n);
+			//my_team->shoot(tank_n);
 		}
 		else
 		{
@@ -1370,3 +1399,47 @@ void keep_tank_on_course(int tank_n, BZRC* my_team)
 	my_team->angvel(tank_n, turning);
 	return;
 }
+
+void populate_world_grid(int size)
+{
+	world_grid.width = size;
+	world_grid.height = size;
+	world_grid.obstacles.resize(size);
+
+	for (int height_n = 0; height_n < size; height_n++) {
+		for (int width_n = 0; width_n < size; width_n++) {
+			world_grid.obstacles.at(height_n).push_back(UNEXPLORED_VALUE);
+		}
+	}
+}
+
+void update_tank_vision(BZRC* my_team)
+{
+	for (int tank_n = 0; tank_n < my_tanks->size(); tank_n++)
+	{
+		grid_t ret;
+		my_team->get_tank_vision_grid(ret, tank_n);
+
+		//printf("Getting tank vision. Top: %d. Bottom: %d. Left: %d. Right: %d.\n", top, bottom, left, right);
+
+		for (int x = 0; x < ret.width; x++)
+		{
+			for (int y = 0; y < ret.height; y++)
+			{
+				int current_x = x + ret.left;
+				int current_y = y + ret.top - ret.height + 1;
+				
+				assert(current_x >= 0);
+				assert(current_y >= 0);
+				assert(current_x < world_grid.width);
+				assert(current_y < world_grid.height);
+
+				int new_obstacle_value = ret.obstacles.at(x).at(y);
+				// TODO use bayesian filtering, store the incoming values, set the world grid based on the most recent calculated value 
+
+				world_grid.obstacles.at(current_x).at(current_y) = new_obstacle_value;
+			}
+		}
+	}
+	return;
+} // end update_tank_vision()

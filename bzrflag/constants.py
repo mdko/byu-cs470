@@ -41,7 +41,6 @@ logger = logging.getLogger('constants')
 
 # Colors
 COLORNAME = ('rogue', 'red', 'green', 'blue', 'purple')
-#COLORNAME = ('red', 'green')
 
 # Tanks
 TANKANGVEL = math.pi / 4

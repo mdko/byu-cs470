@@ -19,6 +19,7 @@
 #include <vector>
 #include "math.h"
 #include <sstream>
+//#define NDEBUG
 #include <assert.h>
 #include <stack>
 #include <queue>
@@ -878,6 +879,109 @@ public:
 		return true;
 	}
 
+	bool get_tank_vision_grid(grid_t& vision_grid, int tank_n) {
+		volatile int i = 5 / 0;
+		string query_message = "occgrid ";
+		char buffer[4];
+		sprintf(buffer, "%d", tank_n);
+		query_message.append(buffer);
+		SendLine(query_message.c_str());
+		ReadAck();
+		vector <string> v=ReadArr();
+		if(v.at(0)!="begin") {
+			if (DEBUG_S) {
+				printf("First word is occgrid response is not 'begin'. It was %s. Returning...\n", v.at(0).c_str());
+			}
+			return false;
+		}
+		v.clear();
+
+		// Get location of top-left corner of grid
+		v=ReadArr();
+		int location_of_comma = v.at(1).find(",");
+		vision_grid.left = atoi(v.at(1).substr(0, location_of_comma).c_str());
+		vision_grid.top = atoi(v.at(1).substr(location_of_comma + 1, (v.at(1).length() - 1 - location_of_comma)).c_str()); // TODO
+		if (DEBUG_S) {
+			printf("Occ grid string: %s\n", v.at(1).c_str());
+		}
+		v.clear();
+		
+		if (DEBUG_S) {
+			printf("World grid left = %d\n", vision_grid.left);
+			printf("World grid top = %d\n", vision_grid.top);
+		}
+		
+		// Get dimensions of grid
+		v=ReadArr();
+		int location_of_x = v.at(1).find("x");
+		vision_grid.width = atoi(v.at(1).substr(0, location_of_x).c_str());
+		vision_grid.height = atoi(v.at(1).substr(location_of_x + 1, (v.at(1).length() - 1 - location_of_x)).c_str());
+		v.clear();
+
+		if (DEBUG_S) {
+			printf("World grid width = %d\n", vision_grid.width);
+			printf("World grid height = %d\n", vision_grid.height);
+		}
+		
+		// Top-left corner of grid corresponds to bottom-left corner of world
+		// Grid comes in as:
+		// ----Height----
+		// | ++++++++++++
+		// | + 			+
+		// W +			+
+		// i +			+
+		// d +			+
+		// t +			+
+		// h +			+
+		// | +			+
+		// | ++++++++++++
+		// 
+		// And I store it in grid_t as:
+		// --------Width--------
+		// H +++++++++++++++++++
+		// e +				   +
+		// i +				   +
+		// g +				   +
+		// h +				   +
+		// t +++++++++++++++++++
+
+		vector<string> old_world;
+		old_world.resize(vision_grid.width);
+
+		if (DEBUG_S) {
+			printf("Importing grid...\n");
+		}
+		// Get grid lines (each line corresponds to a different x-coordinate)
+		v=ReadArr();
+		for (int width_n = 0; width_n < vision_grid.width; width_n++) {
+			old_world.at(width_n) = v.at(0);
+			v.clear();
+			v=ReadArr();
+			if (DEBUG_S) {
+				cout << v.at(0).c_str() << endl;
+			}
+		}
+
+		vision_grid.obstacles.resize(vision_grid.height);
+		for (int height_n = 0; height_n < vision_grid.height; height_n++) {
+			for (int width_n = vision_grid.width - 1; width_n >= 0; width_n--) {
+				//int old_world_digit = atoi(&old_world.at(width_n).at(height_n));
+				char old_world_char = old_world.at(height_n).at(width_n);
+				assert(old_world_char == '1' || old_world_char == '0');
+				int old_world_digit = old_world_char - 48; //48 is ascii value of 0
+				vision_grid.obstacles.at(height_n).push_back(old_world_digit);
+			}
+		}
+
+		// We need to rotate the grid counter-clockwise by 90 degrees because that's how it gets sent to us for some reason.'
+		//vector<vector<int> > rotated_grid;
+		//for ()
+		//)
+		
+				
+		return true;
+	}
+
 	void print_grid(grid_t grid) {
 		assert(grid.height != 0 && grid.width != 0);
 		for (int row_n = 0; row_n < grid.height; row_n++) {
@@ -971,3 +1075,8 @@ bool has_adjacent_occupied(int x, int y);
 
 void set_tank_heading(int tank_n, stack<coordinate_t> * path, BZRC* my_team);
 void keep_tank_on_course(int tank_n, BZRC* my_team);
+
+void populate_world_grid(int size);
+
+void update_tank_vision(BZRC* my_team);
+

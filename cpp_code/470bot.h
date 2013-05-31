@@ -24,7 +24,7 @@
 #include <stack>
 #include <queue>
 
-#define MY_DEBUG true
+#define MY_DEBUG false
 
 using namespace std;
 
@@ -880,7 +880,6 @@ public:
 	}
 
 	bool get_tank_vision_grid(grid_t& vision_grid, int tank_n) {
-		volatile int i = 5 / 0;
 		string query_message = "occgrid ";
 		char buffer[4];
 		sprintf(buffer, "%d", tank_n);
@@ -916,6 +915,10 @@ public:
 		int location_of_x = v.at(1).find("x");
 		vision_grid.width = atoi(v.at(1).substr(0, location_of_x).c_str());
 		vision_grid.height = atoi(v.at(1).substr(location_of_x + 1, (v.at(1).length() - 1 - location_of_x)).c_str());
+
+		// We believe that bzrflag has an off-by-one error on the width of the occgrid array.
+		vision_grid.width--;
+
 		v.clear();
 
 		if (DEBUG_S) {
@@ -962,11 +965,18 @@ public:
 			}
 		}
 
-		vision_grid.obstacles.resize(vision_grid.height);
-		for (int height_n = 0; height_n < vision_grid.height; height_n++) {
-			for (int width_n = vision_grid.width - 1; width_n >= 0; width_n--) {
+		v=ReadArr();
+		if(v.at(0)!="end") {
+			assert(false);
+		}
+
+		vision_grid.obstacles.resize(vision_grid.width);
+		for (int height_n = 0; height_n < vision_grid.width; height_n++) {
+			for (int width_n = vision_grid.height - 1; width_n >= 0; width_n--) {
 				//int old_world_digit = atoi(&old_world.at(width_n).at(height_n));
+				//printf("Reading raw occgrid string at %d, %d.\n", height_n, width_n);
 				char old_world_char = old_world.at(height_n).at(width_n);
+				//printf("Got raw occgrid string with no problems.\n", height_n, width_n);
 				assert(old_world_char == '1' || old_world_char == '0');
 				int old_world_digit = old_world_char - 48; //48 is ascii value of 0
 				vision_grid.obstacles.at(height_n).push_back(old_world_digit);
@@ -1080,3 +1090,4 @@ void populate_world_grid(int size);
 
 void update_tank_vision(BZRC* my_team);
 
+void update_world_obstacles(int current_x, int current_y, int observed_value);

@@ -27,9 +27,13 @@ const int tank_field_strength = 2;
 #define NUMBER_OF_DIRECTIONS 8
 static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
 
-#define MAX_UPDATE_DELAY 2 // Update tank headings every 1-2 seconds. (Realistically it will probably go longer than this.)
+#define MAX_UPDATE_DELAY 0 // Update tank headings every 1-2 seconds. (Realistically it will probably go longer than this.)
 
 #define UNEXPLORED_VALUE -1
+
+#define INITIAL_OBSTACLE_PROBABILITY 0.5
+
+#define CONF_THRESHOLD .975
 
 static grid_t world_grid;
 static coordinate_t NULL_COORDINATE;
@@ -39,6 +43,8 @@ static double top_bounds;
 static double bottom_bounds;
 static coordinate_t green_flag_coor;
 static vector<coordinate_t> *enemy_tanks_coors;
+
+static weight_grid_t explored_probabilities;
 
 static int world_size;
 
@@ -143,11 +149,32 @@ int main(int argc, char *argv[]) {
 				continue;
 			}
 
-			if (tank_brains->at(tank_n).current_goal.x == NULL_COORDINATE.x && tank_brains->at(tank_n).current_goal.y == NULL_COORDINATE.y)
+			bool explore = false;
+			if (tank_brains->at(tank_n).current_goal.x == NULL_COORDINATE.x || tank_brains->at(tank_n).current_goal.y == NULL_COORDINATE.y)
 			{
-				// TODO If the tank has seen its goal, find a new goal using breadth-first search and set it's brain's goal to the path that returns.
-				tank_brains->at(tank_n).current_goal = dummy_goal;
+				explore = true;
 			}
+			else if (world_grid.obstacles.at(tank_brains->at(tank_n).current_goal.x).at(tank_brains->at(tank_n).current_goal.y) != UNEXPLORED_VALUE)
+			{
+				explore = true;
+			}
+			
+			if (explore)
+			{
+				int new_x;
+				int new_y;
+				
+				new_x = rand() % world_grid.width;
+				new_y = rand() % world_grid.height;
+				
+				if (world_grid.obstacles.at(new_x).at(new_y) == UNEXPLORED_VALUE)
+				{
+					printf("Tank %d is now going to explore towards %d, %d.\n", tank_n, new_x, new_y);
+					tank_brains->at(tank_n).current_goal.x = new_x;
+					tank_brains->at(tank_n).current_goal.y = new_y;
+				}
+			}
+
 
 			coordinate_t current_goal;
 			current_goal = tank_brains->at(tank_n).current_goal;
@@ -159,10 +186,11 @@ int main(int argc, char *argv[]) {
 			gettimeofday(&now, NULL);
 			long current_time_s = now.tv_sec;
 
-			if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s || tank_brains->at(tank_n).last_updated_s == 0)
+			//if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s || tank_brains->at(tank_n).last_updated_s == 0)
+			if (true)
 			{
 				// The tank's path is expired, we're going to find it a new path to its goal using a-star.
-				//printf("Tank %d's path is expired. Now calculating from %f, %f to %f, %f.\n", tank_n, current_goal.x, current_goal.y, current_position.x, current_position.y);
+				printf("Tank %d's path is expired. Now calculating from %f, %f to %f, %f.\n", tank_n, current_goal.x, current_goal.y, current_position.x, current_position.y);
 				fill_directional_grid(world_grid.width, world_grid.height);
 				//printf("WorldGrid: %d,%d\n", world_grid.width, world_grid.height);
 				stack<coordinate_t> * my_current_path = best_first_search(current_goal.x, current_goal.y, current_position.x, current_position.y, true);
@@ -183,11 +211,11 @@ int main(int argc, char *argv[]) {
 			else
 			{
 				// Let the tank keep trying to track, it's fine right now.
+				printf("Currently this shouldn''t happen.\n");
 			}
 			
 			my_tanks->clear();
 			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
-			// TODO Command the tank to turn and accelerate based on the path it has.
 			keep_tank_on_course(tank_n, &MyTeam);
 		}
 	}
@@ -991,6 +1019,15 @@ void print_tank_weights(const char* filename)
 // If use_heuristic is false, this is uniform cost. If use_heuristic is true, this is A-star.
 stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x, int start_y, bool use_heuristic)
 {
+	if (target_x == NULL_COORDINATE.x && target_y == NULL_COORDINATE.y)
+	{
+		return NULL;
+	}
+	if (start_x == NULL_COORDINATE.x && start_y == NULL_COORDINATE.y)
+	{
+		return NULL;
+	}
+	
 	assert(left_bounds == 0);
 	assert(bottom_bounds == 0);
 	assert(target_x >= 0);
@@ -1171,6 +1208,11 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 			curr.y = current_location.y;
 			ret->push(curr);
 
+			if (curr.x == NULL_COORDINATE.x && curr.y == NULL_COORDINATE.y)
+			{
+				return NULL;
+			}
+			//printf("Found an A-star path to %f, %f.\n", curr.x, curr.y);
 			current_location.x = directional_grid.contents.at(curr.x).at(curr.y).x;
 			current_location.y = directional_grid.contents.at(curr.x).at(curr.y).y;
 			if(sanity++ > 20000)
@@ -1406,9 +1448,14 @@ void populate_world_grid(int size)
 	world_grid.height = size;
 	world_grid.obstacles.resize(size);
 
+	explored_probabilities.width = size;
+	explored_probabilities.height = size;
+	explored_probabilities.weights.resize(size);
+
 	for (int height_n = 0; height_n < size; height_n++) {
 		for (int width_n = 0; width_n < size; width_n++) {
 			world_grid.obstacles.at(height_n).push_back(UNEXPLORED_VALUE);
+			explored_probabilities.weights.at(height_n).push_back(INITIAL_OBSTACLE_PROBABILITY);
 		}
 	}
 }
@@ -1419,27 +1466,105 @@ void update_tank_vision(BZRC* my_team)
 	{
 		grid_t ret;
 		my_team->get_tank_vision_grid(ret, tank_n);
+		
+		ret.left += world_grid.width / 2;
+		ret.top += world_grid.height / 2; // Is actually bottom
 
 		//printf("Getting tank vision. Top: %d. Bottom: %d. Left: %d. Right: %d.\n", top, bottom, left, right);
+
+		//printf("Got tank vision grid for tank %d. Top: %d, Left: %d, Width: %d, Height: %d.\n", tank_n, ret.top, ret.left, ret.width, ret.height);
 
 		for (int x = 0; x < ret.width; x++)
 		{
 			for (int y = 0; y < ret.height; y++)
 			{
-				int current_x = x + ret.left;
-				int current_y = y + ret.top - ret.height + 1;
+				int current_x = ret.left + x;
+				int current_y = y + world_grid.height - ret.height - ret.top;
 				
+				//printf("Printing vision for tank %d at pixel %d, %d.\n", tank_n, current_x, current_y);
+				
+				if (current_y < 0 || current_y >= world_grid.height || current_x < 0 || current_x >= world_grid.width)
+				{
+					printf("ERROR: Out of bounds on tank vision update at %d, %d.", current_x, current_y);
+					continue;
+				}
 				assert(current_x >= 0);
 				assert(current_y >= 0);
 				assert(current_x < world_grid.width);
 				assert(current_y < world_grid.height);
 
-				int new_obstacle_value = ret.obstacles.at(x).at(y);
-				// TODO use bayesian filtering, store the incoming values, set the world grid based on the most recent calculated value 
+				int observed_value = ret.obstacles.at(x).at(y);
 
-				world_grid.obstacles.at(current_x).at(current_y) = new_obstacle_value;
+				update_world_obstacles(current_x, current_y, observed_value);
 			}
 		}
 	}
 	return;
 } // end update_tank_vision()
+
+void update_world_obstacles(int current_x, int current_y, int observed_value)
+{
+	const double true_positive = .97;
+	const double false_negative = .03;
+	const double false_positive = .1;
+	const double true_negative = .9;
+
+	int obstacle_ret = UNEXPLORED_VALUE;
+	double historical_ret = INITIAL_OBSTACLE_PROBABILITY;
+	
+	double curr_value = explored_probabilities.weights.at(current_x).at(current_y);
+	
+	int curr_value_occupied = (curr_value > CONF_THRESHOLD) ? 1 : 0;
+	
+	double prob = 0.0;
+	
+	if (observed_value)
+	{
+		if (curr_value)
+		{
+			prob = true_positive;
+		}
+		else
+		{
+			prob = false_positive;
+		}
+	}
+	else
+	{
+		if (curr_value)
+		{
+			prob = false_negative;
+		}
+		else
+		{
+			prob = true_negative;
+		}
+	}
+	
+	double B = 0.0;
+	if (observed_value)
+	{
+		B = false_positive;
+	}
+	else
+	{
+		B = true_negative;
+	}
+	B *= (1 - curr_value);
+	
+	double A = prob * curr_value;
+	historical_ret = A / (A + B);
+	
+	if (historical_ret > CONF_THRESHOLD)
+	{
+		obstacle_ret = 1;
+	}
+	else if (historical_ret < 1 - CONF_THRESHOLD)
+	{
+		obstacle_ret = 0;
+	}
+	
+	world_grid.obstacles.at(current_x).at(current_y) = obstacle_ret;
+	explored_probabilities.weights.at(current_x).at(current_y) = historical_ret;
+	return;
+} // end update_world_obstacles

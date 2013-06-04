@@ -1,0 +1,1180 @@
+The system is: Linux - 3.6.11-1.fc17.x86_64 - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/lib64/ccache/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec571874799/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec571874799.dir/build.make CMakeFiles/cmTryCompileExec571874799.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec571874799.dir/testCXXCompiler.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec571874799.dir/testCXXCompiler.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec571874799
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec571874799.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec571874799.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec571874799 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1900250491/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1900250491.dir/build.make CMakeFiles/cmTryCompileExec1900250491.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec1900250491
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1900250491.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1900250491 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) 
+COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1900250491' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec1900250491 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec1900250491/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1900250491.dir/build.make CMakeFiles/cmTryCompileExec1900250491.dir/build]
+  ignore line: [gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec1900250491]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1900250491.dir/link.txt --verbose=1]
+  ignore line: [/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1900250491 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1900250491' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec1900250491 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o]
+    arg [/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec1900250491] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..]
+    arg [CMakeFiles/cmTryCompileExec1900250491.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> [/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib/gcc/x86_64-redhat-linux/4.7.2;/usr/lib64;/lib64;/usr/lib]
+
+
+Determining if the include file boost/date_time/posix_time/posix_time.hpp exists passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3443324195/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3443324195.dir/build.make CMakeFiles/cmTryCompileExec3443324195.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3443324195.dir/CheckIncludeFile.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec3443324195.dir/CheckIncludeFile.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTryCompileExec3443324195
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3443324195.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec3443324195.dir/CheckIncludeFile.cxx.o  -o cmTryCompileExec3443324195 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISFINITE succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3296088432/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3296088432.dir/build.make CMakeFiles/cmTryCompileExec3296088432.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3296088432.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISFINITE   -o CMakeFiles/cmTryCompileExec3296088432.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3296088432
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3296088432.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISFINITE    CMakeFiles/cmTryCompileExec3296088432.dir/src.cxx.o  -o cmTryCompileExec3296088432 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isfinite)
+    int i = (std::isfinite)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISINF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2527243394/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2527243394.dir/build.make CMakeFiles/cmTryCompileExec2527243394.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2527243394.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISINF   -o CMakeFiles/cmTryCompileExec2527243394.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2527243394
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2527243394.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISINF    CMakeFiles/cmTryCompileExec2527243394.dir/src.cxx.o  -o cmTryCompileExec2527243394 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isinf)
+    int i = (std::isinf)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISNAN succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec954293014/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec954293014.dir/build.make CMakeFiles/cmTryCompileExec954293014.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec954293014.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISNAN   -o CMakeFiles/cmTryCompileExec954293014.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec954293014
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec954293014.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISNAN    CMakeFiles/cmTryCompileExec954293014.dir/src.cxx.o  -o cmTryCompileExec954293014 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isnan)
+    int i = (std::isnan)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_LOG1P succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1733571903/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1733571903.dir/build.make CMakeFiles/cmTryCompileExec1733571903.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1733571903.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_LOG1P   -o CMakeFiles/cmTryCompileExec1733571903.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1733571903
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1733571903.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_LOG1P    CMakeFiles/cmTryCompileExec1733571903.dir/src.cxx.o  -o cmTryCompileExec1733571903 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(log1p)
+    int i = (::log1p)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_SNPRINTF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3712222208/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3712222208.dir/build.make CMakeFiles/cmTryCompileExec3712222208.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3712222208.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_SNPRINTF   -o CMakeFiles/cmTryCompileExec3712222208.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3712222208
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3712222208.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_SNPRINTF    CMakeFiles/cmTryCompileExec3712222208.dir/src.cxx.o  -o cmTryCompileExec3712222208 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cstdio>
+
+int
+main()
+  {
+  #if !defined(snprintf)
+    int i = sizeof(&(std::snprintf));
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_GETTIMEOFDAY succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3325032311/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3325032311.dir/build.make CMakeFiles/cmTryCompileExec3325032311.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3325032311.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_GETTIMEOFDAY   -o CMakeFiles/cmTryCompileExec3325032311.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3325032311
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3325032311.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_GETTIMEOFDAY    CMakeFiles/cmTryCompileExec3325032311.dir/src.cxx.o  -o cmTryCompileExec3325032311 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <sys/time.h>
+
+int
+main()
+  {
+  #if !defined(gettimeofday)
+    int i = sizeof(&(::gettimeofday));
+  #endif
+  return 0;
+  }
+
+The system is: Linux - 3.6.11-1.fc17.x86_64 - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/lib64/ccache/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1644934369/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1644934369.dir/build.make CMakeFiles/cmTryCompileExec1644934369.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1644934369.dir/testCXXCompiler.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec1644934369.dir/testCXXCompiler.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec1644934369
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1644934369.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec1644934369.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1644934369 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4256360446/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4256360446.dir/build.make CMakeFiles/cmTryCompileExec4256360446.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec4256360446
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4256360446.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec4256360446 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) 
+COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec4256360446' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec4256360446 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec4256360446/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4256360446.dir/build.make CMakeFiles/cmTryCompileExec4256360446.dir/build]
+  ignore line: [gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec4256360446]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4256360446.dir/link.txt --verbose=1]
+  ignore line: [/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec4256360446 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec4256360446' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec4256360446 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o]
+    arg [/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec4256360446] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..]
+    arg [CMakeFiles/cmTryCompileExec4256360446.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> [/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib/gcc/x86_64-redhat-linux/4.7.2;/usr/lib64;/lib64;/usr/lib]
+
+
+Determining if the include file boost/date_time/posix_time/posix_time.hpp exists passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1021651198/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1021651198.dir/build.make CMakeFiles/cmTryCompileExec1021651198.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1021651198.dir/CheckIncludeFile.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec1021651198.dir/CheckIncludeFile.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTryCompileExec1021651198
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1021651198.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec1021651198.dir/CheckIncludeFile.cxx.o  -o cmTryCompileExec1021651198 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISFINITE succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1591281929/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1591281929.dir/build.make CMakeFiles/cmTryCompileExec1591281929.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1591281929.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISFINITE   -o CMakeFiles/cmTryCompileExec1591281929.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1591281929
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1591281929.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISFINITE    CMakeFiles/cmTryCompileExec1591281929.dir/src.cxx.o  -o cmTryCompileExec1591281929 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isfinite)
+    int i = (std::isfinite)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISINF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec393886661/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec393886661.dir/build.make CMakeFiles/cmTryCompileExec393886661.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec393886661.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISINF   -o CMakeFiles/cmTryCompileExec393886661.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec393886661
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec393886661.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISINF    CMakeFiles/cmTryCompileExec393886661.dir/src.cxx.o  -o cmTryCompileExec393886661 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isinf)
+    int i = (std::isinf)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISNAN succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1250995424/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1250995424.dir/build.make CMakeFiles/cmTryCompileExec1250995424.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1250995424.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISNAN   -o CMakeFiles/cmTryCompileExec1250995424.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1250995424
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1250995424.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISNAN    CMakeFiles/cmTryCompileExec1250995424.dir/src.cxx.o  -o cmTryCompileExec1250995424 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isnan)
+    int i = (std::isnan)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_LOG1P succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1839368882/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1839368882.dir/build.make CMakeFiles/cmTryCompileExec1839368882.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1839368882.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_LOG1P   -o CMakeFiles/cmTryCompileExec1839368882.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1839368882
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1839368882.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_LOG1P    CMakeFiles/cmTryCompileExec1839368882.dir/src.cxx.o  -o cmTryCompileExec1839368882 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(log1p)
+    int i = (::log1p)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_SNPRINTF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1624419348/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1624419348.dir/build.make CMakeFiles/cmTryCompileExec1624419348.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1624419348.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_SNPRINTF   -o CMakeFiles/cmTryCompileExec1624419348.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1624419348
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1624419348.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_SNPRINTF    CMakeFiles/cmTryCompileExec1624419348.dir/src.cxx.o  -o cmTryCompileExec1624419348 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cstdio>
+
+int
+main()
+  {
+  #if !defined(snprintf)
+    int i = sizeof(&(std::snprintf));
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_GETTIMEOFDAY succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2643000813/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2643000813.dir/build.make CMakeFiles/cmTryCompileExec2643000813.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2643000813.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_GETTIMEOFDAY   -o CMakeFiles/cmTryCompileExec2643000813.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2643000813
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2643000813.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_GETTIMEOFDAY    CMakeFiles/cmTryCompileExec2643000813.dir/src.cxx.o  -o cmTryCompileExec2643000813 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <sys/time.h>
+
+int
+main()
+  {
+  #if !defined(gettimeofday)
+    int i = sizeof(&(::gettimeofday));
+  #endif
+  return 0;
+  }
+
+The system is: Linux - 3.6.11-1.fc17.x86_64 - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/lib64/ccache/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1360703501/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1360703501.dir/build.make CMakeFiles/cmTryCompileExec1360703501.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1360703501.dir/testCXXCompiler.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec1360703501.dir/testCXXCompiler.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec1360703501
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1360703501.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec1360703501.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1360703501 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3718532468/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3718532468.dir/build.make CMakeFiles/cmTryCompileExec3718532468.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec3718532468
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3718532468.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3718532468 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) 
+COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3718532468' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec3718532468 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec3718532468/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3718532468.dir/build.make CMakeFiles/cmTryCompileExec3718532468.dir/build]
+  ignore line: [gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec3718532468]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3718532468.dir/link.txt --verbose=1]
+  ignore line: [/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3718532468 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3718532468' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec3718532468 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o]
+    arg [/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec3718532468] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..]
+    arg [CMakeFiles/cmTryCompileExec3718532468.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> [/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib/gcc/x86_64-redhat-linux/4.7.2;/usr/lib64;/lib64;/usr/lib]
+
+
+Determining if the include file boost/date_time/posix_time/posix_time.hpp exists passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec165823320/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec165823320.dir/build.make CMakeFiles/cmTryCompileExec165823320.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec165823320.dir/CheckIncludeFile.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec165823320.dir/CheckIncludeFile.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTryCompileExec165823320
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec165823320.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec165823320.dir/CheckIncludeFile.cxx.o  -o cmTryCompileExec165823320 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISFINITE succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec56553409/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec56553409.dir/build.make CMakeFiles/cmTryCompileExec56553409.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec56553409.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISFINITE   -o CMakeFiles/cmTryCompileExec56553409.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec56553409
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec56553409.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISFINITE    CMakeFiles/cmTryCompileExec56553409.dir/src.cxx.o  -o cmTryCompileExec56553409 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isfinite)
+    int i = (std::isfinite)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISINF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2786955816/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2786955816.dir/build.make CMakeFiles/cmTryCompileExec2786955816.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2786955816.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISINF   -o CMakeFiles/cmTryCompileExec2786955816.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2786955816
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2786955816.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISINF    CMakeFiles/cmTryCompileExec2786955816.dir/src.cxx.o  -o cmTryCompileExec2786955816 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isinf)
+    int i = (std::isinf)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISNAN succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec973249531/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec973249531.dir/build.make CMakeFiles/cmTryCompileExec973249531.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec973249531.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISNAN   -o CMakeFiles/cmTryCompileExec973249531.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec973249531
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec973249531.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISNAN    CMakeFiles/cmTryCompileExec973249531.dir/src.cxx.o  -o cmTryCompileExec973249531 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isnan)
+    int i = (std::isnan)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_LOG1P succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2467444982/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2467444982.dir/build.make CMakeFiles/cmTryCompileExec2467444982.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2467444982.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_LOG1P   -o CMakeFiles/cmTryCompileExec2467444982.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2467444982
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2467444982.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_LOG1P    CMakeFiles/cmTryCompileExec2467444982.dir/src.cxx.o  -o cmTryCompileExec2467444982 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(log1p)
+    int i = (::log1p)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_SNPRINTF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3281268837/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3281268837.dir/build.make CMakeFiles/cmTryCompileExec3281268837.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3281268837.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_SNPRINTF   -o CMakeFiles/cmTryCompileExec3281268837.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3281268837
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3281268837.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_SNPRINTF    CMakeFiles/cmTryCompileExec3281268837.dir/src.cxx.o  -o cmTryCompileExec3281268837 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cstdio>
+
+int
+main()
+  {
+  #if !defined(snprintf)
+    int i = sizeof(&(std::snprintf));
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_GETTIMEOFDAY succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec716657906/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec716657906.dir/build.make CMakeFiles/cmTryCompileExec716657906.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec716657906.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_GETTIMEOFDAY   -o CMakeFiles/cmTryCompileExec716657906.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec716657906
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec716657906.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_GETTIMEOFDAY    CMakeFiles/cmTryCompileExec716657906.dir/src.cxx.o  -o cmTryCompileExec716657906 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <sys/time.h>
+
+int
+main()
+  {
+  #if !defined(gettimeofday)
+    int i = sizeof(&(::gettimeofday));
+  #endif
+  return 0;
+  }
+
+The system is: Linux - 3.6.11-1.fc17.x86_64 - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/lib64/ccache/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1544023413/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1544023413.dir/build.make CMakeFiles/cmTryCompileExec1544023413.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1544023413.dir/testCXXCompiler.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec1544023413.dir/testCXXCompiler.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec1544023413
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1544023413.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec1544023413.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1544023413 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4009607428/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4009607428.dir/build.make CMakeFiles/cmTryCompileExec4009607428.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec4009607428
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4009607428.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec4009607428 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) 
+COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec4009607428' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec4009607428 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/gmake "cmTryCompileExec4009607428/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4009607428.dir/build.make CMakeFiles/cmTryCompileExec4009607428.dir/build]
+  ignore line: [gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec4009607428]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4009607428.dir/link.txt --verbose=1]
+  ignore line: [/usr/lib64/ccache/c++        -v CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec4009607428 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/lto-wrapper]
+  ignore line: [Target: x86_64-redhat-linux]
+  ignore line: [Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --disable-build-with-cxx --disable-build-poststage1-with-cxx --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-languages=c,c++,objc,obj-c++,java,fortran,ada,go,lto --enable-plugin --enable-initfini-array --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.7.2 20120921 (Red Hat 4.7.2-2) (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.7.2/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec4009607428' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec4009607428 /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../.. CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o]
+    arg [/usr/libexec/gcc/x86_64-redhat-linux/4.7.2/collect2] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--no-add-needed] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec4009607428] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..]
+    arg [CMakeFiles/cmTryCompileExec4009607428.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2] ==> [/usr/lib/gcc/x86_64-redhat-linux/4.7.2]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../../../lib64] ==> [/usr/lib64]
+  collapse dir [/lib/../lib64] ==> [/lib64]
+  collapse dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse dir [/usr/lib/gcc/x86_64-redhat-linux/4.7.2/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib/gcc/x86_64-redhat-linux/4.7.2;/usr/lib64;/lib64;/usr/lib]
+
+
+Determining if the include file boost/date_time/posix_time/posix_time.hpp exists passed with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2380200804/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2380200804.dir/build.make CMakeFiles/cmTryCompileExec2380200804.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2380200804.dir/CheckIncludeFile.cxx.o
+/usr/lib64/ccache/c++     -o CMakeFiles/cmTryCompileExec2380200804.dir/CheckIncludeFile.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTryCompileExec2380200804
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2380200804.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++          CMakeFiles/cmTryCompileExec2380200804.dir/CheckIncludeFile.cxx.o  -o cmTryCompileExec2380200804 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISFINITE succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec2831910303/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec2831910303.dir/build.make CMakeFiles/cmTryCompileExec2831910303.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2831910303.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISFINITE   -o CMakeFiles/cmTryCompileExec2831910303.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2831910303
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2831910303.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISFINITE    CMakeFiles/cmTryCompileExec2831910303.dir/src.cxx.o  -o cmTryCompileExec2831910303 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isfinite)
+    int i = (std::isfinite)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISINF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1964502284/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1964502284.dir/build.make CMakeFiles/cmTryCompileExec1964502284.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1964502284.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISINF   -o CMakeFiles/cmTryCompileExec1964502284.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1964502284
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1964502284.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISINF    CMakeFiles/cmTryCompileExec1964502284.dir/src.cxx.o  -o cmTryCompileExec1964502284 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isinf)
+    int i = (std::isinf)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_ISNAN succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec160041401/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec160041401.dir/build.make CMakeFiles/cmTryCompileExec160041401.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec160041401.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_ISNAN   -o CMakeFiles/cmTryCompileExec160041401.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec160041401
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec160041401.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_ISNAN    CMakeFiles/cmTryCompileExec160041401.dir/src.cxx.o  -o cmTryCompileExec160041401 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(isnan)
+    int i = (std::isnan)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_LOG1P succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec3889466841/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec3889466841.dir/build.make CMakeFiles/cmTryCompileExec3889466841.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3889466841.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_LOG1P   -o CMakeFiles/cmTryCompileExec3889466841.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3889466841
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3889466841.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_LOG1P    CMakeFiles/cmTryCompileExec3889466841.dir/src.cxx.o  -o cmTryCompileExec3889466841 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cmath>
+
+int main()
+  {
+  #if !defined(log1p)
+    int i = (::log1p)(1.0);
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_STD_SNPRINTF succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec4101568027/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec4101568027.dir/build.make CMakeFiles/cmTryCompileExec4101568027.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec4101568027.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_STD_SNPRINTF   -o CMakeFiles/cmTryCompileExec4101568027.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec4101568027
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4101568027.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_STD_SNPRINTF    CMakeFiles/cmTryCompileExec4101568027.dir/src.cxx.o  -o cmTryCompileExec4101568027 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <cstdio>
+
+int
+main()
+  {
+  #if !defined(snprintf)
+    int i = sizeof(&(std::snprintf));
+  #endif
+  return 0;
+  }
+
+Performing C++ SOURCE FILE Test ARMA_HAVE_GETTIMEOFDAY succeded with the following output:
+Change Dir: /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec77804921/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec77804921.dir/build.make CMakeFiles/cmTryCompileExec77804921.dir/build
+gmake[1]: Entering directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec77804921.dir/src.cxx.o
+/usr/lib64/ccache/c++    -DARMA_HAVE_GETTIMEOFDAY   -o CMakeFiles/cmTryCompileExec77804921.dir/src.cxx.o -c /users/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec77804921
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec77804921.dir/link.txt --verbose=1
+/usr/lib64/ccache/c++      -DARMA_HAVE_GETTIMEOFDAY    CMakeFiles/cmTryCompileExec77804921.dir/src.cxx.o  -o cmTryCompileExec77804921 -rdynamic 
+gmake[1]: Leaving directory `/users/home1/guest/m/mikeac89/cs470/bzrflag/lib/armadillo/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <sys/time.h>
+
+int
+main()
+  {
+  #if !defined(gettimeofday)
+    int i = sizeof(&(::gettimeofday));
+  #endif
+  return 0;
+  }
+

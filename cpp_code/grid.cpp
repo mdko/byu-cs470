@@ -33,7 +33,7 @@ static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
 
 #define INITIAL_OBSTACLE_PROBABILITY 0.5
 
-#define CONF_THRESHOLD .975
+#define CONF_THRESHOLD .6
 
 static grid_t world_grid;
 static coordinate_t NULL_COORDINATE;

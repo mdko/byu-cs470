@@ -1,0 +1,15 @@
+3. Plot filtered estimate of:
+	a. current location of clay pigeons
+	b. projected locations
+
+
+K(t + 1) = (FΣtFT + Σx)HT(H(FΣtFT + Σx)HT + Σz) − 1
+
+μ(t + 1) = Fμt + Kt + 1(zt + 1 − HFμt)
+
+Σ(t + 1) = (I − Kt + 1H)(FΣtFT + Σx)
+
+
+Initialize F, Σx, H, Σx, HT, FT once
+Initialize μ0 and Σ0 matrices at the start of each run
+To apply predictions in the future, use μt + 1 = Fμt

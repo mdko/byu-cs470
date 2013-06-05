@@ -1091,3 +1091,5 @@ void populate_world_grid(int size);
 void update_tank_vision(BZRC* my_team);
 
 void update_world_obstacles(int current_x, int current_y, int observed_value);
+
+void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target);

@@ -109,110 +109,48 @@ int main(int argc, char *argv[]) {
 	// Calling agent code
 	world_init(&MyTeam);
 	
-	fill_directional_grid(world_grid.width, world_grid.height);	
+	//fill_directional_grid(world_grid.width, world_grid.height);	
 	//printf("WorldGrid Size is %d, %d.\n", world_grid.width, world_grid.height);
 	
 	int number_of_tanks = my_tanks->size();
 
 	// Initialize the tank brains/goals
 	tank_brains = new vector<tank_brain_t>();
-	for (int tank_n = 0; tank_n < number_of_tanks; tank_n++)
-	{
-		tank_brain_t tb;
-		tb.last_updated_s = 0;
-		tb.current_goal = NULL_COORDINATE;
-		tank_brains->push_back(tb);
-	}
+	//for (int tank_n = 0; tank_n < number_of_tanks; tank_n++)
+	//{
+	//	tank_brain_t tb;
+	//	tb.last_updated_s = 0;
+	//	tb.current_goal = NULL_COORDINATE;
+	//	tank_brains->push_back(tb);
+	//}
 	
 	// TODO Delete this when we update the code to look for unexplored areas. 
-	coordinate_t dummy_goal = green_flag_coor;
+	//coordinate_t dummy_goal = green_flag_coor;
 	
-
 	struct timeval now;
 	gettimeofday(&now, NULL);
-	
-	while (number_of_search_failures < max_failures) // TODO Have an end state for when the map is explored
+
+	while (true)
 	{
-		for (int tank_n = 0; tank_n < number_of_tanks; tank_n++)
+		my_tanks->clear();
+		MyTeam.get_mytanks(my_tanks);
+
+		store_enemy_tanks_coors(&MyTeam);
+		
+		coordinate_t target;
+		target.x = enemy_tanks_coors->at(0).x;
+		target.y = enemy_tanks_coors->at(0).y;
+
+		if (target.x != NULL_COORDINATE.x && target.y != NULL_COORDINATE.y)
 		{
-			my_tanks->clear();
-			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
-
-			update_tank_vision(&MyTeam);
-
-			if (my_tanks->at(tank_n).status == "dead")
-			{
-				continue;
-			}
-
-			bool explore = false;
-			if (tank_brains->at(tank_n).current_goal.x == NULL_COORDINATE.x || tank_brains->at(tank_n).current_goal.y == NULL_COORDINATE.y)
-			{
-				explore = true;
-			}
-			else if (world_grid.obstacles.at(tank_brains->at(tank_n).current_goal.x).at(tank_brains->at(tank_n).current_goal.y) != UNEXPLORED_VALUE)
-			{
-				explore = true;
-			}
-			
-			if (explore)
-			{
-				int new_x;
-				int new_y;
-				
-				new_x = rand() % world_grid.width;
-				new_y = rand() % world_grid.height;
-				
-				if (world_grid.obstacles.at(new_x).at(new_y) == UNEXPLORED_VALUE)
-				{
-					printf("Tank %d is now going to explore towards %d, %d.\n", tank_n, new_x, new_y);
-					tank_brains->at(tank_n).current_goal.x = new_x;
-					tank_brains->at(tank_n).current_goal.y = new_y;
-				}
-			}
-
-
-			coordinate_t current_goal;
-			current_goal = tank_brains->at(tank_n).current_goal;
-
-			coordinate_t current_position;
-			current_position.x = my_tanks->at(tank_n).pos[0] + (world_grid.width / 2);
-			current_position.y = world_grid.height - (my_tanks->at(tank_n).pos[1] + (world_grid.height / 2));
-			
-			gettimeofday(&now, NULL);
-			long current_time_s = now.tv_sec;
-
-			//if (tank_brains->at(tank_n).last_updated_s + MAX_UPDATE_DELAY >= current_time_s || tank_brains->at(tank_n).last_updated_s == 0)
-			if (true)
-			{
-				// The tank's path is expired, we're going to find it a new path to its goal using a-star.
-				printf("Tank %d's path is expired. Now calculating from %f, %f to %f, %f.\n", tank_n, current_goal.x, current_goal.y, current_position.x, current_position.y);
-				fill_directional_grid(world_grid.width, world_grid.height);
-				//printf("WorldGrid: %d,%d\n", world_grid.width, world_grid.height);
-				stack<coordinate_t> * my_current_path = best_first_search(current_goal.x, current_goal.y, current_position.x, current_position.y, true);
-				set_tank_heading(tank_n, my_current_path, &MyTeam);
-				if (my_current_path != NULL)
-				{
-					delete my_current_path;
-				}
-				else
-				{
-					tank_brains->at(tank_n).current_goal = NULL_COORDINATE;
-				}
-
-				gettimeofday(&now, NULL);
-				current_time_s = now.tv_sec;
-				tank_brains->at(tank_n).last_updated_s = current_time_s;
-			}
-			else
-			{
-				// Let the tank keep trying to track, it's fine right now.
-				printf("Currently this shouldn''t happen.\n");
-			}
-			
-			my_tanks->clear();
-			MyTeam.get_mytanks(my_tanks); // We want our information about this tank's location to be as current as possible.
-			keep_tank_on_course(tank_n, &MyTeam);
+			printf("Shooting at %f, %f.\n", target.x, target.y);
+			shoot_at_target(0, &MyTeam, target);
+			usleep(50000);
+		}
+		else
+		{
+			printf("Can't track on target.\n");
+			usleep(1000000);
 		}
 	}
 }
@@ -262,8 +200,8 @@ void world_init(BZRC *my_team) {
 	populate_world_grid(world_size);
 	printf("Just got WorldGrid, its size is %d, %d.\n", world_grid.width, world_grid.height);
 	
-	//enemy_tanks_coors = new vector<coordinate_t>();
-	//store_enemy_tanks_coors(my_team);
+	enemy_tanks_coors = new vector<coordinate_t>();
+	store_enemy_tanks_coors(my_team);
 	//populate_tank_grid();
 
 	store_green_flag(my_team);
@@ -341,6 +279,8 @@ void store_enemy_tanks_coors(BZRC* my_team) {
 	
 	vector <otank_t> * other_tanks = new vector<otank_t>;
 	my_team->get_othertanks(other_tanks);
+
+	// printf("There are %d other tanks.\n", other_tanks->size());
 	
 	for (int tank_n = 0; tank_n < other_tanks->size(); tank_n++) {
 		otank_t enemy_tank = other_tanks->at(tank_n);
@@ -351,6 +291,7 @@ void store_enemy_tanks_coors(BZRC* my_team) {
 		tank_coor.y += world_grid.height / 2;		
 		enemy_tanks_coors->push_back(tank_coor);
 	}
+	return;
 }
 
 void fill_visited_grid(int width, int height) {
@@ -1547,3 +1488,94 @@ void update_world_obstacles(int current_x, int current_y, int observed_value)
 	explored_probabilities.weights.at(current_x).at(current_y) = historical_ret;
 	return;
 } // end update_world_obstacles
+
+void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
+{
+	const double turn_strength = 5.0;
+	const double acceptable_difference = 0.1;	// As long as our impulse is within an arc this many radians wide, shoot
+
+	double a = target.y;
+	target.y = target.x;
+	target.x = a;
+
+	direction_t source; // The pair of numbers that comes in is inverted and in game coordinates.
+	source.x = my_tanks->at(tank_n).pos[0] + world_grid.width / 2;
+	source.y = my_tanks->at(tank_n).pos[1] + world_grid.height / 2;
+
+	//direction_t impulse = tank_brains->at(tank_n).heading;
+	direction_t impulse;
+	impulse.x = target.x - source.x;
+	impulse.y = target.y - source.y;
+
+	//impulse.y *= -1; // stupid inverstion crap
+
+	printf("Source: %f, %f.\nTarget: %f, %f\nImpulse: %f, %f.\n", source.x, source.y, target.x, target.y, impulse.x, impulse.y);
+
+	//double randomness = ((rand() % 11) - 5) / 5.0 * acceptable_difference; // -5 to 5, scaled to somewhere withing the acceptable_difference cone
+	double randomness = 0;
+
+	double speed = 0;
+	double turning;
+
+	//printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
+
+	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
+	if (impulse.x == 0 && impulse.y == 0)
+	{
+		speed = 0;
+		turning = 0;
+	}
+	else
+	{
+		double strength = sqrt(pow(impulse.x, 2) + pow(impulse.y, 2));
+
+		// Convert X and Y to an angle
+		double new_rotation = atan2(impulse.y, impulse.x);
+
+		//Normalize the difference between the two rotations by finding the angle between 4PI and -4PI that generates a difference between PI and -PI. 
+		double r1 = new_rotation + 2*PI - my_tanks->at(tank_n).angle;
+		double r2 = new_rotation		- my_tanks->at(tank_n).angle;
+		double r3 = new_rotation - 2*PI - my_tanks->at(tank_n).angle;
+		double difference = 10*PI; // A ludicrously high angle.
+		if (fabs(r1) < fabs(difference))
+		{
+			difference = r1;
+		}
+		if (fabs(r2) < fabs(difference))
+		{
+			difference = r2;
+		}
+		if (fabs(r3) < fabs(difference))
+		{
+			difference = r3;
+		}
+
+		difference += randomness;
+
+		// Make the tank slow down during sharp turns.
+		if (fabs(difference) < acceptable_difference / 2)
+		{
+			//speed = 1.0;
+			my_team->shoot(tank_n);
+		}
+		else
+		{
+			// Set impulse to one-quarter speed until we're pointing in the right direction
+			//speed = 0.25;
+		}	
+		speed = 0.0;
+
+		difference *= turn_strength;
+		turning = difference;
+		//if (iterations % 10 == 0)
+		//{
+		//	cout << "I am tank " << tank_n << " and my angle is " << my_tanks->at(tank_n).angle << " and I am turning " << difference << endl; 
+		//}
+	}
+
+	my_team->speed(tank_n, speed);
+	my_team->angvel(tank_n, turning);
+	return;
+}
+
+

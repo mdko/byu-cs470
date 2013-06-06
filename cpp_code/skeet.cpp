@@ -144,11 +144,11 @@ int main(int argc, char *argv[]) {
 		case STRAIGHT:
 			while (true)
 			{
-				printf("Full speed ahead.\n");
+				//printf("Full speed ahead.\n");
 				MyTeam.speed(0, 1.0);
 				MyTeam.angvel(0, 0.0);
-				usleep(8000000);
-				printf("Turning.\n");
+				usleep(20000000);
+				//printf("Turning.\n");
 				MyTeam.speed(0, 0.25);
 				MyTeam.angvel(0, 5.0);
 				usleep(3000000);

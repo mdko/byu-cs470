@@ -8,8 +8,10 @@
 #include <unistd.h>
 #include <cstdlib>
 #include "Image.h"
+#include <armadillo>
 
 using namespace std;
+using namespace arma;
 
 static bool debug = false;
 
@@ -44,6 +46,8 @@ static weight_grid_t explored_probabilities;
 
 static int world_size;
 
+static int shot_speed;
+
 static grid_t visited_grid;
 static direction_grid_t directional_grid;
 static weight_grid_t tank_weights;
@@ -60,6 +64,9 @@ static int final_cost = 0;
 
 static int number_of_search_failures = 0;
 const int max_failures = 10;
+
+static vector<coordinate_t> observed_enemy_coordinates;
+static vector<coordinate_t> shot_coordinates_record;
 
 string searchType = "";
 
@@ -91,9 +98,17 @@ int main(int argc, char *argv[]) {
 		world_size = atoi(argv[3]);
 	}
 	if(argc < 5) {
-		debug = false;
+		shot_speed = 6;
 	}
 	else if (atoi(argv[4]) != 0)
+	{
+		shot_speed = atoi(argv[4]);
+		shot_speed /= 10;
+	}	
+	if(argc < 6) {
+		debug = false;
+	}
+	else if (atoi(argv[5]) != 0)
 	{
 		debug = true;
 	}
@@ -127,8 +142,23 @@ int main(int argc, char *argv[]) {
 	// TODO Delete this when we update the code to look for unexplored areas. 
 	//coordinate_t dummy_goal = green_flag_coor;
 	
+
+	//~ mat A = randu<mat>(4, 5);
+	//~ mat B = randu<mat>(4, 5);
+	//~ 
+	//~ mat C = A*B.t();
+	//~ C.print()
+
+	// Pad the observed_enemy_coordinates vector by 2 so that we don't flub on our first two calculations of leading the shot.
+	observed_enemy_coordinates.push_back(NULL_COORDINATE);
+	observed_enemy_coordinates.push_back(NULL_COORDINATE);
+	
 	struct timeval now;
+	struct timeval last_tick;
 	gettimeofday(&now, NULL);
+	last_tick = now;
+
+	assert(shot_speed != 0);
 
 	while (true)
 	{
@@ -136,20 +166,77 @@ int main(int argc, char *argv[]) {
 		MyTeam.get_mytanks(my_tanks);
 
 		store_enemy_tanks_coors(&MyTeam);
+
+		last_tick = now;
+		gettimeofday(&now, NULL);
+		double time_delta = now.tv_sec;
+		time_delta -= last_tick.tv_sec;
+		time_delta *= 1000000;
+		time_delta += now.tv_usec;
+		time_delta -= last_tick.tv_usec;
+		printf("Tick.\nTime delta: %f.\n", time_delta);
 		
 		coordinate_t target;
 		target.x = enemy_tanks_coors->at(0).x;
 		target.y = enemy_tanks_coors->at(0).y;
+		if (observed_enemy_coordinates.size() > 50) // Discard older points.
+		{
+			observed_enemy_coordinates.erase(observed_enemy_coordinates.begin());
+		}
+		observed_enemy_coordinates.push_back(target);
 
 		if (target.x != NULL_COORDINATE.x && target.y != NULL_COORDINATE.y)
 		{
-			printf("Shooting at %f, %f.\n", target.x, target.y);
+			printf("Target observed at %f, %f.\n", target.x, target.y);
+		
+			// TODO Perform Kalman filtering on the target.
+		
+			// Predict our target's future position based on distance.
+			{
+				coordinate_t previous = observed_enemy_coordinates.at(observed_enemy_coordinates.size()/2);
+				coordinate_t diff;
+				//printf("1\n");
+				diff.x = target.x - previous.x;
+				diff.y = target.y - previous.y;
+				if (diff.x == 0 && diff.y == 0)
+				{
+					// Our current target is fine. Also, the following calculations will cause divide-by-zero errors.
+				}
+				else
+				{
+					double target_velocity = 25; // Assume the target is moving forward in a straight line for now.
+					// TODO Use the Kalman filtering's best guess at the target's velocity.
+					//target_velocity = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
+					//target_velocity *= (time_delta/1000000);
+					printf("Calculated velocity is %f.\n", target_velocity);
+
+					coordinate_t dist;
+					dist.x = target.x - my_tanks->at(0).pos[1] - (world_grid.width/2);
+					dist.y = target.y - my_tanks->at(0).pos[0] - (world_grid.height/2);
+					double distance = sqrt(pow(dist.x, 2) + pow(dist.y, 2));
+					printf("Calculated distance to target is %f.\n", distance);
+
+					// Normalise the diff.
+					double diff_len = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
+					diff.x /= diff_len;
+					diff.y /= diff_len;
+
+					diff.x *= distance / shot_speed;
+					diff.y *= distance / shot_speed;
+					printf("Predicted difference is %f, %f.\n", diff.x, diff.y);
+
+					target.x += diff.x;
+					target.y += diff.y;
+					printf("Leading the shot to shoot at %f, %f.\n", target.x, target.y);
+				}
+			}
+			
 			shoot_at_target(0, &MyTeam, target);
-			usleep(50000);
+			usleep(33000);
 		}
 		else
 		{
-			printf("Can't track on target.\n");
+			//printf("Can't track on target.\n");
 			usleep(1000000);
 		}
 	}
@@ -1492,7 +1579,7 @@ void update_world_obstacles(int current_x, int current_y, int observed_value)
 void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 {
 	const double turn_strength = 5.0;
-	const double acceptable_difference = 0.1;	// As long as our impulse is within an arc this many radians wide, shoot
+	const double acceptable_difference = 0.03;	// As long as our impulse is within an arc this many radians wide, shoot
 
 	double a = target.y;
 	target.y = target.x;
@@ -1509,7 +1596,7 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 
 	//impulse.y *= -1; // stupid inverstion crap
 
-	printf("Source: %f, %f.\nTarget: %f, %f\nImpulse: %f, %f.\n", source.x, source.y, target.x, target.y, impulse.x, impulse.y);
+	//printf("Source: %f, %f.\nTarget: %f, %f\nImpulse: %f, %f.\n", source.x, source.y, target.x, target.y, impulse.x, impulse.y);
 
 	//double randomness = ((rand() % 11) - 5) / 5.0 * acceptable_difference; // -5 to 5, scaled to somewhere withing the acceptable_difference cone
 	double randomness = 0;
@@ -1557,6 +1644,7 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 		{
 			//speed = 1.0;
 			my_team->shoot(tank_n);
+			print_skeet_vision("skeet.tga", source.x, source.y, target.x, target.y);
 		}
 		else
 		{
@@ -1578,4 +1666,94 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 	return;
 }
 
+void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int shooting_target_x, int shooting_target_y)
+{
+	printf("Beginning target tracking image output.\n");
+	std::string targetFile = filename;
+	
+	// The +1 is because the center of the arena is 0,0
+	TGAImage *img = new TGAImage(world_grid.width, world_grid.height);
+	Colour c;
+	c.a = 255; // Image will be 100% opaque.
+	
+	for (int y_n = 0; y_n < world_grid.height; y_n++) {
+		for (int x_n = 0; x_n < world_grid.width; x_n++) {
+			c.r = 0;
+			c.g = 0;
+			c.b = 0;
+			img->setPixel(c,x_n,y_n);
+		}
+	}
 
+	coordinate_t draw;
+
+	// My tank's location is red.
+	c.r = 255;
+	c.g = 0;
+	c.b = 0;
+	draw.x = my_tank_x;
+	draw.y = my_tank_y;
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+	
+	// The last few points I thought the enemy tank was at are dark green
+	// TODO
+	c.r = 0;
+	c.g = 64;
+	c.b = 0;
+	
+	// The last few places I observed the enemy tank are blue
+	c.r = 0;
+	c.g = 0;
+	c.b = 32;
+	for (int place_n = 0; place_n < observed_enemy_coordinates.size(); place_n++)
+	{
+		coordinate_t next_place = observed_enemy_coordinates.at(place_n);
+		draw.y = next_place.x;
+		draw.x = next_place.y;
+		c.b += 4;
+		//c.r += 2;
+		c.g += 2;
+		//printf("Drawing previous observation at %f, %f.\n", draw.x, draw.y);
+		if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+			img->setPixel(c,draw.x,draw.y);
+	}
+	
+	// The point I think the enemy tank is at is light green
+	// Using the previous For loop
+	c.r = 0;
+	c.g = 255;
+	c.b = 0;
+	printf("Drawing current tank observation at %f, %f.\n", draw.x, draw.y);
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+	
+	// The point I'm shooting at (accounting for velocity and acceleration) is yellow
+	c.r = 255;
+	c.g = 255;
+	c.b = 0;
+	draw.x = shooting_target_x;
+	draw.y = shooting_target_y;
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+	// Draw a crosshair
+	draw.x--;
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+	draw.x++;draw.x++;
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+	draw.x--;
+	draw.y++;
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+	draw.y--;draw.y--;
+	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+		img->setPixel(c,draw.x,draw.y);
+
+	//write the image to disk
+	img->WriteImage(filename);
+
+	printf("Skeet vision output to %s.\n", targetFile.c_str());
+	return;
+} // end print_skeet_vision

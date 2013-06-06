@@ -1093,3 +1093,4 @@ void update_tank_vision(BZRC* my_team);
 void update_world_obstacles(int current_x, int current_y, int observed_value);
 
 void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target);
+void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int shooting_target_x, int shooting_target_y);

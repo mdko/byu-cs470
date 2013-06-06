@@ -5,8 +5,8 @@
 #./start_server.sh
 #sleep 2
 #./search localhost 50100 dfs 2
-./kalman localhost 50100 &
-./skeet localhost 50101 1
+./skeet localhost 50101 1 &
+./kalman localhost 50100
 
 
 #./search localhost 50100 bfs

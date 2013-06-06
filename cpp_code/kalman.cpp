@@ -189,7 +189,145 @@ int main(int argc, char *argv[]) {
 		{
 			printf("Target observed at %f, %f.\n", target.x, target.y);
 		
-			// TODO Perform Kalman filtering on the target.
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// TODO Perform kDefaultServerPortman filtering on the target.
+			float enemy_pos_x = 0;
+			float enemy_pos_y = 50;
+			float delta_t = 0.5;
+			float c = 0.2;
+
+			//-----------------------------------------------------------------------------
+			// Constants initialized beforehand
+			mat F;				// 6x6
+			mat sigma_x;		// 6x6
+			mat H;				// 2x6
+			mat sigma_z;		// 2x2
+			mat F_transpose;	// 6x6
+			mat H_tranpose;		// 6x2
+			mat I;				// 6x6
+
+			// velocity given delta t
+			float vdt = delta_t;
+			// acceleration given delta t
+			float adt = (delta_t * delta_t) / 2;
+
+			// System transition matrix
+			F << 1   << vdt << adt << 0	  << 0   << 0   << endr
+			  << 0	 << 1	<< vdt << 0   << 0   << 0   << endr
+			  << 0   << -c  << 1   << 0   << 0   << 0   << endr
+			  << 0   << 0   << 0   << 1   << vdt << adt << endr
+			  << 0   << 0   << 0   << 0   << 1   << vdt << endr
+			  << 0   << 0   << 0   << 0   << -c  << 1   << endr;
+			  
+			// Noise
+			sigma_x << 0.1 << 0   << 0   << 0   << 0   << 0   << endr
+				    << 0   << 0.1 << 0   << 0   << 0   << 0   << endr
+				    << 0   << 0   << 100 << 0   << 0   << 0   << endr
+				    << 0   << 0   << 0   << 0.1 << 0   << 0   << endr
+				    << 0   << 0   << 0   << 0   << 0.1 << 0   << endr
+				    << 0   << 0   << 0   << 0   << 0   << 100 << endr; 
+
+			// Observation matrix that selects out the two position values from state vector
+			H << 1 << 0 << 0 << 0 << 0 << 0 << endr
+			  << 0 << 0 << 0 << 1 << 0 << 0 << endr;
+
+			// Covariance matrix
+			sigma_z << 25 << 0  << endr
+					<< 0  << 25 << endr;
+			// F transpose
+			F_transpose = F.t();
+
+			// H tranpose
+			H_tranpose = H.t();
+
+			// Identity matrix
+			I.eye(6,6);
+
+
+			// TODO not sure where this needs to be initialized
+			colvec X_t(6);			// 6x1
+			// State vector
+			X_t << enemy_pos_x << endr
+				<< 0.1		   << endr
+				<< 0.1		   << endr
+				<< enemy_pos_y << endr
+				<< 0.1		   << endr
+				<< 0.1		   << endr;
+
+			//-----------------------------------------------------------------------------
+			// Initialized at start of each run
+			colvec mu(6);			// 6x1
+			mat sigma;				// 6x6
+
+			// Mean estimate of the state vector
+			mu.fill(0);
+
+			// Covariance for the state vector
+			sigma << 100 << 0   << 0   << 0   << 0   << 0   << endr
+				  << 0	 << 0.1 << 0   << 0   << 0   << 0   << endr
+				  << 0	 << 0   << 0.1 << 0   << 0   << 0   << endr
+				  << 0	 << 0   << 0   << 100 << 0   << 0   << endr
+				  << 0	 << 0   << 0   << 0   << 0.1 << 0   << endr
+				  << 0	 << 0   << 0   << 0   << 0   << 0.1 << endr;
+				  
+			//-----------------------------------------------------------------------------
+			// The following change with each time step
+			mat A = (F * sigma * F_transpose) + sigma_x;			// 6x6
+			colvec take_out_vec_Xt(6);								// 6x1
+			colvec take_out_vec_Zt(2);								// 2x1
+			take_out_vec_Xt.fill(1);
+			take_out_vec_Zt.fill(1);
+
+			// TODO the following extracts values from sigma_x/z, instead of adding
+			// sigma_x/z like the original equation shows?
+			X_t = (F * X_t) + (sigma_x * take_out_vec_Xt);			// 6x1
+			colvec Z_t = (H * X_t) + (sigma_z * take_out_vec_Zt);	// 2x1						
+
+			mat K_t_plus_1 = (A * H_tranpose * ((H * A * H_tranpose) + sigma_z)).i(); // 6x2
+			mu = (F * mu) + (K_t_plus_1 * (Z_t - (H * F * mu))); 				 	  // 6x1 mut+1 = ...*mut*...
+			sigma = (I - (K_t_plus_1 * H)) * A;					 				 	  // 6x6 sigmat+1 = ...*sigmat*..
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 			// Predict our target's future position based on distance.
 			{

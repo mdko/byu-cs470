@@ -6,7 +6,7 @@
 #sleep 2
 #./search localhost 50100 dfs 2
 ./skeet localhost 50101 1 &
-./kalman localhost 50100
+./kalman localhost 50100 400 60 0 8 1
 
 
 #./search localhost 50100 bfs

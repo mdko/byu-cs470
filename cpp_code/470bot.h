@@ -128,6 +128,15 @@ typedef struct prioritizable_node_t {
 	};
 } prioritizable_node_t;
 
+typedef struct tank_best_guess_t {
+	double x;
+	double y;
+	double velocity_x;
+	double velocity_y;
+	double accel_x;
+	double accel_y;
+} tank_best_guess_t;
+
 typedef struct tank_brain_t {
 	long last_updated_s; // _s is for seconds 
 	coordinate_t current_goal;
@@ -1094,3 +1103,7 @@ void update_world_obstacles(int current_x, int current_y, int observed_value);
 
 void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target);
 void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int shooting_target_x, int shooting_target_y);
+tank_best_guess_t applyKalmanFilter(double targetx, double targety, double time_delta);
+void resetKalmanFilterConstants();
+void resetKalmanFilterAfterEachRun();
+void changeDeltaT(double delta_t);

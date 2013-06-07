@@ -67,11 +67,32 @@ const int max_failures = 10;
 
 static vector<coordinate_t> observed_enemy_coordinates;
 static vector<coordinate_t> shot_coordinates_record;
+static vector<coordinate_t> calculated_enemy_coordinates;
 
 string searchType = "";
 
+static bool shoot_bullets = true;
+
 bool penalized_mode = true;
 bool avoid_tanks = true;
+
+
+// Constants initialize before kalmanFilter
+static mat F;			// 6x6
+static mat sigma_x;		// 6x6
+static mat H;			// 2x6
+static mat sigma_z;		// 2x2
+static mat F_transpose;	// 6x6
+static mat H_tranpose;	// 6x2
+static mat I;			// 6x6
+static float c = 0.1;
+static float posit_conf = 25;
+static float accel_conf = 30;
+
+// Initialized at start of each run for kalmanFilter
+colvec mu(6);			// 6x1
+mat sigma;				// 6x6
+
 
 int main(int argc, char *argv[]) {
 	define_constants();
@@ -106,12 +127,34 @@ int main(int argc, char *argv[]) {
 		shot_speed /= 10;
 	}	
 	if(argc < 6) {
-		debug = false;
+		shoot_bullets = true;
 	}
-	else if (atoi(argv[5]) != 0)
+	else
 	{
-		debug = true;
+		shoot_bullets = false;
+	}	
+	if(argc < 7) {
+		;
 	}
+	else if (atoi(argv[6]) != 0)
+	{
+		posit_conf = atoi(argv[6]);
+	}	
+	if(argc < 8) {
+		;
+	}
+	else if (atoi(argv[7]) != 0)
+	{
+		accel_conf = atoi(argv[7]);
+	}	
+	
+	//~ if(argc < 7) {
+		//~ debug = false;
+	//~ }
+	//~ else if (atoi(argv[6]) != 0)
+	//~ {
+		//~ debug = true;
+	//~ }
 
 	BZRC MyTeam = BZRC(pcHost, nPort, false);
 	if(!MyTeam.GetStatus()) {
@@ -159,6 +202,10 @@ int main(int argc, char *argv[]) {
 	last_tick = now;
 
 	assert(shot_speed != 0);
+	
+	// Kalman filter initializations
+	resetKalmanFilterConstants();
+	resetKalmanFilterAfterEachRun(); // TODO call if the enemy tank dies...I think
 
 	while (true)
 	{
@@ -185,151 +232,26 @@ int main(int argc, char *argv[]) {
 		}
 		observed_enemy_coordinates.push_back(target);
 
+		if (target.x < -5000 || target.y < -5000)
+		{
+			target.x = NULL_COORDINATE.x;
+			target.y = NULL_COORDINATE.y;
+		}
+
 		if (target.x != NULL_COORDINATE.x && target.y != NULL_COORDINATE.y)
 		{
 			printf("Target observed at %f, %f.\n", target.x, target.y);
 		
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			// TODO Perform kDefaultServerPortman filtering on the target.
-			float enemy_pos_x = 0;
-			float enemy_pos_y = 50;
-			float delta_t = 0.5;
-			float c = 0.2;
+			tank_best_guess_t filtered_target = applyKalmanFilter(target.x, target.y, time_delta);
+			
+			printf("Kalman filter's target:\n Position: %f,\t%f\n Velocity: %f,\t%f\n Acceleration: %f,\t%f\n",
+				filtered_target.x, filtered_target.y,
+				filtered_target.velocity_x, filtered_target.velocity_y,
+				filtered_target.accel_x, filtered_target.accel_y);
 
-			//-----------------------------------------------------------------------------
-			// Constants initialized beforehand
-			mat F;				// 6x6
-			mat sigma_x;		// 6x6
-			mat H;				// 2x6
-			mat sigma_z;		// 2x2
-			mat F_transpose;	// 6x6
-			mat H_tranpose;		// 6x2
-			mat I;				// 6x6
-
-			// velocity given delta t
-			float vdt = delta_t;
-			// acceleration given delta t
-			float adt = (delta_t * delta_t) / 2;
-
-			// System transition matrix
-			F << 1   << vdt << adt << 0	  << 0   << 0   << endr
-			  << 0	 << 1	<< vdt << 0   << 0   << 0   << endr
-			  << 0   << -c  << 1   << 0   << 0   << 0   << endr
-			  << 0   << 0   << 0   << 1   << vdt << adt << endr
-			  << 0   << 0   << 0   << 0   << 1   << vdt << endr
-			  << 0   << 0   << 0   << 0   << -c  << 1   << endr;
-			  
-			// Noise
-			sigma_x << 0.1 << 0   << 0   << 0   << 0   << 0   << endr
-				    << 0   << 0.1 << 0   << 0   << 0   << 0   << endr
-				    << 0   << 0   << 100 << 0   << 0   << 0   << endr
-				    << 0   << 0   << 0   << 0.1 << 0   << 0   << endr
-				    << 0   << 0   << 0   << 0   << 0.1 << 0   << endr
-				    << 0   << 0   << 0   << 0   << 0   << 100 << endr; 
-
-			// Observation matrix that selects out the two position values from state vector
-			H << 1 << 0 << 0 << 0 << 0 << 0 << endr
-			  << 0 << 0 << 0 << 1 << 0 << 0 << endr;
-
-			// Covariance matrix
-			sigma_z << 25 << 0  << endr
-					<< 0  << 25 << endr;
-			// F transpose
-			F_transpose = F.t();
-
-			// H tranpose
-			H_tranpose = H.t();
-
-			// Identity matrix
-			I.eye(6,6);
-
-
-			// TODO not sure where this needs to be initialized
-			colvec X_t(6);			// 6x1
-			// State vector
-			X_t << enemy_pos_x << endr
-				<< 0.1		   << endr
-				<< 0.1		   << endr
-				<< enemy_pos_y << endr
-				<< 0.1		   << endr
-				<< 0.1		   << endr;
-
-			//-----------------------------------------------------------------------------
-			// Initialized at start of each run
-			colvec mu(6);			// 6x1
-			mat sigma;				// 6x6
-
-			// Mean estimate of the state vector
-			mu.fill(0);
-
-			// Covariance for the state vector
-			sigma << 100 << 0   << 0   << 0   << 0   << 0   << endr
-				  << 0	 << 0.1 << 0   << 0   << 0   << 0   << endr
-				  << 0	 << 0   << 0.1 << 0   << 0   << 0   << endr
-				  << 0	 << 0   << 0   << 100 << 0   << 0   << endr
-				  << 0	 << 0   << 0   << 0   << 0.1 << 0   << endr
-				  << 0	 << 0   << 0   << 0   << 0   << 0.1 << endr;
-				  
-			//-----------------------------------------------------------------------------
-			// The following change with each time step
-			mat A = (F * sigma * F_transpose) + sigma_x;			// 6x6
-			colvec take_out_vec_Xt(6);								// 6x1
-			colvec take_out_vec_Zt(2);								// 2x1
-			take_out_vec_Xt.fill(1);
-			take_out_vec_Zt.fill(1);
-
-			// TODO the following extracts values from sigma_x/z, instead of adding
-			// sigma_x/z like the original equation shows?
-			X_t = (F * X_t) + (sigma_x * take_out_vec_Xt);			// 6x1
-			colvec Z_t = (H * X_t) + (sigma_z * take_out_vec_Zt);	// 2x1						
-
-			mat K_t_plus_1 = (A * H_tranpose * ((H * A * H_tranpose) + sigma_z)).i(); // 6x2
-			mu = (F * mu) + (K_t_plus_1 * (Z_t - (H * F * mu))); 				 	  // 6x1 mut+1 = ...*mut*...
-			sigma = (I - (K_t_plus_1 * H)) * A;					 				 	  // 6x6 sigmat+1 = ...*sigmat*..
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
 			// Predict our target's future position based on distance.
+			if (false)
 			{
 				coordinate_t previous = observed_enemy_coordinates.at(observed_enemy_coordinates.size()/2);
 				coordinate_t diff;
@@ -369,15 +291,158 @@ int main(int argc, char *argv[]) {
 				}
 			}
 			
+			target.x = filtered_target.x;
+			target.y = filtered_target.y;
+			// TODO put leading shots back in
+			if (calculated_enemy_coordinates.size() > 50) // Discard older points.
+			{
+				calculated_enemy_coordinates.erase(calculated_enemy_coordinates.begin());
+			}
+			calculated_enemy_coordinates.push_back(target);
+			
+			
 			shoot_at_target(0, &MyTeam, target);
-			usleep(33000);
+			usleep(100000);
 		}
 		else
 		{
-			//printf("Can't track on target.\n");
+			printf("Can't track on target.\n");
+			resetKalmanFilterAfterEachRun();
 			usleep(1000000);
 		}
 	}
+}
+
+void resetKalmanFilterConstants()
+{
+	// Constants initialized beforehand
+	//mat F;				// 6x6
+	//mat sigma_x;			// 6x6
+	//mat H;				// 2x6
+	//mat sigma_z;			// 2x2
+	//mat F_transpose;		// 6x6
+	//mat H_tranpose;		// 6x2
+	//mat I;				// 6x6
+	
+	float delta_t = 0.1;
+	// velocity given delta t
+	float vdt = delta_t;
+	// acceleration given delta t
+	float adt = (delta_t * delta_t) / 2;
+
+	// System transition matrix
+	F << 1   << vdt << adt << 0	  << 0   << 0   << endr
+	  << 0	 << 1	<< vdt << 0   << 0   << 0   << endr
+	  << 0   << -c  << 1   << 0   << 0   << 0   << endr
+	  << 0   << 0   << 0   << 1   << vdt << adt << endr
+	  << 0   << 0   << 0   << 0   << 1   << vdt << endr
+	  << 0   << 0   << 0   << 0   << -c  << 1   << endr;
+	  
+	// Noise
+	sigma_x << 0.1 << 0   << 0   		<< 0   << 0   << 0   		<< endr
+			<< 0   << 0.1 << 0   		<< 0   << 0   << 0   		<< endr
+			<< 0   << 0   << accel_conf << 0   << 0   << 0   		<< endr
+			<< 0   << 0   << 0   		<< 0.1 << 0   << 0   		<< endr
+			<< 0   << 0   << 0   		<< 0   << 0.1 << 0  		<< endr
+			<< 0   << 0   << 0   		<< 0   << 0   << accel_conf << endr; 
+
+	// Observation matrix that selects out the two position values from state vector
+	H << 1 << 0 << 0 << 0 << 0 << 0 << endr
+	  << 0 << 0 << 0 << 1 << 0 << 0 << endr;
+
+	// Covariance matrix
+	sigma_z << 25 << 0  << endr
+			<< 0  << 25 << endr;
+	// F transpose
+	F_transpose = F.t();
+
+	// H tranpose
+	H_tranpose = H.t();
+
+	// Identity matrix
+	I.eye(6,6);
+}
+
+void changeDeltaT(double delta_t)
+{
+	delta_t /= 1000000;
+	float vdt = delta_t;
+	// acceleration given delta t
+	float adt = (delta_t * delta_t) / 2;
+	
+	F(0,1) = vdt;
+	F(0,2) = adt;
+	F(1,2) = vdt;
+	F(3,4) = vdt;
+	F(3,5) = adt;
+	F(4,5) = vdt;
+}
+
+void resetKalmanFilterAfterEachRun()
+{
+	// Mean estimate of the state vector
+	mu.fill(0);
+
+	// Covariance for the state vector
+	sigma << posit_conf    	<< 0   << 0   << 0    		<< 0   << 0   << endr
+		  << 0	  			<< 0.1 << 0   << 0    		<< 0   << 0   << endr
+		  << 0	  			<< 0   << 0.1 << 0    		<< 0   << 0   << endr
+		  << 0	 			<< 0   << 0   << posit_conf	<< 0   << 0   << endr
+		  << 0	  			<< 0   << 0   << 0    		<< 0.1 << 0   << endr
+		  << 0	  			<< 0   << 0   << 0    		<< 0   << 0.1 << endr;	
+}
+
+tank_best_guess_t applyKalmanFilter(double target_x, double target_y, double time_delta) 
+{
+	float enemy_pos_x = (float)target_x;
+	float enemy_pos_y = (float)target_y;
+	
+	changeDeltaT(time_delta);
+	
+	// TODO not sure where this needs to be initialized
+	colvec X_t(6);			// 6x1
+	// State vector
+	//~ X_t << enemy_pos_x << endr
+		//~ << 0.1		   << endr
+		//~ << 0.1		   << endr
+		//~ << enemy_pos_y << endr
+		//~ << 0.1		   << endr
+		//~ << 0.1		   << endr;
+	X_t = mu;
+	//~ X_t(0) = target_x;
+	//~ X_t(3) = target_y;
+		  
+	//-----------------------------------------------------------------------------
+	// The following change with each time step
+	mat A = (F * sigma * F_transpose) + sigma_x;				// 6x6
+	colvec take_out_vec_Xt(6);									// 6x1
+	colvec take_out_vec_Zt(2);									// 2x1
+	take_out_vec_Xt.fill(1);
+	take_out_vec_Zt.fill(1);
+
+	// TODO the following extracts values from sigma_x/z, instead of adding
+	// sigma_x/z like the original equation shows?
+	X_t = (F * X_t) + (sigma_x * take_out_vec_Xt);				// 6x1
+	//colvec Z_t = (H * X_t) + (sigma_z * take_out_vec_Zt);		// 2x1	
+	colvec Z_t;
+	Z_t << target_x << endr
+		<< target_y << endr;
+	//float exponent = (X_t - mu).t() * sigma_z.i() * (X_t - mu); // scalar
+	//colvec Z_t = alpha * pow(e, -1/2 * exponent);				// 2x1
+	
+
+	mat K_t_plus_1 = A * H_tranpose * ((H * A * H_tranpose) + sigma_z).i(); // 6x2
+	mu = (F * mu) + (K_t_plus_1 * (Z_t - (H * F * mu))); 				 	  // 6x1 mut+1 = ...*mut*...
+	sigma = (I - (K_t_plus_1 * H)) * A;					 				 	  // 6x6 sigmat+1 = ...*sigmat*..	
+
+	tank_best_guess_t target;
+	target.x = X_t(0);
+	target.velocity_x = X_t(1);
+	target.accel_x = X_t(2);
+	target.y = X_t(3);
+	target.velocity_y = X_t(4);
+	target.accel_y = X_t(5);
+	return target;
 }
 
 void define_constants()
@@ -1781,7 +1846,10 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 		if (fabs(difference) < acceptable_difference / 2)
 		{
 			//speed = 1.0;
-			my_team->shoot(tank_n);
+			if (shoot_bullets)
+			{
+				my_team->shoot(tank_n);
+			}
 			print_skeet_vision("skeet.tga", source.x, source.y, target.x, target.y);
 		}
 		else
@@ -1806,7 +1874,7 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 
 void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int shooting_target_x, int shooting_target_y)
 {
-	printf("Beginning target tracking image output.\n");
+	//printf("Beginning target tracking image output.\n");
 	std::string targetFile = filename;
 	
 	// The +1 is because the center of the arena is 0,0
@@ -1834,11 +1902,19 @@ void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int 
 	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
 		img->setPixel(c,draw.x,draw.y);
 	
-	// The last few points I thought the enemy tank was at are dark green
+	// The last few points I thought the enemy tank was at are white
 	// TODO
-	c.r = 0;
-	c.g = 64;
-	c.b = 0;
+	c.r = 255;
+	c.g = 255;
+	c.b = 255;
+	for (int place_n = 0; place_n < calculated_enemy_coordinates.size(); place_n++)
+	{
+		coordinate_t next_place = calculated_enemy_coordinates.at(place_n);
+		draw.y = next_place.x;
+		draw.x = next_place.y;
+		if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
+			img->setPixel(c,draw.x,draw.y);
+	}
 	
 	// The last few places I observed the enemy tank are blue
 	c.r = 0;
@@ -1862,7 +1938,7 @@ void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int 
 	c.r = 0;
 	c.g = 255;
 	c.b = 0;
-	printf("Drawing current tank observation at %f, %f.\n", draw.x, draw.y);
+	//printf("Drawing current tank observation at %f, %f.\n", draw.x, draw.y);
 	if (draw.x > 0 && draw.y > 0 && draw.x < world_grid.width && draw.y < world_grid.height)
 		img->setPixel(c,draw.x,draw.y);
 	
@@ -1892,6 +1968,6 @@ void print_skeet_vision(const char* filename, int my_tank_x, int my_tank_y, int 
 	//write the image to disk
 	img->WriteImage(filename);
 
-	printf("Skeet vision output to %s.\n", targetFile.c_str());
+	//printf("Skeet vision output to %s.\n", targetFile.c_str());
 	return;
 } // end print_skeet_vision

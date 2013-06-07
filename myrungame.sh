@@ -6,9 +6,14 @@
 #sleep 2
 #./search localhost 50100 dfs 2
 ./skeet localhost 50101 1 &
-./kalman localhost 50100 400 60 0 8 1
-
-
+./kalman localhost 50100 400 8 1 50 1
+#                        World Grid Size
+#                            ShotSpeed (Higher is closer to target/behind if too big, lower leads ahead of the target)
+#                              Bullets on/off
+#                                Position Confidence
+#                                    Acceleration Confidence
+						  
+#./kalman localhost 50100 400 8 1 50 1
 #./search localhost 50100 bfs
 #./search localhost 50100 iddfs
 #./search localhost 50100 ucost 1 1

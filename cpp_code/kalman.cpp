@@ -46,7 +46,7 @@ static weight_grid_t explored_probabilities;
 
 static int world_size;
 
-static int shot_speed;
+static double shot_speed;
 
 static grid_t visited_grid;
 static direction_grid_t directional_grid;
@@ -124,12 +124,12 @@ int main(int argc, char *argv[]) {
 	else if (atoi(argv[4]) != 0)
 	{
 		shot_speed = atoi(argv[4]);
-		shot_speed /= 10;
+		shot_speed /= 100;
 	}	
 	if(argc < 6) {
 		shoot_bullets = true;
 	}
-	else
+	else if (atoi(argv[5]) == 0)
 	{
 		shoot_bullets = false;
 	}	
@@ -139,6 +139,7 @@ int main(int argc, char *argv[]) {
 	else if (atoi(argv[6]) != 0)
 	{
 		posit_conf = atoi(argv[6]);
+		posit_conf /= 10;
 	}	
 	if(argc < 8) {
 		;
@@ -146,6 +147,7 @@ int main(int argc, char *argv[]) {
 	else if (atoi(argv[7]) != 0)
 	{
 		accel_conf = atoi(argv[7]);
+		accel_conf /= 10;
 	}	
 	
 	//~ if(argc < 7) {
@@ -240,57 +242,9 @@ int main(int argc, char *argv[]) {
 
 		if (target.x != NULL_COORDINATE.x && target.y != NULL_COORDINATE.y)
 		{
-			printf("Target observed at %f, %f.\n", target.x, target.y);
+			//printf("Target observed at %f, %f.\n", target.x, target.y);
 		
-			// TODO Perform kDefaultServerPortman filtering on the target.
 			tank_best_guess_t filtered_target = applyKalmanFilter(target.x, target.y, time_delta);
-			
-			printf("Kalman filter's target:\n Position: %f,\t%f\n Velocity: %f,\t%f\n Acceleration: %f,\t%f\n",
-				filtered_target.x, filtered_target.y,
-				filtered_target.velocity_x, filtered_target.velocity_y,
-				filtered_target.accel_x, filtered_target.accel_y);
-
-			// Predict our target's future position based on distance.
-			if (false)
-			{
-				coordinate_t previous = observed_enemy_coordinates.at(observed_enemy_coordinates.size()/2);
-				coordinate_t diff;
-				//printf("1\n");
-				diff.x = target.x - previous.x;
-				diff.y = target.y - previous.y;
-				if (diff.x == 0 && diff.y == 0)
-				{
-					// Our current target is fine. Also, the following calculations will cause divide-by-zero errors.
-				}
-				else
-				{
-					double target_velocity = 25; // Assume the target is moving forward in a straight line for now.
-					// TODO Use the Kalman filtering's best guess at the target's velocity.
-					//target_velocity = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
-					//target_velocity *= (time_delta/1000000);
-					printf("Calculated velocity is %f.\n", target_velocity);
-
-					coordinate_t dist;
-					dist.x = target.x - my_tanks->at(0).pos[1] - (world_grid.width/2);
-					dist.y = target.y - my_tanks->at(0).pos[0] - (world_grid.height/2);
-					double distance = sqrt(pow(dist.x, 2) + pow(dist.y, 2));
-					printf("Calculated distance to target is %f.\n", distance);
-
-					// Normalise the diff.
-					double diff_len = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
-					diff.x /= diff_len;
-					diff.y /= diff_len;
-
-					diff.x *= distance / shot_speed;
-					diff.y *= distance / shot_speed;
-					printf("Predicted difference is %f, %f.\n", diff.x, diff.y);
-
-					target.x += diff.x;
-					target.y += diff.y;
-					printf("Leading the shot to shoot at %f, %f.\n", target.x, target.y);
-				}
-			}
-			
 			target.x = filtered_target.x;
 			target.y = filtered_target.y;
 			// TODO put leading shots back in
@@ -300,9 +254,23 @@ int main(int argc, char *argv[]) {
 			}
 			calculated_enemy_coordinates.push_back(target);
 			
-			
+			//~ printf("Kalman filter's target:\n Position: %f,\t%f\n Velocity: %f,\t%f\n Acceleration: %f,\t%f\n",
+				//~ filtered_target.x, filtered_target.y,
+				//~ filtered_target.velocity_x, filtered_target.velocity_y,
+				//~ filtered_target.accel_x, filtered_target.accel_y);
+			//printf("Kalman filter's target: %f,\t%f\n", filtered_target.x, filtered_target.y);
+
+			//if (false)
+			{
+				//target.x = target.x + mu(1) / shot_speed - .25 * mu(2) * mu(2) / shot_speed;
+				//target.y = target.y + mu(4) / shot_speed - .25 * mu(5) * mu(5) / shot_speed;
+				target.x = target.x - mu(1) / shot_speed;
+				target.y = target.y - mu(4) / shot_speed;
+				//printf("Leading the shot to shoot at %f, %f.\n", target.x, target.y);
+			}
+						
 			shoot_at_target(0, &MyTeam, target);
-			usleep(100000);
+			usleep(50000);
 		}
 		else
 		{
@@ -1781,8 +1749,8 @@ void update_world_obstacles(int current_x, int current_y, int observed_value)
 
 void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 {
-	const double turn_strength = 5.0;
-	const double acceptable_difference = 0.03;	// As long as our impulse is within an arc this many radians wide, shoot
+	const double turn_strength = 8.0;
+	const double acceptable_difference = 0.05;	// As long as our impulse is within an arc this many radians wide, shoot
 
 	double a = target.y;
 	target.y = target.x;
@@ -1846,8 +1814,10 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 		if (fabs(difference) < acceptable_difference / 2)
 		{
 			//speed = 1.0;
+			//if (shoot_bullets && target.x > 0 && target.y > 0 && target.x < world_grid.width && target.y < world_grid.height)
 			if (shoot_bullets)
 			{
+				printf("Boom!\n");
 				my_team->shoot(tank_n);
 			}
 			print_skeet_vision("skeet.tga", source.x, source.y, target.x, target.y);

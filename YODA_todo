@@ -1,0 +1,29 @@
+TODO
+--make sure our network calls are efficient:
+	update_loop:
+	while (true) 
+	{
+	--get enemy flag positions
+	--get enemy tank positions
+	--get our tank positions
+	--perform all calculations (augment tank brains accordingly)
+	--issue orders to tanks
+	}
+--make the kalman filter analyze all enemy tanks
+--make our tanks all play kalman filter on closest enemy tank
+--make our tanks prioritize the closest enemy
+--make our tanks prioritize the closest (odd) and second closest enemy (even)
+--after 1 minute of game time, have tanks switch to a-star to enemy flag, while shooting ahead of them
+--when a tank knows it has the flag, it runs (a-stars) back to its base
+--when a friendly tank has the flag, make all tanks stop and use kalman filter to shoot enemy tanks (seek and destroy)
+--if enemy flag gets dropped, make tanks go toward that flag
+--make our tanks move into formation at the start of the game (around our base)
+--make tanks forward acceleration be a function of some randomness (0.25 <= v <= 1.0), changes every 1-2.5 seconds
+--be color blind
+
+set of 4 tank states
+1] game-setup: make formation that covers our base and ensures they won't shoot each other (~5 seconds)
+2] 1st minute defense (shoot at the two nearest enemy tanks)
+3] onslaught: all tanks go to get the enemy flag, and shoot as they move
+4] capture: run enemy flag back to our base
+5] defend: hunt and destroy nearest tank to our friendly flag bearing tank

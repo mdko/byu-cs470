@@ -1,5 +1,3 @@
-// 6/3
-
 #include <iostream>
 #include "470bot.h"
 #include <ctime>

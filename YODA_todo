@@ -9,6 +9,7 @@ TODO
 	--perform all calculations (augment tank brains accordingly)
 	--issue orders to tanks
 	}
+--generate occgrid according to the noiseless world
 --make the kalman filter analyze all enemy tanks
 --make our tanks all play kalman filter on closest enemy tank
 --make our tanks prioritize the closest enemy

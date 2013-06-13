@@ -137,11 +137,23 @@ typedef struct tank_best_guess_t {
 	double accel_y;
 } tank_best_guess_t;
 
+enum brain_state_t {
+	SETUP,
+	FLAG_DEFENSE,
+	ATTACK,
+	RUN_WITH_FLAG,
+	PROTECT_RUNNER,
+	RETRIEVE_OUR_FLAG
+};
+
 typedef struct tank_brain_t {
 	long last_updated_s; // _s is for seconds 
 	coordinate_t current_goal;
 	direction_t heading;
+	brain_state_t current_state;
+	bool can_shoot;
 } tank_brain_t;
+
 
 class SplitString {
 	vector <string> MyVector;
@@ -1101,3 +1113,6 @@ void resetKalmanFilterConstants();
 void resetKalmanFilterAfterEachRun();
 void changeDeltaT(double delta_t);
 void store_enemy_flag(BZRC* my_team);
+
+void set_heading(int tank_n, stack<coordinate_t> * path);
+void follow_orders(int tank_n);

@@ -16,6 +16,7 @@ using namespace arma;
 const char *kDefaultServerName = "localhost";
 const int kDefaultServerPort = 4000;
 const int max_failures = 10; // A* Global
+const string dead_status = "dead";
 
 static bool debug = false;
 static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
@@ -32,6 +33,7 @@ static vector<coordinate_t> *enemy_tanks_coors;
 static vector<flag_t> enemy_flags;
 static string my_team_color;
 static bool shoot_bullets = true;
+static int tank_with_flag = -1;
 
 static double left_bounds;
 static double right_bounds;
@@ -132,6 +134,124 @@ int main(int argc, char *argv[]) {
 	
 	// Calling agent code
 	world_init(&MyTeam);
+	
+	struct timeval now;
+	struct timeval last_tick;
+	last_tick = now;
+	gettimeofday(&now, NULL);
+
+	// Initialize the tank brains/goals
+	{
+		int number_of_tanks = my_tanks->size();
+		tank_brains = new vector<tank_brain_t>();
+		for (int tank_n = 0; tank_n < number_of_tanks; tank_n++)
+		{
+			tank_brain_t tb;
+			tb.last_updated_s = 0;
+			tb.current_goal = NULL_COORDINATE;
+			tb.current_state = SETUP;
+			tb.last_updated_s = now.tv_sec;
+			tb.can_shoot = false;
+			tank_brains->push_back(tb);
+		}
+	}
+
+	// TODO 
+	//~ // Pad the observed_enemy_coordinates vector by 2 so that we don't flub on our first two calculations of leading the shot.
+	//~ observed_enemy_coordinates.push_back(NULL_COORDINATE);
+	//~ observed_enemy_coordinates.push_back(NULL_COORDINATE);
+
+	// TODO Initialize Kalman filter for all the enemy tanks we track
+	//~ resetKalmanFilterConstants();
+	//~ resetKalmanFilterAfterEachRun(); // TODO call if the enemy tank dies...I think
+
+	gettimeofday(&now, NULL);
+	last_tick = now;
+
+	while (true)
+	{
+		my_tanks->clear();
+		MyTeam.get_mytanks(my_tanks);
+		// TODO Track the positions of all of the enemy's tanks
+		// TODO Track the position of the enemy flag as it moves
+
+		gettimeofday(&now, NULL);
+		last_tick = now;
+
+		for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
+		{
+			tank_t current_tank = my_tanks->at(tank_n);
+			tank_brain_t current_tank_brain = tank_brains->at(tank_n);			
+
+			if (dead_status.compare(current_tank.status) == 0)
+			{
+				printf("Tank %d is dead!\n", tank_n);
+				continue;
+			}
+			
+			switch (tank_brains->at(tank_n).current_state)
+			{
+				case SETUP:
+				{
+					if (current_tank_brain.last_updated_s + 4 >= now.tv_sec)
+					{
+						tank_brains->at(tank_n).can_shoot = false;
+						MyTeam.speed(tank_n, 0.25);
+						MyTeam.angvel(tank_n, (double (rand() % 20 - 10)) / 10.0);
+					}
+					else
+					{
+						printf("Tank %d is switching to ATTACK mode.\n", tank_n);
+						tank_brains->at(tank_n).current_state = ATTACK;
+					}
+					break;
+				}
+				// TODO FLAG_DEFENSE
+				case ATTACK:
+				{
+					// TODO check if I am carrying the enemy flag, if I am, switch to RUN_WITH_FLAG
+					// TODO check if one of our tanks is carrying our flag, if they are switch to PROTECT_RUNNER
+					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
+					coordinate_t current_position;
+					current_position.x = current_tank.pos[0] + (world_grid.width / 2);
+					current_position.y = world_grid.height - (current_tank.pos[1] + (world_grid.height / 2));
+
+					printf("Now calculating path for Tank %d from %f, %f to %f, %f.\n",
+						tank_n, enemy_flag_coor.x, enemy_flag_coor.y, current_position.x, current_position.y);
+
+					fill_directional_grid(world_grid.width, world_grid.height);
+					stack<coordinate_t> * path = best_first_search(enemy_flag_coor.x, enemy_flag_coor.y,
+						current_position.x, current_position.y, true);
+					//display_path("astar.tga", path);
+					if (path != NULL)
+					{
+						set_heading(tank_n, path);
+						delete path;
+					}
+					tank_brains->at(tank_n).can_shoot = true;
+					break;
+				}
+				// TODO RUN_WITH_FLAG
+				// TODO PROTECT_RUNNER
+					// TODO Check whether the tank runner is dead, if he is switch to ATTACK
+					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
+				// TODO RETRIEVE_OUR_FLAG
+				default:
+				{
+					printf("Invalid tank state observed for %d.\n", tank_n);
+					assert(false);
+					break;
+				}
+			}
+			
+			for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
+			{
+				follow_orders(tank_n);
+			}
+			
+			usleep(5000);
+		}
+	}
 }
 
 void define_constants()
@@ -181,7 +301,7 @@ void world_init(BZRC *my_team)
 
 	store_enemy_flag(my_team);
 
-	printf("Printing the world grid.");
+	printf("Printing the world grid.\n");
 	print_grid("obstacles.tga");
 	//exit(0);
 	//my_team->print_grid(world_grid);
@@ -265,3 +385,288 @@ void print_grid(const char* filename)
 	cerr << "Grid output to " << targetFile << + "\n";
 	return;
 }
+
+void set_heading(int tank_n, stack<coordinate_t> * path)
+{
+	// TODO set tank_brain.heading
+	return;
+}
+
+void follow_orders(int tank_n)
+{
+	// Move to the position given in your tank brain.
+	return;
+}
+
+void fill_directional_grid(int width, int height) {
+	directional_grid.contents.clear();
+	directional_grid.width = width;
+	directional_grid.height = height;
+	directional_grid.contents.resize(directional_grid.height);
+	
+	for (int height_n = 0; height_n < directional_grid.height; height_n++) {
+		for (int width_n = 0; width_n < directional_grid.width; width_n++) {
+			direction_t value;
+			value.x = NULL_COORDINATE.x;
+			value.y = NULL_COORDINATE.y;
+			directional_grid.contents.at(height_n).push_back(value);
+		}
+	}
+} // end fill_directional_grid()
+
+// If use_heuristic is false, this is uniform cost. If use_heuristic is true, this is A-star.
+stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x, int start_y, bool use_heuristic)
+{
+	if (target_x == NULL_COORDINATE.x && target_y == NULL_COORDINATE.y)
+	{
+		return NULL;
+	}
+	if (start_x == NULL_COORDINATE.x && start_y == NULL_COORDINATE.y)
+	{
+		return NULL;
+	}
+	
+	assert(left_bounds == 0);
+	assert(bottom_bounds == 0);
+	assert(target_x >= 0);
+	assert(target_y >= 0);
+	assert(start_x >= 0);
+	assert(start_y >= 0);
+
+	const double SQRT_TWO = 1.414213562;
+
+	priority_queue<prioritizable_node_t> next_locations;
+
+	prioritizable_node_t current_location;
+	current_location.x = start_x;
+	current_location.y = start_y;
+	current_location.prev_x = start_x;
+	current_location.prev_y = start_y;
+	current_location.cost = 0;
+	if (use_heuristic)
+	{
+		current_location.heuristic = generate_heuristic(target_x, target_y, start_x, start_y);
+	}
+	else
+	{
+		current_location.heuristic = 0.0;
+	}
+	next_locations.push(current_location);
+	
+	bool found_path;
+	int cycles_per_frame = 1000;
+	//if (use_heuristic)
+	//{
+	//	cycles_per_frame = 201;
+	//}
+	//else
+	//{
+	//	cycles_per_frame = 501;
+	//}
+	
+	int iterations = 0;
+	while (next_locations.size() > 0)
+	{
+		current_location = next_locations.top();
+		int current_x = current_location.x;
+		int current_y = current_location.y;
+		next_locations.pop();
+		nodes_popped++;
+		
+		//printf("Cost here at %f, %f is %f.\n", current_location.x, current_location.y, current_location.cost);
+
+		// Check if we're out of bounds first.
+		if (current_x < left_bounds || current_x >= right_bounds
+			|| current_y >= top_bounds || current_y < bottom_bounds)
+		{
+			//printf("Rejected because out of bounds.\n");
+			continue;
+		}
+		
+		// Check if we're in a wall
+		//printf("WorldGrid Obstacles: %d, %d\n", world_grid.obstacles.size(), world_grid.obstacles.at(current_x).size());
+		if (world_grid.obstacles.at(current_x).at(current_y) == 1)
+		{
+			//printf("Inside a wall, backing out.\n");
+			continue;
+		}
+
+		// Check if we're in a location we've already been at. If not, mark it with a back-pointer.
+		if (directional_grid.contents.at(current_x).at(current_y).x == NULL_COORDINATE.x &&
+		    directional_grid.contents.at(current_x).at(current_y).y == NULL_COORDINATE.y
+		 )
+		{
+			directional_grid.contents.at(current_x).at(current_y).x = current_location.prev_x;
+			directional_grid.contents.at(current_x).at(current_y).y = current_location.prev_y;
+		}
+		else
+		{
+			//printf("This location was already visited.\n");
+			continue;
+		}
+
+		if (target_x == current_x && target_y == current_y)
+		{
+			found_path = true;
+			break;
+		}
+		
+		// TODO calculate how much my travel is going to cost on account of walls and tanks.
+		
+		// Try adjacent spaces.
+		for (int i = 0; i < NUMBER_OF_DIRECTIONS; i++)
+		{
+			prioritizable_node_t next_location;
+
+			direction_t offset = search_order[i];
+			next_location.x = current_location.x + offset.x;
+			next_location.y = current_location.y + offset.y;
+			next_location.prev_x = current_x;
+			next_location.prev_y = current_y;
+			next_location.cost = current_location.cost;
+
+			//printf("Adding new location %f, %f to the stack.\n", next_location.x, next_location.y);
+	
+			double multiplier = 1.0;
+	
+			//~ if (penalized_mode)
+			if (true)
+			{
+				bool this_has = has_adjacent_occupied(current_location.x, current_location.y);
+				bool next_has = has_adjacent_occupied(next_location.x, next_location.y);
+				
+				if (this_has && next_has)
+				{
+					multiplier = 1.5;
+				}
+				else if (this_has) // && !next_has
+				{
+					multiplier = 1.1;
+				}
+				else if (next_has) // && !this_has
+				{
+					multiplier = 1.3;
+				}
+			}
+			
+			// The second half of the search order directions are diagonal.
+			if (i < (NUMBER_OF_DIRECTIONS / 2))
+			{
+				//printf("Added orthagonal.\n");
+				next_location.cost += multiplier;
+			}
+			else
+			{
+				//printf("Added diagonal.\n");
+				next_location.cost += (multiplier * SQRT_TWO);
+			}
+
+			//~ if (avoid_tanks)
+			//~ {
+				//~ next_location.cost += tank_weights.weights.at(current_location.x).at(current_location.y);
+			//~ }
+			
+			if (use_heuristic)
+			{
+				next_location.heuristic = generate_heuristic(target_x, target_y, next_location.x, next_location.y);
+			}
+			else
+			{
+				next_location.heuristic = 0.0;
+			}
+
+			next_locations.push(next_location);
+		}
+		
+		//~ if (iterations % cycles_per_frame == 1)
+		//~ {
+			//~ string filename = "";
+			//~ if (use_heuristic)
+			//~ {
+				//~ filename = "astar.tga";
+			//~ }
+			//~ else
+			//~ {
+				//~ filename = "ucost.tga";
+			//~ }
+			//~ display_pqueue_wavefront(filename.c_str(), next_locations);
+		//~ }
+		//~ iterations++;
+		
+	} // end while (next_locations.size() > 0)
+
+	if (found_path)
+	{
+		final_cost = current_location.cost;
+		stack<coordinate_t> * ret = new stack<coordinate_t>;
+		int sanity = 0;
+		while (!(current_location.x == start_x && current_location.y == start_y))
+		{
+			coordinate_t curr;
+			curr.x = current_location.x;
+			curr.y = current_location.y;
+			ret->push(curr);
+
+			if (curr.x == NULL_COORDINATE.x && curr.y == NULL_COORDINATE.y)
+			{
+				return NULL;
+			}
+			//printf("Found an A-star path to %f, %f.\n", curr.x, curr.y);
+			current_location.x = directional_grid.contents.at(curr.x).at(curr.y).x;
+			current_location.y = directional_grid.contents.at(curr.x).at(curr.y).y;
+			if(sanity++ > 20000)
+			{
+				printf("Been backtracing too long, start panicking.\n");
+				break;
+			}
+			//printf("Backtracing %f, %f.\nCurrent size is %d\n", current_location.x, current_location.y, ret->size());
+		}
+		return ret;
+	}
+	else
+	{
+		return NULL;
+	}
+	
+} // end best_first_search()
+
+double generate_heuristic(int target_x, int target_y, int start_x, int start_y)
+{
+	double dx = target_x - start_x;
+	double dy = target_y - start_y;
+	
+	dx *= dx;
+	dy *= dy;
+	
+	double ret = dx + dy;
+	ret = sqrt(ret);
+	
+	return ret;
+}
+
+bool has_adjacent_occupied(int x, int y)
+{
+	for (int i = 0; i < NUMBER_OF_DIRECTIONS; i++)
+	{
+		coordinate_t next_location;
+
+		direction_t offset = search_order[i];
+
+		next_location.x = x + offset.x;
+		next_location.y = y + offset.y;
+		
+		if (next_location.x < left_bounds || next_location.x >= right_bounds ||
+			next_location.y < bottom_bounds || next_location.y >= top_bounds
+		 )
+		{
+			return true;
+		}
+		
+		if (world_grid.obstacles.at(next_location.x).at(next_location.y))
+		{
+			return true;
+		}
+	}
+	return false;
+} // end has_adjacent_occupied()
+

@@ -182,7 +182,7 @@ int main(int argc, char *argv[]) {
 			coordinate_t current_position;
 			current_position.x = my_tanks->at(tank_n).pos[0] + (world_grid.width / 2);
 			current_position.y = world_grid.height - (my_tanks->at(tank_n).pos[1] + (world_grid.height / 2));
-			
+
 			gettimeofday(&now, NULL);
 			long current_time_s = now.tv_sec;
 
@@ -386,8 +386,7 @@ void fill_directional_grid(int width, int height) {
 			directional_grid.contents.at(height_n).push_back(value);
 		}
 	}
-
-}
+} // end fill_directional_grid()
 
 vector<vector<bool> * > *  get_empty_bool_grid(int width, int height)
 {

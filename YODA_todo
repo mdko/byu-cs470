@@ -9,7 +9,7 @@ TODO
 	--perform all calculations (augment tank brains accordingly)
 	--issue orders to tanks
 	}
---generate occgrid according to the noiseless world
+_/ _/--generate occgrid according to the noiseless world
 --make the kalman filter analyze all enemy tanks
 --make our tanks all play kalman filter on closest enemy tank
 --make our tanks prioritize the closest enemy
@@ -20,7 +20,7 @@ TODO
 --if enemy flag gets dropped, make tanks go toward that flag
 --make our tanks move into formation at the start of the game (around our base)
 --make tanks forward acceleration be a function of some randomness (0.25 <= v <= 1.0), changes every 1-2.5 seconds
---be color blind
+_/ _/--be color blind
 
 set of 4 tank states
 1] game-setup: make formation that covers our base and ensures they won't shoot each other (~5 seconds)

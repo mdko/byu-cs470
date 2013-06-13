@@ -6,12 +6,12 @@
 #sleep 2
 #./search localhost 50100 dfs 2
 python ./bzagents/agent0.py localhost 50101 &
-./yoda localhost 50100 800 6 1 50 1
-#                        World Grid Size (400))
-#                            ShotSpeed (Higher is closer to target/behind if too big, lower leads ahead of the target) (8)
-#                              Bullets on/off (1)
-#                                Position Confidence (50)
-#                                    Acceleration Confidence (1)
+./yoda localhost 50100 800 6 1 50 1 red
+#                      World Grid Size (400))
+#                          ShotSpeed (Higher is closer to target/behind if too big, lower leads ahead of the target) (8)
+#                            Bullets on/off (1)
+#                              Position Confidence (50)
+#                                  Acceleration Confidence (1)
 						  
 #./kalman localhost 50100 400 8 1 50 1
 #./search localhost 50100 bfs

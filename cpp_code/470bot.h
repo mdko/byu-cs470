@@ -877,14 +877,7 @@ public:
 				int old_world_digit = old_world_char - 48; //48 is ascii value of 0
 				world_grid.obstacles.at(height_n).push_back(old_world_digit);
 			}
-		}
-
-		// We need to rotate the grid counter-clockwise by 90 degrees because that's how it gets sent to us for some reason.'
-		//vector<vector<int> > rotated_grid;
-		//for ()
-		//)
-		
-				
+		}				
 		return true;
 	}
 
@@ -1107,3 +1100,4 @@ tank_best_guess_t applyKalmanFilter(double targetx, double targety, double time_
 void resetKalmanFilterConstants();
 void resetKalmanFilterAfterEachRun();
 void changeDeltaT(double delta_t);
+void store_enemy_flag(BZRC* my_team);

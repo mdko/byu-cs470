@@ -517,19 +517,7 @@ void store_red_tank(BZRC* my_team) {
 
 void store_green_flag(BZRC* my_team)
 {
-	vector<flag_t> * enemy_flags = new vector<flag_t>;
-	my_team->get_flags(enemy_flags);
-	assert(enemy_flags->size() > 0);
-
-	for (int flag_n = 0; flag_n < enemy_flags->size(); flag_n++)
-	{
-		flag_t curr_flag = enemy_flags->at(flag_n);
-		if (curr_flag.color.compare("green") == 0)
-		{
-			green_flag_coor.x = curr_flag.pos[0];
-			green_flag_coor.y = curr_flag.pos[1];
-		}
-	}
+	
 }
 
 void store_enemy_tanks_coors(BZRC* my_team) {

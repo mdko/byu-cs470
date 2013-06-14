@@ -1117,3 +1117,4 @@ void store_enemy_flag(BZRC* my_team);
 
 void set_heading(int tank_n, stack<coordinate_t> * path);
 void follow_orders(int tank_n, BZRC* my_team);
+void all_straight(BZRC* my_team);

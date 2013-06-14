@@ -203,11 +203,37 @@ int main(int argc, char *argv[]) {
 			{
 				case SETUP:
 				{
-					if (current_tank_brain.last_updated_s + 6 + tank_n*1 >= now.tv_sec)
+					if (current_tank_brain.last_updated_s + 20 + tank_n*1 >= now.tv_sec)
 					{
+						int tank_type = tank_n % 4;
 						tank_brains->at(tank_n).can_shoot = false;
-						MyTeam.speed(tank_n, 0.25);
-						MyTeam.angvel(tank_n, (double (rand() % 20 - 10)) / 10.0);
+						switch (tank_type)
+						{
+							case 0:
+							{
+								tank_brains->at(tank_n).heading.x = 0;
+								tank_brains->at(tank_n).heading.y = 1;
+								break;
+							}
+							case 1:
+							{
+								tank_brains->at(tank_n).heading.x = 1;
+								tank_brains->at(tank_n).heading.y = 0;
+								break;
+							}
+							case 2:
+							{
+								tank_brains->at(tank_n).heading.x = 0;
+								tank_brains->at(tank_n).heading.y = -1;
+								break;
+							}
+							case 3:
+							{
+								tank_brains->at(tank_n).heading.x = -1;
+								tank_brains->at(tank_n).heading.y = 0;
+								break;
+							}
+						}
 					}
 					else
 					{
@@ -235,7 +261,7 @@ int main(int argc, char *argv[]) {
 					current_position.x = current_tank.pos[0] + (world_grid.width / 2);
 					current_position.y = world_grid.height - (current_tank.pos[1] + (world_grid.height / 2));
 
-					if (current_tank_brain.last_updated_s + 3 <= now.tv_sec || current_tank_brain.current_path == NULL)
+					if (current_tank_brain.last_updated_s + 5 <= now.tv_sec || current_tank_brain.current_path == NULL)
 					{
 						if (current_tank_brain.current_path != NULL)
 						{
@@ -245,7 +271,7 @@ int main(int argc, char *argv[]) {
 						
 						tank_brains->at(tank_n).last_updated_s = now.tv_sec + (rand() % 4);
 
-						MyTeam.angvel(tank_n, 0);
+						all_straight(&MyTeam);
 						printf("Now calculating path for Tank %d from %f, %f to %f, %f.\n",
 							tank_n, enemy_flag_coor.x, enemy_flag_coor.y, current_position.x, current_position.y);
 
@@ -508,7 +534,10 @@ void set_heading(int tank_n, stack<coordinate_t> * path)
 		
 	}
 	
-	tank_brains->at(tank_n).heading = ret;
+	if (ret.x != 0 && ret.y != 0)
+	{
+		tank_brains->at(tank_n).heading = ret;
+	}
 	
 	//~ string s = "tank_#_path.tga";
 	//~ s.at(5) = 48 + tank_n; // Convert the tank number into a character, 0 is ascii 48
@@ -520,8 +549,8 @@ void set_heading(int tank_n, stack<coordinate_t> * path)
 
 void follow_orders(int tank_n, BZRC* my_team)
 {
-	const double turn_strength = 1.0;
-	const double acceptable_difference = 1.0;	// As long as our impulse is within an arc this many radians wide, drive at full speed
+	const double turn_strength = 5.0;
+	const double acceptable_difference = 0.5;	// As long as our impulse is within an arc this many radians wide, drive at full speed
 	const double PI = 3.141592653;
 	const double minimum_speed = 0.6;
 
@@ -918,3 +947,16 @@ void display_path(const char* filename, stack<coordinate_t> * path)
 	//printf("Path image output to %s\n", filename);
 	return;
 } // end display_path()
+
+void all_straight(BZRC* my_team)
+{
+	printf("Telling all tanks to go straight.\n");
+	for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
+	{
+		if (my_tanks->at(tank_n).status.compare("dead") != 0)
+		{
+			my_team->angvel(tank_n, 0.0);
+		}
+	}
+	return;
+} // end all_straight()

@@ -149,6 +149,7 @@ enum brain_state_t {
 typedef struct tank_brain_t {
 	long last_updated_s; // _s is for seconds 
 	coordinate_t current_goal;
+	stack<coordinate_t> * current_path;
 	direction_t heading;
 	brain_state_t current_state;
 	bool can_shoot;
@@ -1115,4 +1116,4 @@ void changeDeltaT(double delta_t);
 void store_enemy_flag(BZRC* my_team);
 
 void set_heading(int tank_n, stack<coordinate_t> * path);
-void follow_orders(int tank_n);
+void follow_orders(int tank_n, BZRC* my_team);

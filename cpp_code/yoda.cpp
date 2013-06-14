@@ -23,6 +23,7 @@ static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
 static grid_t world_grid;
 static coordinate_t NULL_COORDINATE;
 static coordinate_t enemy_flag_coor;
+static coordinate_t home_base_coor;
 static int world_size;
 static double shot_speed;
 static grid_t visited_grid;
@@ -121,10 +122,11 @@ int main(int argc, char *argv[]) {
 	if(argc < 9) {
 		my_team_color = "red";
 	}
-	else if (atoi(argv[8]) != 0)
+	else
 	{
 		my_team_color = argv[8];
 	}
+	assert(my_team_color.length() > 0);
 
 	BZRC MyTeam = BZRC(pcHost, nPort, false);
 	if(!MyTeam.GetStatus()) {
@@ -152,6 +154,7 @@ int main(int argc, char *argv[]) {
 			tb.current_state = SETUP;
 			tb.last_updated_s = now.tv_sec;
 			tb.can_shoot = false;
+			tb.current_path = NULL;
 			tank_brains->push_back(tb);
 		}
 	}
@@ -168,24 +171,31 @@ int main(int argc, char *argv[]) {
 	gettimeofday(&now, NULL);
 	last_tick = now;
 
+	long last_flag_update_s = now.tv_sec;
+
 	while (true)
 	{
 		my_tanks->clear();
 		MyTeam.get_mytanks(my_tanks);
 		// TODO Track the positions of all of the enemy's tanks
-		// TODO Track the position of the enemy flag as it moves
+		if (now.tv_sec >= last_flag_update_s + 5)
+		{
+			store_enemy_flag(&MyTeam);
+			last_flag_update_s = now.tv_sec;
+		}
 
 		gettimeofday(&now, NULL);
 		last_tick = now;
 
 		for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
 		{
+			printf("New frame.\n");
 			tank_t current_tank = my_tanks->at(tank_n);
 			tank_brain_t current_tank_brain = tank_brains->at(tank_n);			
 
 			if (dead_status.compare(current_tank.status) == 0)
 			{
-				printf("Tank %d is dead!\n", tank_n);
+				//printf("Tank %d is dead!\n", tank_n);
 				continue;
 			}
 			
@@ -193,7 +203,7 @@ int main(int argc, char *argv[]) {
 			{
 				case SETUP:
 				{
-					if (current_tank_brain.last_updated_s + 4 >= now.tv_sec)
+					if (current_tank_brain.last_updated_s + 6 + tank_n*1 >= now.tv_sec)
 					{
 						tank_brains->at(tank_n).can_shoot = false;
 						MyTeam.speed(tank_n, 0.25);
@@ -203,35 +213,96 @@ int main(int argc, char *argv[]) {
 					{
 						printf("Tank %d is switching to ATTACK mode.\n", tank_n);
 						tank_brains->at(tank_n).current_state = ATTACK;
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec;
 					}
 					break;
-				}
+				} // end case SETUP
 				// TODO FLAG_DEFENSE
 				case ATTACK:
 				{
-					// TODO check if I am carrying the enemy flag, if I am, switch to RUN_WITH_FLAG
+					if (current_tank.flag.compare("-") != 0)
+					{
+						printf("Tank %d is switching to RUN_WITH_FLAG mode.\n", tank_n);
+						tank_brains->at(tank_n).current_state = RUN_WITH_FLAG;
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec;						
+						tank_brains->at(tank_n).current_path = NULL;
+						break;
+					}
 					// TODO check if one of our tanks is carrying our flag, if they are switch to PROTECT_RUNNER
 					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
+
 					coordinate_t current_position;
 					current_position.x = current_tank.pos[0] + (world_grid.width / 2);
 					current_position.y = world_grid.height - (current_tank.pos[1] + (world_grid.height / 2));
 
-					printf("Now calculating path for Tank %d from %f, %f to %f, %f.\n",
-						tank_n, enemy_flag_coor.x, enemy_flag_coor.y, current_position.x, current_position.y);
-
-					fill_directional_grid(world_grid.width, world_grid.height);
-					stack<coordinate_t> * path = best_first_search(enemy_flag_coor.x, enemy_flag_coor.y,
-						current_position.x, current_position.y, true);
-					//display_path("astar.tga", path);
-					if (path != NULL)
+					if (current_tank_brain.last_updated_s + 3 <= now.tv_sec || current_tank_brain.current_path == NULL)
 					{
-						set_heading(tank_n, path);
-						delete path;
+						if (current_tank_brain.current_path != NULL)
+						{
+							delete current_tank_brain.current_path;
+							tank_brains->at(tank_n).current_path = NULL;
+						}
+						
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec + (rand() % 4);
+
+						MyTeam.angvel(tank_n, 0);
+						printf("Now calculating path for Tank %d from %f, %f to %f, %f.\n",
+							tank_n, enemy_flag_coor.x, enemy_flag_coor.y, current_position.x, current_position.y);
+
+						fill_directional_grid(world_grid.width, world_grid.height);
+						stack<coordinate_t> * path = best_first_search(enemy_flag_coor.x, enemy_flag_coor.y,
+							current_position.x, current_position.y, true);
+						tank_brains->at(tank_n).current_path = path;
+						//display_path("astar.tga", path);
+						if (path != NULL)
+						{
+							set_heading(tank_n, path);
+						}
+						tank_brains->at(tank_n).can_shoot = true;
 					}
-					tank_brains->at(tank_n).can_shoot = true;
+					else
+					{
+						set_heading(tank_n, current_tank_brain.current_path);						
+					}
 					break;
-				}
-				// TODO RUN_WITH_FLAG
+				} // end case ATTACK
+				case RUN_WITH_FLAG:
+				{
+					coordinate_t current_position;
+					current_position.x = current_tank.pos[0] + (world_grid.width / 2);
+					current_position.y = world_grid.height - (current_tank.pos[1] + (world_grid.height / 2));
+
+					if (current_tank_brain.last_updated_s + 3 <= now.tv_sec || current_tank_brain.current_path == NULL)
+					{
+						if (current_tank_brain.current_path != NULL)
+						{
+							delete current_tank_brain.current_path;
+							current_tank_brain.current_path = NULL;
+						}
+						
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec + (rand() % 4);
+
+						MyTeam.angvel(tank_n, 0);
+						printf("Now calculating path for Tank %d from %f, %f to %f, %f.\n",
+							tank_n, home_base_coor.x, home_base_coor.y, current_position.x, current_position.y);
+
+						fill_directional_grid(world_grid.width, world_grid.height);
+						stack<coordinate_t> * path = best_first_search(home_base_coor.x, home_base_coor.y,
+							current_position.x, current_position.y, true);
+						tank_brains->at(tank_n).current_path = path;
+						//display_path("astar.tga", path);
+						if (path != NULL)
+						{
+							set_heading(tank_n, path);
+						}
+						tank_brains->at(tank_n).can_shoot = true;
+					}
+					else
+					{
+						set_heading(tank_n, current_tank_brain.current_path);						
+					}
+					break;
+				} // end case RUN_WITH_FLAG
 				// TODO PROTECT_RUNNER
 					// TODO Check whether the tank runner is dead, if he is switch to ATTACK
 					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
@@ -246,7 +317,7 @@ int main(int argc, char *argv[]) {
 			
 			for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
 			{
-				follow_orders(tank_n);
+				follow_orders(tank_n, &MyTeam);
 			}
 			
 			usleep(5000);
@@ -289,6 +360,9 @@ void define_constants()
 
 void world_init(BZRC *my_team) 
 {
+	home_base_coor.x = NULL_COORDINATE.x;
+	home_base_coor.y = NULL_COORDINATE.y;
+	
 	my_tanks = new vector<tank_t>();
 	my_tanks->clear();
 	my_team->get_mytanks(my_tanks);
@@ -338,18 +412,28 @@ void store_enemy_flag(BZRC* my_team)
 	my_team->get_flags(&enemy_flags);
 	assert(enemy_flags.size() > 0);
 
+	string enemy_color = "-";
 	for (int flag_n = 0; flag_n < enemy_flags.size(); flag_n++)
 	{
 		flag_t curr_flag = enemy_flags.at(flag_n);
+		//~ printf("Examining flag %s.\n", curr_flag.color.c_str());
 		if (curr_flag.color.compare(my_team_color.c_str()) != 0)
 		{
 			enemy_flag_coor.x = curr_flag.pos[0];
 			enemy_flag_coor.y = curr_flag.pos[1];
+			enemy_color = curr_flag.color;
+		}
+		else if (home_base_coor.x == NULL_COORDINATE.x)
+		{
+			home_base_coor.x = curr_flag.pos[0] + world_grid.width / 2;
+			home_base_coor.y = curr_flag.pos[1] + world_grid.height / 2;
 		}
 	}
 	enemy_flag_coor.x += world_grid.width / 2;
 	enemy_flag_coor.y += world_grid.height / 2;
-	printf("Enemy flag at: %f, %f\n", enemy_flag_coor.x, enemy_flag_coor.y);
+	enemy_flag_coor.y = world_grid.height - enemy_flag_coor.y;
+	printf("Enemy %s flag at: %f, %f\n", enemy_color.c_str(), enemy_flag_coor.x, enemy_flag_coor.y);
+	printf("My flag at: %f, %f\n", home_base_coor.x, home_base_coor.y);
 }
 
 void print_grid(const char* filename) 
@@ -388,15 +472,130 @@ void print_grid(const char* filename)
 
 void set_heading(int tank_n, stack<coordinate_t> * path)
 {
-	// TODO set tank_brain.heading
-	return;
-}
+	const int lookahead_distance = 1;
+	
+	direction_t ret;
 
-void follow_orders(int tank_n)
-{
-	// Move to the position given in your tank brain.
+	if (path == NULL || path->empty())
+	{
+		printf("Received a bogus path for tank %d.\n", tank_n);
+		tank_brains->at(tank_n).heading = ret;
+		//tank_brains->at(tank_n).current_goal = NULL_COORDINATE;
+		tank_brains->at(tank_n).current_path = NULL;
+		return;
+	}
+	
+	coordinate_t source = path->top();
+	path->pop();
+	for (int i = 0; i < lookahead_distance; i++)
+	{
+		if (path->empty())
+		{
+			break;
+		}
+		coordinate_t current_point = path->top();
+		path->pop();
+		
+		double diff_x = current_point.x - source.x;
+		double diff_y = current_point.y - source.y;
+		
+		// Emphasize
+		//diff_x *= (lookahead_distance - i + 2.0);
+		//diff_y *= (lookahead_distance - i + 2.0);
+		
+		ret.x += diff_x;
+		ret.y += diff_y;
+		
+	}
+	
+	tank_brains->at(tank_n).heading = ret;
+	
+	//~ string s = "tank_#_path.tga";
+	//~ s.at(5) = 48 + tank_n; // Convert the tank number into a character, 0 is ascii 48
+	//~ 
+	//~ display_path(s.c_str(), path);
+	
 	return;
-}
+} // end set_heading()
+
+void follow_orders(int tank_n, BZRC* my_team)
+{
+	const double turn_strength = 1.0;
+	const double acceptable_difference = 1.0;	// As long as our impulse is within an arc this many radians wide, drive at full speed
+	const double PI = 3.141592653;
+	const double minimum_speed = 0.6;
+
+	direction_t impulse = tank_brains->at(tank_n).heading;
+	impulse.y *= -1; // stupid inverstion crap
+
+	double randomness = ((rand() % 11) - 5) / 5.0 * acceptable_difference; // -5 to 5, scaled to somewhere within the acceptable_difference cone
+
+	double speed;
+	double turning;
+
+	//printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
+
+	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
+	if (impulse.x == 0 && impulse.y == 0)
+	{
+		speed = 0;
+		turning = 0;
+	}
+	else
+	{
+		double strength = sqrt(pow(impulse.x, 2) + pow(impulse.y, 2));
+
+		// Convert X and Y to an angle
+		double new_rotation = atan2(impulse.y, impulse.x);
+
+		//Normalize the difference between the two rotations by finding the angle between 4PI and -4PI that generates a difference between PI and -PI. 
+		double r1 = new_rotation + 2*PI - my_tanks->at(tank_n).angle;
+		double r2 = new_rotation		- my_tanks->at(tank_n).angle;
+		double r3 = new_rotation - 2*PI - my_tanks->at(tank_n).angle;
+		double difference = 10*PI; // A ludicrously high angle.
+		if (fabs(r1) < fabs(difference))
+		{
+			difference = r1;
+		}
+		if (fabs(r2) < fabs(difference))
+		{
+			difference = r2;
+		}
+		if (fabs(r3) < fabs(difference))
+		{
+			difference = r3;
+		}
+
+		difference += randomness;
+
+		// Make the tank slow down during sharp turns.
+		if (fabs(difference) < acceptable_difference / 2)
+		{
+			// Full speed ahead.
+			speed = 1.0;
+			if (tank_brains->at(tank_n).can_shoot)
+			{
+				my_team->shoot(tank_n);
+			}
+		}
+		else
+		{
+			// Set impulse to one-quarter speed until we're pointing in the right direction
+			speed = minimum_speed;
+		}	
+
+		difference *= turn_strength;
+		turning = difference;
+		//if (iterations % 10 == 0)
+		//{
+		//	cout << "I am tank " << tank_n << " and my angle is " << my_tanks->at(tank_n).angle << " and I am turning " << difference << endl; 
+		//}
+	}
+
+	my_team->angvel(tank_n, turning);
+	my_team->speed(tank_n, speed);
+	return;
+} // end follow_orders()
 
 void fill_directional_grid(int width, int height) {
 	directional_grid.contents.clear();
@@ -530,7 +729,7 @@ stack<coordinate_t> * best_first_search(int target_x, int target_y, int start_x,
 			double multiplier = 1.0;
 	
 			//~ if (penalized_mode)
-			if (true)
+			if (false)
 			{
 				bool this_has = has_adjacent_occupied(current_location.x, current_location.y);
 				bool next_has = has_adjacent_occupied(next_location.x, next_location.y);
@@ -670,3 +869,52 @@ bool has_adjacent_occupied(int x, int y)
 	return false;
 } // end has_adjacent_occupied()
 
+void display_path(const char* filename, stack<coordinate_t> * path)
+{
+	assert(path != NULL);
+
+	//printf("Beginning path image export...\n");
+	std::string targetFile = filename;
+	
+	int path_weighting = path->size();
+
+	// The +1 is because the center of the arena is 0,0
+	TGAImage *img = new TGAImage(world_grid.width, world_grid.height);
+	Colour c;
+	c.a = 255; // Image will be 100% opaque.
+	
+	for (int y_n = 0; y_n < world_grid.height; y_n++) {
+		for (int x_n = 0; x_n < world_grid.width; x_n++) {
+			int curr_pixel = world_grid.obstacles.at(x_n).at(world_grid.height - y_n -1);
+			
+			if (curr_pixel == 1) { // is an obstacle
+				c.r = 128;
+				c.g = 128;
+				c.b = 128;
+			} else if (curr_pixel == 0) { // is empty
+				c.r = 0;
+				c.g = 0;
+				c.b = 0;
+			}
+			img->setPixel(c,x_n,y_n);
+		}
+	}
+
+	while (path->size() > 0)
+	{
+		coordinate_t current = path->top();
+		path->pop();
+		//printf("Path coordinate: %f, %f\n", current.x, current.y);
+		//c = distance_to_color(path->size());
+		c.r = 255;
+		c.g = 255;
+		c.b = 255;
+		img->setPixel(c,current.x,world_grid.height - current.y - 1);
+	}
+
+	//write the image to disk
+	img->WriteImage(filename);
+
+	//printf("Path image output to %s\n", filename);
+	return;
+} // end display_path()

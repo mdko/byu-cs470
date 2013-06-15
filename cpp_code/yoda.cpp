@@ -36,6 +36,7 @@ static vector<flag_t> enemy_flags;
 static string my_team_color;
 static bool shoot_bullets = true;
 static int tank_with_flag = -1;
+static vector <otank_t> * other_tanks;
 
 static double left_bounds;
 static double right_bounds;
@@ -178,7 +179,7 @@ int main(int argc, char *argv[]) {
 	{
 		my_tanks->clear();
 		MyTeam.get_mytanks(my_tanks);
-		// TODO Track the positions of all of the enemy's tanks
+		store_enemy_tanks_coors(&MyTeam);
 		if (now.tv_sec >= last_flag_update_s + 5)
 		{
 			store_enemy_flag(&MyTeam);
@@ -204,7 +205,7 @@ int main(int argc, char *argv[]) {
 			{
 				case SETUP:
 				{
-					if (current_tank_brain.last_updated_s + 20 >= now.tv_sec)
+					if (current_tank_brain.last_updated_s + 18 >= now.tv_sec)
 					{
 						int tank_type = tank_n % 4;
 						tank_brains->at(tank_n).can_shoot = false;
@@ -246,7 +247,8 @@ int main(int argc, char *argv[]) {
 				} // end case SETUP
 				case FLAG_DEFENSE:
 				{
-					if (current_tank_brain.last_updated_s + 40 + tank_n*1 >= now.tv_sec)
+					tank_brains->at(tank_n).can_shoot = true;
+					if (current_tank_brain.last_updated_s + 30 + tank_n*1 >= now.tv_sec)
 					{
 						for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
 						{
@@ -270,6 +272,7 @@ int main(int argc, char *argv[]) {
 								}
 							}
 							coordinate_t target_coor = enemy_tanks_coors->at(target_number);
+							//printf("Telling tank %d to shoot at %f, %f.", tank_n, target_coor.x, target_coor.y);
 							shoot_at_target(tank_n, &MyTeam, target_coor);
 						}
 					}
@@ -283,16 +286,22 @@ int main(int argc, char *argv[]) {
 				} // end case FLAG_DEFENSE
 				case ATTACK:
 				{
+					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
 					if (current_tank.flag.compare("-") != 0)
 					{
 						printf("Tank %d is switching to RUN_WITH_FLAG mode.\n", tank_n);
+						tank_with_flag = tank_n;
 						tank_brains->at(tank_n).current_state = RUN_WITH_FLAG;
 						tank_brains->at(tank_n).last_updated_s = now.tv_sec;						
 						tank_brains->at(tank_n).current_path = NULL;
 						break;
+					} else if (tank_with_flag != -1) {
+						printf("Tank %d is switching to PROTECT_RUNNER mode.\n", tank_n);
+						tank_brains->at(tank_n).current_state = PROTECT_RUNNER;
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec;
+						tank_brains->at(tank_n).current_path = NULL;
+						break;
 					}
-					// TODO check if one of our tanks is carrying our flag, if they are switch to PROTECT_RUNNER
-					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
 
 					coordinate_t current_position;
 					current_position.x = current_tank.pos[0] + (world_grid.width / 2);
@@ -349,6 +358,12 @@ int main(int argc, char *argv[]) {
 						printf("Now calculating path for Tank %d from %f, %f to %f, %f.\n",
 							tank_n, home_base_coor.x, home_base_coor.y, current_position.x, current_position.y);
 
+						for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
+						{
+							MyTeam.shoot(tank_n);
+							MyTeam.angvel(tank_n, 0.0);
+						}
+
 						fill_directional_grid(world_grid.width, world_grid.height);
 						stack<coordinate_t> * path = best_first_search(home_base_coor.x, home_base_coor.y,
 							current_position.x, current_position.y, true);
@@ -368,8 +383,48 @@ int main(int argc, char *argv[]) {
 				} // end case RUN_WITH_FLAG
 				case PROTECT_RUNNER:
 				{
-					// TODO Check whether the tank runner is dead, if he is switch to ATTACK
-					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
+					tank_brains->at(tank_n).can_shoot = true;
+					// Check whether the tank runner is dead, if he is switch to ATTACK
+					if (tank_with_flag == -1 || my_tanks->at(tank_with_flag).status.compare("dead") == 0)
+					{
+						printf("Tank %d is switching back to ATTACK mode because the flag runner died.\n", tank_n);
+						tank_brains->at(tank_n).current_state = ATTACK;
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec;						
+						tank_brains->at(tank_n).current_path = NULL;
+						tank_with_flag = -1;
+						break;
+					}
+					
+					coordinate_t objective = NULL_COORDINATE;
+					// check if our flag has been captured, if it has go kill the person carrying it and then pick it up
+					// otherwise, go after whoever is closest to our flag runner
+					int target_number = 0;
+					// TODO only do this every X seconds
+					{
+						double distance = 10000000;
+						for (int target_n = 0; target_n < enemy_tanks_coors->size(); target_n++)
+						{
+							if (other_tanks->at(target_n).flag.compare(my_team_color) == 0)
+							{
+								distance = 0;
+								target_number = tank_n;
+								break;
+							}
+							coordinate_t current_target = enemy_tanks_coors->at(target_n);
+							coordinate_t diff;
+							diff.x = current_target.x - my_tanks->at(tank_with_flag).pos[0];
+							diff.y = current_target.y - my_tanks->at(tank_with_flag).pos[1];
+							double new_distance = sqrt(diff.x*diff.x + diff.y*diff.y);
+							if (new_distance < distance)
+							{
+								target_number = target_n;
+								distance = new_distance;
+							}
+						}
+					}
+					coordinate_t target_coor = enemy_tanks_coors->at(target_number);
+					shoot_at_target(tank_n, &MyTeam, target_coor, true);
+					break;
 				}
 				// TODO RETRIEVE_OUR_FLAG
 				default:
@@ -435,6 +490,7 @@ void world_init(BZRC *my_team)
 	my_team->get_occgrid(world_grid);
 	printf("Now building the world_grid, using size %d.\n", world_size);
 	
+	other_tanks = NULL;
 	enemy_tanks_coors = new vector<coordinate_t>();
 	store_enemy_tanks_coors(my_team);
 
@@ -457,7 +513,11 @@ void store_enemy_tanks_coors(BZRC* my_team)
 {
 	enemy_tanks_coors->clear();
 	
-	vector <otank_t> * other_tanks = new vector<otank_t>;
+	if (other_tanks != NULL)
+	{
+		delete other_tanks;
+	}
+	other_tanks = new vector<otank_t>; // TODO Kludge, we store tank data in two places now refactor this
 	my_team->get_othertanks(other_tanks);
 
 	for (int tank_n = 0; tank_n < other_tanks->size(); tank_n++) {
@@ -999,10 +1059,10 @@ void all_straight(BZRC* my_team)
 	return;
 } // end all_straight()
 
-void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
+void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target, bool move)
 {
-	const double turn_strength = 5.0;
-	const double acceptable_difference = 0.05;	// As long as our impulse is within an arc this many radians wide, shoot
+	const double turn_strength = 6.0;
+	const double acceptable_difference = 0.15;	// As long as our impulse is within an arc this many radians wide, shoot
 
 	double a = target.y;
 	target.y = target.x;
@@ -1064,7 +1124,10 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 
 		if (fabs(difference) < acceptable_difference / 2)
 		{
-			//speed = 1.0;
+			if (move)
+			{
+				speed = 1.0;
+			}
 			//if (shoot_bullets && target.x > 0 && target.y > 0 && target.x < world_grid.width && target.y < world_grid.height)
 			if (shoot_bullets)
 			{
@@ -1076,9 +1139,12 @@ void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
 		else
 		{
 			// Set impulse to one-quarter speed until we're pointing in the right direction
-			//speed = 0.25;
+			if (move)
+			{
+				speed = 0.7;
+			}
 		}	
-		speed = 0.0;
+		//speed = 0.0;
 
 		difference *= turn_strength;
 		turning = difference;

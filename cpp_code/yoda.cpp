@@ -17,6 +17,7 @@ const char *kDefaultServerName = "localhost";
 const int kDefaultServerPort = 4000;
 const int max_failures = 10; // A* Global
 const string dead_status = "dead";
+const double PI = 3.141592653;
 
 static bool debug = false;
 static direction_t search_order[NUMBER_OF_DIRECTIONS]; // Defined in world_init
@@ -203,7 +204,7 @@ int main(int argc, char *argv[]) {
 			{
 				case SETUP:
 				{
-					if (current_tank_brain.last_updated_s + 20 + tank_n*1 >= now.tv_sec)
+					if (current_tank_brain.last_updated_s + 20 >= now.tv_sec)
 					{
 						int tank_type = tank_n % 4;
 						tank_brains->at(tank_n).can_shoot = false;
@@ -237,13 +238,49 @@ int main(int argc, char *argv[]) {
 					}
 					else
 					{
+						printf("Tank %d is switching to FLAG_DEFENSE mode.\n", tank_n);
+						tank_brains->at(tank_n).current_state = FLAG_DEFENSE;
+						tank_brains->at(tank_n).last_updated_s = now.tv_sec;
+					}
+					break;
+				} // end case SETUP
+				case FLAG_DEFENSE:
+				{
+					if (current_tank_brain.last_updated_s + 40 + tank_n*1 >= now.tv_sec)
+					{
+						for (int tank_n = 0; tank_n < tank_brains->size(); tank_n++)
+						{
+							// select your closest target
+							int target_number = 0;
+							// TODO only do this every X seconds
+							{
+								double distance = 10000000;
+								for (int target_n = 0; target_n < enemy_tanks_coors->size(); target_n++)
+								{
+									coordinate_t current_target = enemy_tanks_coors->at(target_n);
+									coordinate_t diff;
+									diff.x = current_target.x - my_tanks->at(tank_n).pos[0];
+									diff.y = current_target.y - my_tanks->at(tank_n).pos[1];
+									double new_distance = sqrt(diff.x*diff.x + diff.y*diff.y);
+									if (new_distance < distance)
+									{
+										target_number = target_n;
+										distance = new_distance;
+									}
+								}
+							}
+							coordinate_t target_coor = enemy_tanks_coors->at(target_number);
+							shoot_at_target(tank_n, &MyTeam, target_coor);
+						}
+					}
+					else
+					{
 						printf("Tank %d is switching to ATTACK mode.\n", tank_n);
 						tank_brains->at(tank_n).current_state = ATTACK;
 						tank_brains->at(tank_n).last_updated_s = now.tv_sec;
 					}
 					break;
-				} // end case SETUP
-				// TODO FLAG_DEFENSE
+				} // end case FLAG_DEFENSE
 				case ATTACK:
 				{
 					if (current_tank.flag.compare("-") != 0)
@@ -329,9 +366,11 @@ int main(int argc, char *argv[]) {
 					}
 					break;
 				} // end case RUN_WITH_FLAG
-				// TODO PROTECT_RUNNER
+				case PROTECT_RUNNER:
+				{
 					// TODO Check whether the tank runner is dead, if he is switch to ATTACK
 					// TODO check if our flag has been captured, if it has go kill the person carrying it and then pick it up
+				}
 				// TODO RETRIEVE_OUR_FLAG
 				default:
 				{
@@ -551,7 +590,6 @@ void follow_orders(int tank_n, BZRC* my_team)
 {
 	const double turn_strength = 5.0;
 	const double acceptable_difference = 0.5;	// As long as our impulse is within an arc this many radians wide, drive at full speed
-	const double PI = 3.141592653;
 	const double minimum_speed = 0.6;
 
 	direction_t impulse = tank_brains->at(tank_n).heading;
@@ -960,3 +998,97 @@ void all_straight(BZRC* my_team)
 	}
 	return;
 } // end all_straight()
+
+void shoot_at_target(int tank_n, BZRC* my_team, coordinate_t target)
+{
+	const double turn_strength = 5.0;
+	const double acceptable_difference = 0.05;	// As long as our impulse is within an arc this many radians wide, shoot
+
+	double a = target.y;
+	target.y = target.x;
+	target.x = a;
+
+	direction_t source; // The pair of numbers that comes in is inverted and in game coordinates.
+	source.x = my_tanks->at(tank_n).pos[0] + world_grid.width / 2;
+	source.y = my_tanks->at(tank_n).pos[1] + world_grid.height / 2;
+
+	//direction_t impulse = tank_brains->at(tank_n).heading;
+	direction_t impulse;
+	impulse.x = target.x - source.x;
+	impulse.y = target.y - source.y;
+
+	//impulse.y *= -1; // stupid inverstion crap
+
+	//printf("Source: %f, %f.\nTarget: %f, %f\nImpulse: %f, %f.\n", source.x, source.y, target.x, target.y, impulse.x, impulse.y);
+
+	//double randomness = ((rand() % 11) - 5) / 5.0 * acceptable_difference; // -5 to 5, scaled to somewhere withing the acceptable_difference cone
+	double randomness = 0;
+
+	double speed = 0;
+	double turning;
+
+	//printf("Tank %d is realigning its course towards %f, %f with heading %f, %f.\n", tank_n, tank_brains->at(tank_n).current_goal.x, tank_brains->at(tank_n).current_goal.y, impulse.x, impulse.y);
+
+	// if heading is at 0,0, stop the tank because it means it got given a NULL path.
+	if (impulse.x == 0 && impulse.y == 0)
+	{
+		speed = 0;
+		turning = 0;
+	}
+	else
+	{
+		double strength = sqrt(pow(impulse.x, 2) + pow(impulse.y, 2));
+
+		// Convert X and Y to an angle
+		double new_rotation = atan2(impulse.y, impulse.x);
+
+		//Normalize the difference between the two rotations by finding the angle between 4PI and -4PI that generates a difference between PI and -PI. 
+		double r1 = new_rotation + 2*PI - my_tanks->at(tank_n).angle;
+		double r2 = new_rotation		- my_tanks->at(tank_n).angle;
+		double r3 = new_rotation - 2*PI - my_tanks->at(tank_n).angle;
+		double difference = 10*PI; // A ludicrously high angle.
+		if (fabs(r1) < fabs(difference))
+		{
+			difference = r1;
+		}
+		if (fabs(r2) < fabs(difference))
+		{
+			difference = r2;
+		}
+		if (fabs(r3) < fabs(difference))
+		{
+			difference = r3;
+		}
+
+		difference += randomness;
+
+		if (fabs(difference) < acceptable_difference / 2)
+		{
+			//speed = 1.0;
+			//if (shoot_bullets && target.x > 0 && target.y > 0 && target.x < world_grid.width && target.y < world_grid.height)
+			if (shoot_bullets)
+			{
+				printf("Boom!\n");
+				my_team->shoot(tank_n);
+			}
+			// print_skeet_vision("skeet.tga", source.x, source.y, target.x, target.y);
+		}
+		else
+		{
+			// Set impulse to one-quarter speed until we're pointing in the right direction
+			//speed = 0.25;
+		}	
+		speed = 0.0;
+
+		difference *= turn_strength;
+		turning = difference;
+		//if (iterations % 10 == 0)
+		//{
+		//	cout << "I am tank " << tank_n << " and my angle is " << my_tanks->at(tank_n).angle << " and I am turning " << difference << endl; 
+		//}
+	}
+
+	my_team->speed(tank_n, speed);
+	my_team->angvel(tank_n, turning);
+	return;
+} // end shoot_at_target()
